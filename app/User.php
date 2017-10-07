@@ -77,7 +77,6 @@ class User extends Authenticatable
                    $rf->referrer = $referrer->id;
                    if ($referrer->referrer != null) {
                        $rf->base_link = Referral::FindRefLink($referrer->referrer_id, $referrer->id);
-
                    } else {
                        $rf->base_link = null;
                    }
@@ -85,19 +84,14 @@ class User extends Authenticatable
                    try {
                        $rf->save();
                        Log::info('Referral saved', ['rf' => $rf]);
-                       //dd('am Here');
-                       self::AwardCash($user);
+                       self::AwardCash($user, $rf->ref_link);
                        //Send Activated Mail
                    } catch (\Exception $exception) {
                        Session::flash('error', 'Operation Could Not be completed At this time');
-                       //$this->getLogger()->LogError('Referral Could Not Be saved',$exception,(array)$rf);
-                       //return redirect()->back();
+                       self::getLogger()->LogError('Referral Could Not Be saved',$exception,(array)$rf);
                    }
                }
-               else{
-                   dd($user, $referrer);
-                   Log::error('Referral Could Not Be saved', (array)$user);
-               }
+
            }
            catch(\Exception $exception){
                Session::flash('error','Operation Could not be completed at this time');
@@ -106,11 +100,11 @@ class User extends Authenticatable
        }
        catch (\Exception $ex)
        {
-           dd($ex);
+           self::getLogger()->LogError('An Error Occured',$ex,[]);
        }
     }
 
-    private static function AwardCash($referred)
+    private static function AwardCash($referred, $a)
     {
         try{
             for($i = 5; $i > 0; $i--)
@@ -121,12 +115,13 @@ class User extends Authenticatable
                     $transaction->t_id = Transaction::GenerateTID();
                     $transaction->user_id = $referred->referrer_id;
                     $transaction->amount = 1000;
-                    $transaction->descn = 'Referral Bonus';
+                    $transaction->descn = 'Referral Bonus - ' . $a;
                     $transaction->tn_id = 3;
                     $transaction->ts_id = 1;
                     $transaction->t_type = 3;
                     try{
                         //dd($transaction);
+                        //if ($transaction->save()) {
                         if ($transaction->save()) {
                             Log::info($i . ' Transaction saved', ['transaction' => $transaction]);
                             if(MainAccount::updateRefBal($referred->referrer_id, $transaction->amount)) {
@@ -150,7 +145,7 @@ class User extends Authenticatable
                     }
                     catch (\Exception $exception)
                     {
-                        dd($exception);
+                        //dd($exception);
                         self::getLogger()->LogError('Transaction Could Not be saved',$exception,['transaction'=>(array)$transaction, 'user' => (array)$user]);
                     }
                 }
@@ -161,7 +156,7 @@ class User extends Authenticatable
         }
         catch(\Exception $ex)
         {
-            dd($ex);
+            //dd($ex);
         }
     }
 

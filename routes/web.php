@@ -51,18 +51,32 @@ Route::group(['prefix' => '/user/','middleware' => ['auth','AuthUserCheck','User
 
 Route::group(['prefix' => '/admin/','middleware' => ['auth','AuthAdminCheck']],function ()
 {
+    //User
     Route::get('dashboard','AdminController@Dashboard')->name('admin_dashboard');
     Route::get('user/view/{id}','Admincontroller@UserView')->name('admin_user_view');
+    Route::post('user/profile/edit/{id}','AdminController@UserEdit')->name('admin_user_edit');
+
+
     //Trade
     Route::get('trade','AdminController@Trade')->name('admin_trade');
     Route::get('trade/action/{id}/{a_id}','AdminController@TradeAction')->name('admin_trade_action');
+
+
     //Utilities
     Route::get('utility','AdminController@Util')->name('admin_utils');
-
-
-
-
-    Route::post('user/profile/edit/{id}','AdminController@UserEdit')->name('admin_user_edit');
     Route::post('util/post/update','AdminController@UtilPost')->name('admin_update_util');
+
+
+    //Transaction
+    Route::get('transaction','AdminController@Transaction')->name('admin_trans');
+
+
+    //Account
+    Route::get('account','AdminController@Account')->name('admin_account');
+    Route::get('account/update/{id}','AdminController@AccountUpdate')->name('admin_acc_up');
+
+
+
+
 });
 

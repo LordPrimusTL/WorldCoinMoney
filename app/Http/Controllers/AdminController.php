@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\Logger;
 use App\Helpers\TradeSync;
 use App\Investments;
+use App\MainAccount;
 use App\Referral;
 use App\Transaction;
 use App\User;
@@ -27,17 +28,17 @@ class AdminController extends Controller
     {
         return new Logger();
     }
-    //
+
+    //User View.
     public function Dashboard()
     {
         return view('Admin.dashboard',['title' => 'Dashboard', 'users' => User::where(['role_id' => 3])->get()]);
     }
     public function UserView($id)
     {
-        $u = User::find($this->getId($id));
+        $u = User::find(decrypt($id));
         return view('Admin.user_view',['title' => 'User View','user' =>  $u]);
     }
-
     public function UserEdit(Request $request, $id)
     {
         $this->validate($request,[
@@ -58,14 +59,11 @@ class AdminController extends Controller
                 $u->is_active = (bool)$request->is_active;
                 $u->activated = (bool)$request->activated;
                 if ($u->activated) {
-
+                   // dd('am here');
                     if (Referral::FindByUserAndReferrer($u->id, $u->referrer) == null) {
-                        //dd($request->all(), $u);
                         User::MultiGenRef($u->id);
-                        //dd($request->all(), $u,'npr');
                     }
                 }
-               // dd($request->all(), $u,'nopr');
                 $u->save();
                 Session::flash('success', 'User Profile Updated Succuessfully');
                 Log::info('User Profile Updated', ['old_user' => $old, 'new_user' => $u]);
@@ -82,6 +80,7 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
+    //Trading
     public function Trade()
     {
         try{
@@ -93,7 +92,6 @@ class AdminController extends Controller
         }
         return view('Admin.tradings',['title' => 'Tradings','trades' => Investments::orderBy('created_at','DESC')->get()]);
     }
-
     public function TradeAction($id, $aid)
     {
 
@@ -137,6 +135,26 @@ class AdminController extends Controller
 
     }
 
+    //Transaction
+    public function Transaction()
+    {
+        return view('Admin.trans',['title' => 'Transactions','trans' => Transaction::orderBy('created_at', 'DESC')->get()]);
+    }
+
+
+    //Account
+    public function Account()
+    {
+        return view('Admin.account',['title' => 'Accounts','main' => MainAccount::orderBy('created_at','DESC')->get()]);
+    }
+
+    public function AccountUpdate($id)
+    {
+        dd(MainAccount::find(decrypt($id)));
+    }
+
+
+    //Utility
     public function Util()
     {
         return view('Admin.utils',['title' => 'Utility','util' => Utility::all()]);
@@ -158,4 +176,6 @@ class AdminController extends Controller
         return redirect()->back();
 
     }
+
+
 }

@@ -56,7 +56,7 @@
                                 <td>{{$i++}}</td>
                                 <td>{{$user->fullname}}</td>
                                 <td>{{$user->email}}</td><td>
-                                    <a href="{{route('admin_user_view',['id' => $user->id * 8009 * 8009])}}" class="btn btn-outline-info btn-sm"><i class="fa fa-eye"></i> View</a>
+                                    <a href="{{route('admin_user_view',['id' => encrypt($user->id)])}}" class="btn btn-outline-info btn-sm"><i class="fa fa-eye"></i> View</a>
                                     <a href="" onclick="return confirm('Are you sure you want to delete this User?');" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
                                 </td>
                             </tr>

@@ -20,4 +20,18 @@ class Transaction extends Model
         else
             self::GenerateTID();
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function ttype()
+    {
+        return $this->belongsTo(TType::class,'t_type');
+    }
+    public function stat()
+    {
+        return $this->belongsTo(TStatus::class,'ts_id');
+    }
 }

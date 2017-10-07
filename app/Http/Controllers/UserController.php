@@ -150,17 +150,24 @@ class UserController extends Controller
             'duration' => 'required|numeric',
             'amount' => 'required|numeric',
         ]);
+        if($request->amount < 10000)
+        {
+            Session::flash('error','The Minimum Amount For Trading WCM10,000.00');
+            return redirect()->back();
+        }
+        if($request->duration < 1)
+        {
+            Session::flash('error','The Minimum Trading Duration Is 1 Month');
+            return redirect()->back();
+        }
+
         $i = new Investments();
         $i->inv_id = $this->generateInv();
         $i->user_id = Auth::id();
         $i->amount = $request->amount;
         $i->month_count = 0;
         $amt = $request->amount;
-        if($amt < 10000)
-        {
-            Session::flash('error','The Minimum Amount For Trading WCM10,000.00');
-            return redirect()->back();
-        }
+
         if($amt >= 10000 && $amt <= 50000)
             $i->irate = 10;
         if($amt > 50000 && $amt <= 100000)
@@ -187,13 +194,12 @@ class UserController extends Controller
             Session::flash('error','An error occured. Please Try Again');
         }
         return redirect()->back();
-        //dd($request->all(),$i);
     }
 
     //Referrals
     public function Referrals()
     {
-        return view('User.referral',['title','Referrals']);
+        return view('User.referral',['title' => 'Referrals']);
     }
 
 

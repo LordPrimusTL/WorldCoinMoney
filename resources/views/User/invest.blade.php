@@ -20,7 +20,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="input-group form-group col-md-12">
-                            <input type="number"  name="duration" id="duration" required class="form-control input input-lg"  placeholder="Duration Of Investment(Month)"/>
+                            <input type="number" min="1"  name="duration" id="duration" required class="form-control input input-lg"  placeholder="Duration Of Investment(Month)"/>
                         </div>
                     </div>
                     <div class="col-md-12">

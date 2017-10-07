@@ -10,6 +10,7 @@ class Referral extends Model
     public static function FindRefLink($referrer,$referred)
     {
         $rf = Referral::where(['referrer' => $referrer,'referred' => $referred])->first();
+        dd($rf);
         return $rf->ref_link;
     }
     public static function FindReferrals($id)
