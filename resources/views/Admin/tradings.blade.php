@@ -77,8 +77,8 @@
                                     @if($trade->ts_id == 7)
                                         N/A
                                     @elseif($trade->ts_id == 3)
-                                        <a href="{{route('admin_trade_action',['id' => $trade->inv_id,'aid' => encrypt(1)])}}" class="btn btn-success"><i class="fa fa-check-circle"></i></a>
-                                        <a href="{{route('admin_trade_action',['id' => $trade->inv_id, 'aid' => encrypt(2)])}}" class="btn btn-danger"><i class="fa fa-close"></i></a>
+                                        <a href="{{route('admin_trade_action',['id' => encrypt($trade->inv_id),'aid' => encrypt(1)])}}" class="btn btn-success"><i class="fa fa-check-circle"></i></a>
+                                        <a href="{{route('admin_trade_action',['id' => encrypt($trade->inv_id), 'aid' => encrypt(2)])}}" class="btn btn-danger"><i class="fa fa-close"></i></a>
                                     @elseif($trade->ts_id == 5 || $trade->ts_id == 4 || $trade->ts_id == 2)
                                         {{$trade->status->name}}
                                     @elseif($trade->ts_id == 6)

@@ -33,6 +33,12 @@
      border-radius: 0px;
 
 }
+
+ #Regform select{
+     border:2px solid green;
+     color:green;
+     border-radius: 0px;
+ }
 input[type="number"]{
     border:2px solid green;
     color:green;
@@ -43,6 +49,13 @@ input[type="number"]:focus{
     border:2px solid yellow;
     color:green;
      border-radius: 0px;
+}
+
+.form_element{
+    border:2px solid green;
+    color:green;
+    border-radius: 0px;
+    text-align: center;
 }
 
 .addon_size{

@@ -63,7 +63,8 @@
         <div class="row">
             <div class="col-lg-4">
                 <a href="{{route('user_withdrawals')}}" style="text-decoration:none;color:white;">
-                    <div class="panel" style="background-color:green;">
+                    <?php $u = \App\Utility::find(1);?>
+                    <div class="panel" style="{{$u->value == 1 ? 'background-color:green;' : 'background-color:darkred;'}}">
                         <div class="panel-heading">
                             <p class="panel-success panel-title text-center">WITHDRAWALS</p>
                         </div>
@@ -73,7 +74,7 @@
                                 Check/Apply For Withdrawals
                             </p>
                         </div>
-                        <div class="panel-footer" style="background-color:green;color:white;">
+                        <div class="panel-footer" style="{{$u->value == 1 ? 'background-color:green;' : 'background-color:darkred;'}}">
                             <P class="well-sm text-center">View Details</P>
                         </div>
 

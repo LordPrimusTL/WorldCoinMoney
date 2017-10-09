@@ -34,4 +34,14 @@ class Transaction extends Model
     {
         return $this->belongsTo(TStatus::class,'ts_id');
     }
+
+    public function withd()
+    {
+        return $this->hasOne(Withdrawal::class,'t_id');
+    }
+
+    public function tname()
+    {
+        return $this->belongsTo(TName::class,'tn_id');
+    }
 }

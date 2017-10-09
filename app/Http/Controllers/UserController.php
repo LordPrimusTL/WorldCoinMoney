@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use App\AcctReq;
 use App\Helpers\Logger;
 use App\Investments;
+use App\Transaction;
 use App\User;
+use App\Utility;
+use App\Withdrawal;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -165,6 +169,7 @@ class UserController extends Controller
         $i->inv_id = $this->generateInv();
         $i->user_id = Auth::id();
         $i->amount = $request->amount;
+        $i->profit = 0;
         $i->month_count = 0;
         $amt = $request->amount;
 
@@ -203,6 +208,42 @@ class UserController extends Controller
     }
 
 
+    //WithDrawals
+    public function Withdrawals()
+    {
+        if(Utility::find(1)->value != 1)
+        {
+            Session::flash('error','Withdrawals Can\'t Be Made At This Time');
+            return redirect()->back();
+        }
+
+        return view('User.with',['title' => 'Withdrawals','with'=>Withdrawal::orderBy('created_at','DESC')->get(),
+        'inv' => Transaction::where(['user_id' =>  Auth::id(),'tn_id' => 4,'t_type' => 1])->orWhere(['user_id' =>  Auth::id(),'tn_id' => 5,'t_type' => 1])->get()]);//Come back
+    }
+
+    public function WithPost($id)
+    {
+        $tr = Transaction::find(decrypt($id));
+        //dd(count($tr));
+        if($tr != null)
+        {
+            $w = new Withdrawal();
+            $w->w_id = Withdrawal::GenerateWID();
+            $w->t_id = $tr->id;
+            $w->ts_id = 3;
+            $w->user_id = Auth::id();
+            try{
+                $w->save();
+                Session::flash('success','Withdrawal Request Submitted Successfully');
+                Log::info('Withdrawal Request Created',['with' => $w,'trans' => $tr]);
+            }
+            catch(\Exception $ex){
+                $this->getLogger()->LogError('An Error Occured When Trying to create withdrawal request', $ex,['with' => $w,'trans' => $tr]);
+                Session::flash('error','An Error Occurred When Creating the Withdrawal Request. Please Try Again');
+            }
+        }
+        return redirect()->back();
+    }
 
     //Utilities
     private function generateInv()

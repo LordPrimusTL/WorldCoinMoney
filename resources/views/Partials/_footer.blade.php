@@ -2,15 +2,17 @@
     <div class="container">
         <div class="w3layouts_header w3_agile_head">
             <p><span><i class="fa fa-envelope-o" aria-hidden="true" style="color:yellow;"></i></span></p>
-            <h5 style="color:yellow;">Subscribe to our <span>Newsletter</span></h5>
+            <h5 style="color:yellow;">Contact <span>Us</span></h5>
         </div>
-        <div class="w3layouts_skills_grids w3l_newsletter_form">
-            <form action="#" method="post">
-                <input type="text" name="Name" placeholder="Name" required="">
-                <input type="email" name="Email" placeholder="Email" required="">
-                <input type="submit" value="Send">
-            </form>
-        </div>
+        @if(!\App\Helpers\AuthCheck::AuthUserCheck())
+            <div class="w3layouts_skills_grids w3l_newsletter_form">
+                <form action="#" method="post">
+                    <input type="text" name="Name" placeholder="Name" required="">
+                    <input type="email" name="Email" placeholder="Email" required="">
+                    <input type="submit" value="Send">
+                </form>
+            </div>
+        @endif
         <div class="w3ls_footer_grid">
             <div class="col-md-4 w3ls_footer_grid_left">
                 <div class="w3ls_footer_grid_leftl">
@@ -46,7 +48,7 @@
         </div>
     </div>
     <div class="w3l_footer_pos">
-        <p>© 2017 World Coin Money. All Rights Reserved</a></p>
+        <p>© 2017 World Coin Money. All Rights Reserved</p>
         <div class="w3ls_newsletter_social">
             <ul class="agileits_social_list">
                 <li><a href="#" class="w3_agile_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>

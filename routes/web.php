@@ -38,6 +38,7 @@ Route::group(['prefix' => '/user/','middleware' => ['auth','AuthUserCheck','User
     Route::get('transactions','UserController@Transactions')->name('user_transaction');
     Route::get('referrals','UserController@Referrals')->name('user_referrals');
     Route::get('support','UserController@Support')->name('user_support');
+    Route::get('withdrawals/{id}','UserController@WithPost')->name('user_with_trans');
 
 
     //Posts
@@ -74,7 +75,11 @@ Route::group(['prefix' => '/admin/','middleware' => ['auth','AuthAdminCheck']],f
     //Account
     Route::get('account','AdminController@Account')->name('admin_account');
     Route::get('account/update/{id}','AdminController@AccountUpdate')->name('admin_acc_up');
+    Route::post('account/update/{id}/update','AdminController@AccountUpdatePost')->name('admin_acc_up_post');
 
+    //Withdrawals
+    Route::get('withdrawal','AdminController@Withdrawal')->name('admin_with');
+    Route::get('with/action/{id}/{a_id}','AdminController@WithAction')->name('admin_with_action');
 
 
 

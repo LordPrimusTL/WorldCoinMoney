@@ -58,6 +58,11 @@ class User extends Authenticatable
         return $this->belongsTo(TClass::class,'class_id');
     }
 
+    public function withd()
+    {
+        return $this->hasMany(Withdrawal::class,'user_id');
+    }
+
     public function Trade()
     {
         return $this->hasMany(Investments::class,'user_id');
@@ -118,7 +123,7 @@ class User extends Authenticatable
                     $transaction->descn = 'Referral Bonus - ' . $a;
                     $transaction->tn_id = 3;
                     $transaction->ts_id = 1;
-                    $transaction->t_type = 3;
+                    $transaction->t_type = 1;
                     try{
                         //dd($transaction);
                         //if ($transaction->save()) {

@@ -51,8 +51,8 @@ class TradeSync
                             $tr->t_id = Transaction::GenerateTID();
                             $tr->user_id = $trade->user_id;
                             $tr->amount = (($trade->amount*($trade->irate/100)));
-                            $tr->descn = 'Trading Profit - ' . $trade->inv_id;
-                            $tr->tn_id = 1;
+                            $tr->descn = $trade->inv_id;
+                            $tr->tn_id = 4;
                             $tr->ts_id = 1;
                             $tr->t_type = 1;
                             $tr->save();
@@ -67,13 +67,23 @@ class TradeSync
                             $tr = new Transaction();
                             $tr->t_id = Transaction::GenerateTID();
                             $tr->user_id = $trade->user_id;
-                            $tr->amount = $trade->profit + $trade->amount;
-                            $tr->descn = 'Trading Complete - ' . $trade->inv_id;
-                            $tr->tn_id = 1;
+                            $tr->amount = $trade->profit;
+                            $tr->descn = 'Trading Profit - ' . $trade->inv_id;
+                            $tr->tn_id = 4;
                             $tr->ts_id = 1;
                             $tr->t_type = 1;
                             $tr->save();
-                            Log::info('Transaction Created',['trade' => $trade,'trans' => $tr]);
+
+                            $trr = new Transaction();
+                            $trr->t_id = Transaction::GenerateTID();
+                            $trr->user_id = $trade->user_id;
+                            $trr->amount = $trade->profit;
+                            $trr->descn = 'Trading Complete - ' . $trade->inv_id;
+                            $trr->tn_id = 1;
+                            $trr->ts_id = 1;
+                            $trr->t_type = 5;
+                            $trr->save();
+                            Log::info('Transaction Created',['trade' => $trade,'trans' => $tr,'capital' => $trr]);
                             $m = MainAccount::updateTradeBal($trade->user_id, $tr->amount);
                             //dd($sd, $diff,$trade, $tr,$m, 'me');
                             Log::info("Main Account Updated");

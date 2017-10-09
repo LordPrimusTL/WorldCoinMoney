@@ -10,7 +10,7 @@
                 <th>User</th>
                 <th>Trading Bal.</th>
                 <th>Referral Bal.</th>
-
+                <th>Updated Last</th>
                 <th>Action</th>
                 </thead>
                 <tbody>
@@ -20,7 +20,8 @@
                         <td><a href="{{route('admin_user_view',['id' => encrypt($u->user_id)])}}" class="btn btn-primary btn-sm">{{$u->user->email}}</a> </td>
                         <td>{{$u->trade_bal}}</td>
                         <td>{{$u->ref_bal}}</td>
-                        <td><a href="" </td>
+                        <td>{{\Carbon\Carbon::parse($u->updated_at)}}</td>
+                        <td><a href="{{route('admin_acc_up',['id' => encrypt($u->id)])}}" class="btn btn-success btn-sm"><i class="fa fa-file-text"></i> Update Account</a> </td>
 
                     </tr>
                 @endforeach

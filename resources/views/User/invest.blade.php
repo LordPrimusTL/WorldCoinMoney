@@ -6,7 +6,7 @@
         <p class="well-sm container">
             <b style="color:green;">NOTE:</b>
             Trading Amount starts from WCM10,000.
-            Please note that you wont be able to withdraw your profit until the end of the Duration.Although you will be able to withdraw
+            Please note that you wont be able to withdraw your profit until the end of the Duration. Although you will be able to withdraw
             your referral bonuses.
         </p>
     </div>
