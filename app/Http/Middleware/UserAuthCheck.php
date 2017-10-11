@@ -18,9 +18,12 @@ class UserAuthCheck
     {
         if(AuthCheck::AuthUserCheck())
         {
+            //dd('Checked');
             return $next($request);
         }
         else{
+            //dd('Not');
+
             Log::info('User with Admin right and ID ' . Auth::id() . 'tried to acces a user profile');
             Auth::logout();
             return redirect()->action('UtilityController@Home');

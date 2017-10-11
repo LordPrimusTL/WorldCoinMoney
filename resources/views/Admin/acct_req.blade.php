@@ -10,8 +10,8 @@
 
             <div class="row">
                 <div class="col-lg-12" style="margin-left: 10px;">
-                    <h2>Users</h2>
-                    <!--<form class="form-" method="POST" action="">
+                    <h2> Request History</h2>
+                <!--<form class="form-" method="POST" action="">
                         {{csrf_field()}}
                         <div class="col-lg-3">
                             <div class="form-group-sm ">
@@ -44,21 +44,33 @@
                         <thead>
                         <tr>
                             <th>S/N</th>
-                            <th>Full Name</th>
-                            <th>Email</th>
-                            <th>Action</th>
+                            <th>Date</th>
+                            <th>User</th>
+                            <th>Old Account</th>
+                            <th>New Account</th>
+                            <th>Status</th>
                         </tr>
                         </thead>
                         <tbody>
                         <?php $i = 1?>
-                        @foreach($users as $user)
-                            <tr class="alert alert-{{$user->activated == false ? 'danger' : 'info'}}">
+                        @foreach($req as $r)
+                            <tr class="alert
+                                @if($r->resolved == 1)
+                                    alert-success
+                                @else
+                                    alert-danger
+                                @endif">
                                 <td>{{$i++}}</td>
-                                <td>{{$user->fullname}}</td>
-                                <td>{{$user->email}}</td><td>
-                                    <a href="{{route('admin_user_view',['id' => encrypt($user->id)])}}" class="btn btn-outline-info btn-sm"><i class="fa fa-eye"></i></a>
-                                    <a href="{{route('mail.single',['id' => encrypt($user->email)])}}" class="btn btn-outline-primary btn-sm"><i class="fa fa-envelope-square"></i></a>
-                                    <a href="" onclick="return confirm('Are you sure you want to delete this User?');" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                <td>{{\Carbon\Carbon::parse($r->created_at)->toDateString()}}</td>
+                                <td><a href="{{route('admin_user_view',['id' => encrypt($r->user_id)])}}" class="btn btn-outline-primary btn-sm"><i class="fa fa-eye"></i> {{$r->user->email}}</a> </td>
+                                <td>{{\App\AcctType::find($r->old_acct_type)->name}}</td>
+                                <td>{{\App\AcctType::find($r->new_acct_type)->name}}</td>
+                                <td>
+                                    @if($r->resolved == 1)
+                                        Resolved
+                                    @else
+                                        <a href="{{route('admin_req_post',['id'=> encrypt($r->id)])}}" class="btn btn-primary btn-sm"><i class="fa fa-check-circle"></i></a>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

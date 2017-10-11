@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\AcctReq;
 use App\Helpers\Logger;
 use App\Investments;
+use App\Referral;
 use App\Transaction;
 use App\User;
 use App\Utility;
@@ -131,9 +132,18 @@ class UserController extends Controller
         //Session::flash()
     }
 
+
+    //Transaction
+    public function Transactions()
+    {
+        return view('User.transaction',['title' =>'Transaction','trans' => Auth::user()->trans]);
+    }
+
+
+    //Account
     public function Account()
     {
-        return view('User.Account.dashboard',['title' => 'Accounts']);
+        return view('User.account',['title' => 'Accounts','a' => Auth::user()->bal]);
     }
 
 
@@ -146,7 +156,7 @@ class UserController extends Controller
             return redirect()->back();
         }
         else
-            return view('User.invest',['title' => 'Investment','inv' => Investments::orderBy('created_at','DESC')->get()]);
+            return view('User.invest',['title' => 'Investment','inv' => Auth::user()->inv()->orderBy('created_at','DESC')->get()]);
     }
     public function InvestPost(Request $request)
     {
@@ -204,7 +214,12 @@ class UserController extends Controller
     //Referrals
     public function Referrals()
     {
-        return view('User.referral',['title' => 'Referrals']);
+        return view('User.referral',['title' => 'Referrals','ref' => Auth::user()->ref()->orderBy('created_at','DESC')->get()]);
+    }
+    public function RefOthers($id)
+    {
+        //$user
+        return view('User.referral',['title' => User::find(decrypt($id))->fullname . ' Referrals','ref' => User::find(decrypt($id))->ref()->orderBy('created_at','DESC')->get()]);
     }
 
 
@@ -220,7 +235,6 @@ class UserController extends Controller
         return view('User.with',['title' => 'Withdrawals','with'=>Withdrawal::orderBy('created_at','DESC')->get(),
         'inv' => Transaction::where(['user_id' =>  Auth::id(),'tn_id' => 4,'t_type' => 1])->orWhere(['user_id' =>  Auth::id(),'tn_id' => 5,'t_type' => 1])->get()]);//Come back
     }
-
     public function WithPost($id)
     {
         $tr = Transaction::find(decrypt($id));
@@ -245,6 +259,7 @@ class UserController extends Controller
         return redirect()->back();
     }
 
+
     //Utilities
     private function generateInv()
     {
@@ -256,5 +271,11 @@ class UserController extends Controller
         else{
             return $inv_id;
         }
+    }
+
+
+    public function Support()
+    {
+        return redirect()->action('TicketController@UserTickets');
     }
 }

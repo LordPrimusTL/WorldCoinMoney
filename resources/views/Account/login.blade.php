@@ -25,9 +25,8 @@
                 </div>
             </form>
             <div class="col-md-offset-3 acct">
-                <a href="{{route('register')}}"><h5 >Haven't registered yet?<b style="color:green">Click HERE</b></h5></a>
+                <p>Forgot Password? <a href="{{route('forgot_password')}}"><b style="color:green">Reset Password</b></a></p>
             </div>
-
         </div>
     </div>
 @endsection

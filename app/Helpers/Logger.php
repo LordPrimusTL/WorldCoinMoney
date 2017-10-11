@@ -40,6 +40,13 @@ class Logger
         $this->SaveError($error_id);
     }
 
+    public function LogOError($errormsg, $other)
+    {
+        Log::error($errormsg,[$other]);
+        $this->SaveError($this->ErrorID());
+
+    }
+
     private function ErrorID()
     {
         $t_id = str_random(20);

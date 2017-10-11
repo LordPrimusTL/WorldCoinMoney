@@ -14,6 +14,9 @@
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="{{asset('css/admin/custom.css')}}">
     <script src="{{asset('js/admin/jquery-1.11.1.min.js')}}"></script>
+    <script>$(document).ready(function () {
+            $('[data-toggle = "tooltip"]').tooltip();
+        })</script>
 </head>
 <body>
     <div class="page charts-page">

@@ -62,169 +62,167 @@
     </div>
     <!--//News Slider ends here-->
     <!--// brief information about us-->
-    <div class="container-fluid jumbotron">
+    <div class="container-fluid jumbotron" style="margin-bottom:0!important;">
         <p class="well-sm lead">
         <h3 class="text-center" style="color:green;">Before you get started,hear this;</h3>
         </p>
         <p class="well-sm container">
-            Choice Mega investors club is not just an investment listing website, it is the investor’s toolkit for planning,
-            managing and maintaining investments in businesses intelligently; monitoring investment acquisition process,
-            structure for great financial profit and managing the entire portfolio.
+            Gnissimos voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi. atque corrupti quos dolores et quas molestias excepturi sint occaecat officia deserunt mollitia laborum et dolorum fuga
+            quas molestias excepturi sint occaecat officia deserunt mollitia laborum et dolorum fuga. At vero eos et accusamus et iusto odio dignis
         </p>
     </div>
     <!--// brief information about us ends here-->
-
-    <!--//What we do-->
-    <div class="container">
-        <h1 class="text-center" style="margin-top:20px;font-size:30px;color:green;margin-bottom:30px;">What we do</h1>
-        <div class="col-md-3">
-            <div class="panel panel-default" style="border: none !important;">
-                <div class="panel-body">
-                    <p>
-                        <img src="images/member2.jpg" class="img img-circle" style="width:200px;border:1px solid green;">
-                    </p>
+    </section>
+    <section id="middle" class="jumbotron" style="background-color:white;" >
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="accordion" style="margin-top:-20px;">
+                        <h2 style="margin-bottom:20px;">Do you want to learn more?</h2>
+                        <div class="panel-group" id="accordion1">
+                            <div class="panel panel-default">
+                                <div class="panel-heading active" style="background-color:black;color:white;">
+                                    <h3 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1">
+                                            Learn more about how our referral works
+                                            <i class="fa fa-angle-right pull-right"></i>
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div id="collapseOne1" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        <div class="media accordion-inner">
+                                            <div class="pull-left">
+                                                <img class="img-responsive" src="images/pc1.png" width="160">
+                                            </div>
+                                            <div class="media-body">
+                                                <h4>Gnissimos voluptatum</h4>
+                                                <p style="font-size:15px;">Gnissimos voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi. atque corrupti quos dolores et quas molestias excepturi sint occaecat officia deserunt mollitia laborum et dolorum fuga
+                                                    quas molestias excepturi sint occaecat officia deserunt mollitia laborum et dolorum fuga. At vero eos et accusamus et iusto odio dignis
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo1">
+                                            Learn more on how to upgrade to a teacher
+                                            <i class="fa fa-angle-right pull-right"></i>
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div id="collapseTwo1" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="media accordion-inner">
+                                            <div class="pull-left">
+                                                <img class="img-responsive" src="images/p4.jpg" width="160">
+                                            </div>
+                                            <div class="media-body">
+                                                <h4>Gnissimos voluptatum</h4>
+                                                <p style="font-size:15px;">simos voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi. atque corrupti quos dolores et quas molestias excepturi sint occaecat officia deserunt mollitia laborum et dolorum fuga
+                                                    quas molestias excepturi sint occaecat officia deserunt mollitia laborum et dolorum fuga.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseThree1">
+                                            Know more on how we Invest
+                                            <i class="fa fa-angle-right pull-right"></i>
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div id="collapseThree1" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="media accordion-inner">
+                                            <div class="pull-left">
+                                                <img class="img-responsive" src="images/p2.jpg" width="160">
+                                            </div>
+                                            <div class="media-body">
+                                                <h4>simos voluptatum</h4>
+                                                <p style="font-size:15px;">simos voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi. atque corrupti quos dolores et quas molestias excepturi sint occaecat officia deserunt mollitia laborum et dolorum fuga
+                                                    quas molestias excepturi sint occaecat officia deserunt mollitia laborum et dolorum fuga.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseFour1">
+                                            FAQs
+                                            <i class="fa fa-angle-right pull-right"></i>
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div id="collapseFour1" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="media accordion-inner">
+                                            <div class="pull-left">
+                                                <img class="img-responsive" src="images/gu5.png" width="160">
+                                            </div>
+                                            <div class="media-body">
+                                                <h4>What others say</h4>
+                                                <p style="font-size:15px;">simos voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi. atque corrupti quos dolores et quas molestias excepturi sint occaecat officia deserunt mollitia laborum et dolorum fuga
+                                                    quas molestias excepturi sint occaecat officia deserunt mollitia laborum et</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <h5 class="text-center lead head">CONFIRM HEADER</h5>
-                <p class="well-sm" style="font-size:18px;">
-                    World Coin Club is the very best at all things making life
-                    World Coin Club is the very best at all things making life
-                    World Coin Club is the very best at all things making life
-                    World Coin Club is the very best at all things making life
-                    better through investment of all types
-                </p>
-
+                <div class="col-sm-5 col-sm-push-1 voffset-mobile2">
+                    <div class="testimonial">
+                        <h2>Testimonials</h2>
+                        <div class="media testimonial-inner">
+                            <div class="pull-left">
+                                <div class="abb">
+                                    &nbsp;<img class="img-responsive" src="images/gu5.png" width="160">&nbsp;
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <p style="font-size:15px;">simos voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi. atque corrupti quos dolores et quas molestias excepturi sint occaecat officia deserunt mollitia laborum et dolorum fuga
+                                    quas molestias excepturi sint occaecat officia deserunt mollitia laborum et</p>
+                                <span><strong>M.Primus</strong> Ondo Akure</span>
+                            </div>
+                        </div>
+                        <div class="media testimonial-inner">
+                            <div class="pull-left">
+                                <div class="abb">
+                                    <img class="img-responsive" src="images/gu5.png" width="160">
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <p  style="font-size:15px;">simos voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi. atque corrupti quos dolores et quas molestias excepturi sint occaecat officia deserunt mollitia laborum et dolorum fuga
+                                    quas molestias excepturi sint occaecat officia deserunt mollitia laborum et</p>
+                                <span><strong>O.Oladejo</strong></span>
+                            </div>
+                        </div>
+                        <div class="media testimonial-inner">
+                            <div class="pull-left">
+                                <div class="abb">
+                                    <img class="img-responsive" src="images/gu5.png" width="160">
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <p  style="font-size:15px;">simos voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi. atque corrupti quos dolores et quas molestias excepturi sint occaecat officia deserunt mollitia laborum et dolorum fuga
+                                    quas molestias excepturi sint occaecat officia deserunt mollitia laborum et</p>
+                                <span><strong>T.Olatunbosun</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="panel panel-default" style="border: none !important;">
-                <div class="panel-body">
-                    <p>
-                        <img src="images/member2.jpg" class="img img-circle" style="width:200px;border:1px solid green;">
-                    </p>
-                </div>
-                <h5 class="text-center lead head">CONFIRM HEADER</h5>
-                <p class="well-sm" style="font-size:18px;">
-                    World Coin Club is the very best at all things making life
-                    World Coin Club is the very best at all things making life
-                    World Coin Club is the very best at all things making life
-                    World Coin Club is the very best at all things making life
-                    better through investment of all types
-                </p>
-
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="panel panel-default" style="border: none !important;">
-                <div class="panel-body">
-                    <p>
-                        <img src="images/member2.jpg" class="img img-circle" style="width:200px;border:1px solid green;">
-                    </p>
-                </div>
-                <h5 class="text-center lead head">CONFIRM HEADER</h5>
-                <p class="well-sm" style="font-size:18px;">
-                    World Coin Club is the very best at all things making life
-                    World Coin Club is the very best at all things making life
-                    World Coin Club is the very best at all things making life
-                    World Coin Club is the very best at all things making life
-                    better through investment of all types
-                </p>
-
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="panel panel-default" style="border: none !important;">
-                <div class="panel-body">
-                    <p>
-                        <img src="images/member2.jpg" class="img img-circle" style="width:200px;border:1px solid green;">
-                    </p>
-                </div>
-                <h5 class="text-center lead head" style="">CONFIRM HEADER</h5>
-                <p class="well-sm" style="font-size:18px;">
-                    World Coin Club is the very best at all things making life
-                    World Coin Club is the very best at all things making life
-                    World Coin Club is the very best at all things making life
-                    World Coin Club is the very best at all things making life
-                    better through investment of all types
-                </p>
-
-            </div>
-        </div>
-    </div>
-
-    <!--//What we do-->
-    <div class="container">
-        <h1 class="text-center" style="margin-top:20px;font-size:30px;color:green;margin-bottom:30px;">What we do</h1>
-        <div class="col-md-3">
-            <div class="panel panel-default" style="border: none !important;">
-                <div class="panel-body">
-                    <p>
-                        <img src="images/member2.jpg" class="img img-circle" style="width:200px;border:1px solid green;">
-                    </p>
-                </div>
-                <h5 class="text-center lead head">CONFIRM HEADER</h5>
-                <p class="well-sm" style="font-size:18px;">
-                    World Coin Club is the very best at all things making life
-                    World Coin Club is the very best at all things making life
-                    World Coin Club is the very best at all things making life
-                    World Coin Club is the very best at all things making life
-                    better through investment of all types
-                </p>
-
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="panel panel-default" style="border: none !important;">
-                <div class="panel-body">
-                    <p>
-                        <img src="images/member2.jpg" class="img img-circle" style="width:200px;border:1px solid green;">
-                    </p>
-                </div>
-                <h5 class="text-center lead head">CONFIRM HEADER</h5>
-                <p class="well-sm" style="font-size:18px;">
-                    World Coin Club is the very best at all things making life
-                    World Coin Club is the very best at all things making life
-                    World Coin Club is the very best at all things making life
-                    World Coin Club is the very best at all things making life
-                    better through investment of all types
-                </p>
-
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="panel panel-default" style="border: none !important;">
-                <div class="panel-body">
-                    <p>
-                        <img src="images/member2.jpg" class="img img-circle" style="width:200px;border:1px solid green;">
-                    </p>
-                </div>
-                <h5 class="text-center lead head">CONFIRM HEADER</h5>
-                <p class="well-sm" style="font-size:18px;">
-                    World Coin Club is the very best at all things making life
-                    World Coin Club is the very best at all things making life
-                    World Coin Club is the very best at all things making life
-                    World Coin Club is the very best at all things making life
-                    better through investment of all types
-                </p>
-
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="panel panel-default" style="border: none !important;">
-                <div class="panel-body">
-                    <p>
-                        <img src="images/member2.jpg" class="img img-circle" style="width:200px;border:1px solid green;">
-                    </p>
-                </div>
-                <h5 class="text-center lead head" style="">CONFIRM HEADER</h5>
-                <p class="well-sm" style="font-size:18px;">
-                    World Coin Club is the very best at all things making life
-                    World Coin Club is the very best at all things making life
-                    World Coin Club is the very best at all things making life
-                    World Coin Club is the very best at all things making life
-                    better through investment of all types
-                </p>
-
-            </div>
-        </div>
-    </div>
+    </section>
 @endsection

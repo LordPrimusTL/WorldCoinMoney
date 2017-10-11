@@ -1,56 +1,28 @@
 @extends('master')
 @section('body')
-    <div class="container-fluid jumbotron" style="background-color: white;">
-        <p class="well-sm lead">
-        <h3 class="text-center" style="color:green;">Before you proceed,hear this;</h3>
-        <p class="well-sm container">
-            <b style="color:green;">NOTE:</b>
-            Trading Amount starts from WCM10,000.
-            Please note that you wont be able to withdraw your profit until the end of the Duration.Although you will be able to withdraw
-            your referral bonuses.
-        </p>
-    </div>
-    <!--// brief information about us ends here-->
-    <h4 class="container-fluid text-center" style="margin-top:5px;margin-bottom:10px;font-size:29px;color:greenyellow">TRADING PAGE</h4>
-    <div class="container-fluid" style="margin-top:60px;">
-        <form action="{{route('user_invest_post')}}" method="post" id="Regfrom">
-            {{csrf_field()}}
-            <div class="col-md-offset-2 col-md-8">
-                @include('Partials._message')
-            </div>
-        </form>
-    </div>
-
-
-
-    @if($inv != null)
+    @if($ref != null)
         <div class="row" style="margin-bottom: 300px;">
             <div class="container">
-                <h4 class="container-fluid text-center" style="margin-top:5px;margin-bottom:10px;font-size:29px;color:greenyellow">TRADING HISTORY</h4>
+                <h4 class="container-fluid text-center" style="margin-top:5px;margin-bottom:10px;font-size:29px;color:greenyellow">{{$title}}</h4>
                 <br/>
                 <table class="table table-responsive table-bordered">
                     <thead>
                     <th>S/N</th>
                     <th>Date</th>
-                    <th>ID</th>
-                    <th>AMT</th>
-                    <th>DUR.(M)</th>
-                    <th>Rate(%)</th>
-                    <th>Start-Date</th>
-                    <th>STATUS</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Action</th>
                     </thead>
                     <tbody>
                     <?php $i = 1?>
-                    @foreach($inv as $in)
+                    @foreach($ref as $in)
+                        <?php $r = app\User::find($in->referred)?>
                         <tr>
                             <td>{{$i++}}</td>
                             <td>{{\Carbon\Carbon::parse($in->created_at)}}</td>
-                            <td>{{$in->inv_id}}</td>
-                            <td>{{$in->amount}}</td>
-                            <td>{{$in->duration}}</td>
-                            <td>{{$in->irate}}</td>
-                            <td>{{ $in->start_date == null ? 'N/A' : \Carbon\Carbon::parse($in->start_date)}}</td>
-                            <td>{{$in->status->name}}</td>
+                            <td>{{$r->fullname}}</td>
+                            <td>{{$r->email}}</td>
+                            <td><a href="{{route('user_referrals_id',['id' => encrypt($r->id)])}}" class="btn btn-success"> <i class="fa fa-eye"></i> View Referrals </a> </td>
                         </tr>
                     @endforeach
                     </tbody>

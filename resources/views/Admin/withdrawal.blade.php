@@ -31,18 +31,18 @@
                         <td>{{$u->trans->amount}}</td>
                         <td>{{$u->trans->t_id}}</td>
                         <td>{{$u->trans->tname->name}}</td>
-                         <td>
-                             @if($u->ts_id == 1)
-                                 {{$u->status->name}}
-                             @elseif($u->ts_id == 3)
-                                 <a href="{{route('admin_with_action',['id' => encrypt($u->id),'aid' => encrypt(1)])}}" class="btn btn-success"><i class="fa fa-check-circle"></i></a>
-                                 <a href="{{route('admin_with_action',['id' => encrypt($u->id), 'aid' => encrypt(2)])}}" class="btn btn-danger"><i class="fa fa-close"></i></a>
-                             @elseif($u->ts_id == 5 || $u->ts_id == 4 || $u->ts_id == 2)
-                                 {{$u->status->name}}
-                             @elseif($u->ts_id == 6)
-                                 {{$u->status->name}}
-                             @endif
-                         </td>
+                        <td>
+                            @if($u->ts_id == 1)
+                                {{$u->status->name}}
+                            @elseif($u->ts_id == 3)
+                                <a href="{{route('admin_with_action',['id' => encrypt($u->id),'aid' => encrypt(1)])}}" class="btn btn-success btn-sm"><i class="fa fa-check-circle"></i></a>
+                                <a href="{{route('admin_with_action',['id' => encrypt($u->id), 'aid' => encrypt(2)])}}" class="btn btn-danger btn-sm"><i class="fa fa-close"></i></a>
+                            @elseif($u->ts_id == 5 || $u->ts_id == 4 || $u->ts_id == 2)
+                                {{$u->status->name}}
+                            @elseif($u->ts_id == 6)
+                                {{$u->status->name}}
+                            @endif
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>

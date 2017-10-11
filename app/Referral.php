@@ -23,4 +23,9 @@ class Referral extends Model
         $data = Referral::where(['referred' => $id, 'referrer' => $referrer])->first();
         return $data;
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class,'referrer');
+    }
 }
