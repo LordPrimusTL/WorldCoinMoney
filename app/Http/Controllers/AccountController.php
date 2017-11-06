@@ -85,28 +85,27 @@ class AccountController extends Controller
             else{
                 $u->referrer_id = $referrer->id;
             }
-
         }
         else{
             $u->referrer_id  = $request->referrer;// get refferer id
         }
         try{
-           // $u->save();
-            $ut = new UserTemp();
-            $ut->user_id = $u->id;
-            $ut->email = $u->email;
-            $ut->token = UserTemp::GenerateUUID();
-            $ut->used = false;
-            Log::info('Account Created',['user' => $u]);
-            //$s = new AppMailer();
-            if($u->payment_id == 2)
+            if($u->save())
             {
-                $mailer->activateMail($u->email, explode(' ',$u->fullname)[0]);
-            }
+                Log::info('Account Created',['user' => $u]);
+                //$s = new AppMailer();
+                if($u->payment_id == 2)
+                {
+                    $mailer->activateMail($u->email, explode(' ',$u->fullname)[0]);
+                }
 
-            Session::flash('success','An Activation Email Has Been Sent To The Email  Address You Provided.');
-            return redirect()->action('AccountController@WTDN');
-            //if()
+                Session::flash('success','An Activation Email Has Been Sent To The Email  Address You Provided.');
+                return redirect()->action('AccountController@WTDN');
+            }
+            else{
+                Session::flash('error','An Error Occurred When Trying To Create Account. Please Try Again');
+                return redirect()->back();
+            }
         }
         catch(\Exception $ex)
         {

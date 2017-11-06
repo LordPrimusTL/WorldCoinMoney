@@ -17,7 +17,7 @@ class TicketController extends Controller
     {
         $tickets = Ticket::paginate(10);
         $categories = Category::all();
-        $title = 'Tickets - Admin';
+        $title = 'Tickets - admin';
         return view('Ticket.index', compact('tickets', 'categories','title'));
     }
     public function Create()

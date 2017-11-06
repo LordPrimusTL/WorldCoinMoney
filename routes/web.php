@@ -85,8 +85,8 @@ Route::group(['prefix' => '/admin/','middleware' => ['auth','AuthAdminCheck']],f
     Route::get('user/action/{id}/{aid}','AdminController@UserAction')->name('admin_user_action');
 
 
-    //Admin
-    Route::get('admin','AdminController@Admin')->name('admin_admin');
+    //admin
+    Route::get('admin','AdminController@admin')->name('admin_admin');
     Route::get('admin/delete/{id}','AdminController@AdminDelete')->name('admin_delete');
     Route::post('admin/post','AdminController@AdminPost')->name('admin_post');
 

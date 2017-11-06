@@ -18,8 +18,8 @@ use Illuminate\Support\Facades\Log;
 class Mailerr
 {
     protected $mailer;
-    protected $fromAddress = 'info@cmiclub.org';
-    protected $fromName = 'World Coin';
+    protected $fromAddress = 'info@worldcoinsmoney.com';
+    protected $fromName = 'World Coins Crypto-Currency';
     protected $to;
     protected $subject;
     protected $view;
@@ -37,7 +37,7 @@ class Mailerr
     public function activateUser($user)
     {
         $this->to = $user->email;
-        $this->subject = "Activate Your CMIClub Account";
+        $this->subject = "Activate Your WorldCoin Account Account";
         $this->view = 'User.Email.activate';
         $this->data = compact('user');
         return $this->deliver();
@@ -48,7 +48,7 @@ class Mailerr
         $em = explode(',',$emails);
         $this->to = $em;
         $this->subject = $sub;
-        $this->view = 'User.Email.activate';
+        $this->view = 'Email.all';
         $this->data = compact('msg');
 
         return $this->deliver();
