@@ -63,8 +63,8 @@
                                 <td>{{$i++}}</td>
                                 <td>{{\Carbon\Carbon::parse($r->created_at)->toDateString()}}</td>
                                 <td><a href="{{route('admin_user_view',['id' => encrypt($r->user_id)])}}" class="btn btn-outline-primary btn-sm"><i class="fa fa-eye"></i> {{$r->user->email}}</a> </td>
-                                <td>{{\App\AcctType::find($r->old_acct_type)->name}}</td>
-                                <td>{{\App\AcctType::find($r->new_acct_type)->name}}</td>
+                                <td>{{\App\RegistrationType::find($r->old_acct_type)->name}}</td>
+                                <td>{{\App\RegistrationType::find($r->new_acct_type)->name}}</td>
                                 <td>
                                     @if($r->resolved == 1)
                                         Resolved

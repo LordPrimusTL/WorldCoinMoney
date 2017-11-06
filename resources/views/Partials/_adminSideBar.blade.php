@@ -17,7 +17,9 @@
         <li class="{{Request::is('admin/withdrawal') ? "active" : " "}}"> <a href="{{route('admin_with')}}"><i class="fa fa-send-o"></i>&nbsp;Withdrawals</a></li>
         <li class="{{Request::is('admin/account') ? "active" : " "}}"> <a href="{{route('admin_account')}}"><i class="fa fa-bank"></i>&nbsp;Account Balance</a></li>
         <li class="{{Request::is('admin/referrals') ? "active" : " "}}"> <a href="{{route('admin_referrals')}}"><i class="fa fa-handshake-o"></i>&nbsp;Referrals</a></li>
-        <li class="{{Request::is('admin/tickets') ? "active" : " "}}"> <a href="{{route('admin_ticket')}}"><i class="fa fa-ticket"></i>&nbsp;Support Ticket</a></li>
+        <li class="{{Request::is('admin/school-fees') ? "active" : " "}}"> <a href="{{route('admin_sch_fee')}}"><i class="fa fa-money"></i>&nbsp;School Fees Request</a></li>
+        <li class="{{Request::is('admin/btc') ? "active" : " "}}"> <a href="{{route('admin_btc')}}"><i class="fa fa-bitcoin"></i>&nbsp;Bitcoin</a></li>
+        <li class="{{Request::is('admin/ticket') ? "active" : " "}}"> <a href="{{route('admin_ticket')}}"><i class="fa fa-ticket"></i>&nbsp;Support Ticket</a></li>
         <li class="{{Request::is('admin/utility') ? "active" : " "}}"> <a href="{{route('admin_utils')}}"><i class="fa fa-dashboard"></i>&nbsp;Utilities</a></li>
     </ul>
 </nav>

@@ -18,10 +18,10 @@
             $('[data-toggle = "tooltip"]').tooltip();
         })</script>
 </head>
-<body>
-    <div class="page charts-page">
+<body style="background-color: white!important; font-family: 'Andale Mono'!important;">
+    <div class="page charts-page" style="background-color: white!important;">
         @include('Partials._adminNavbar')
-        <div class="page-content d-flex align-items-stretch">
+        <div class="page-content d-flex align-items-stretch" style="background-color: white!important;">
             @include('Partials._adminSideBar')
             @yield('body')
         </div>

@@ -86,6 +86,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Referral::class,'referrer');
     }
+  
+    public function acct()
+    {
+        return $this->hasOne(AcctDetails::class,'user_id');
+    }
 
     public static function MultiGenRef($id)
     {

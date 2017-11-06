@@ -8,26 +8,32 @@
         </ol>
         <div class="carousel-inner">
             <div class="item active">
-                <img src="images/z7.jpg" class="img-responsive" alt="First-Slider" style="width:1500px;">
+                <img src="images/cryptocurrency.png" class="img-responsive" alt="First-Slider" style="width:1500px;">
             </div>
             <div class="carousel-caption">
                 <h3>MY SiteName</h3>
                 <p>Make Money Everywhere</p>
             </div>
             <div class="item ">
-                <img src="images/z10.jpg" class="img-responsive" alt="First-Slider" style="width:1500px;">
-            </div>
-            <div class="carousel-caption">
-                <h3>MY SiteName</h3>
-                <p>Make Money Everywhere</p>
+                <img src="images/cyp.jpg" class="img-responsive" alt="First-Slider" style="width:1500px;">
+                <div class="carousel-caption">
+                    <h3>MY SiteName</h3>
+                    <p>Make Money Everywhere</p>
+                </div>
             </div>
             <div class="item ">
-                <img src="images/z28.jpg" class="img-responsive" alt="First-Slider" style="width:1500px;">
+                <img src="images/cryptocurrency.png" class="img-responsive" alt="First-Slider" style="width:1500px;">
+                <div class="carousel-caption">
+                    <h3>MY SiteName</h3>
+                    <p>Make Money Everywhere</p>
+                </div>
             </div>
-            <div class="carousel-caption">
-                <h3>MY SiteName</h3>
-                <p>Make Money Everywhere</p>
-            </div>
+            <a href="#ImageCarousel" class="carousel-control left" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"style="color:yellow;"></span>
+            </a>
+            <a href="#ImageCarousel" class="carousel-control right" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" style="color:yellow;"></span>
+            </a>
         </div>
     </div>
     <!-- //banner -->

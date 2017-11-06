@@ -51,6 +51,21 @@
                                 <a href="{{route('admin_user_view',['id' => encrypt($user->referrer_id)])}}" class="btn btn-outline-info"> <i class="fa fa-eye"></i> {{\App\User::find($user->referrer_id)->email}} </a>
                             @endif
                         </div>
+                        <hr/>
+                        <h5>Account Details</h5>
+                        <label for="bank">Bank: </label>
+                        <div class="form-group">
+                            <input class="form-control" disabled value="{{$user->acct->bank}}" />
+                        </div>
+                        <label for="bank">Account Name: </label>
+                        <div class="form-group">
+                            <input class="form-control" disabled value="{{$user->acct->name}}" />
+                        </div>
+                        <label for="bank">Account Number: </label>
+                        <div class="form-group">
+                            <input class="form-control" disabled value="{{$user->acct->number}}" />
+                        </div>
+                        <hr/>
                         <label for="pay_type"> Payment Type: </label>
                         <div class="form-group">
                             <?php $cl = \App\AcctType::all()?>

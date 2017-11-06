@@ -22,7 +22,12 @@ Route::get('/clear', function()
 Route::get('/','UtilityController@Home')->name('home');
 Route::get('/about','UtilityController@About')->name('about');
 Route::get('/contact','UtilityController@Contact')->name('contact');
-
+Route::get('/clear', function ()
+{
+   Artisan::call('cache:clear');
+   Artisan::call('config:cache');
+   dd('cleared');
+});
 
 //Account
 Route::get('/register','AccountController@Register')->name('register');
@@ -35,6 +40,14 @@ Route::get('/forgot-password','AccountController@ForgotPassword')->name('forgot_
 Route::post('/forgot-password/post','AccountController@ForgotPasswordPost')->name('forgot_password_post');
 Route::get('/reset-password/{token}','AccountController@ResetLink')->name('reset_link');
 Route::post('/reset-password/{token}','AccountController@RecoverPassword')->name('change_password');
+Route::get('/what-to-do-next','AccountController@WTDN')->name('WTDN');
+Route::get('/evidence-of-payment/{token}','AccountController@EOP')->name('EOP');
+Route::post('/evidence-of-payment/{token}','AccountController@EOPP')->name('EOPP');
+Route::get('/file/get/{filename}','UtilityController@getFile')->name('file');
+Route::post('/mail/visitor','UtilityController@SendVMail')->name('Vmail');
+
+//Mail Test
+Route::get('/mail/test','AccountController@MailTest')->name('mail_test');
 
 
 
@@ -62,6 +75,7 @@ Route::group(['prefix' => '/user/','middleware' => ['auth','AuthUserCheck','User
     Route::post('profile/password/change','UserController@ProfileEditPassword')->name('user_password_edit');
     Route::post('invest/add','UserController@InvestPost')->name('user_invest_post');
     Route::post('profile/account/upgrade','UserController@AccountUpgrade')->name('user_acct_upgrade');
+    Route::post('account/post','UserController@AccountPost')->name('user_acct_post');
 });
 
 
@@ -70,13 +84,17 @@ Route::group(['prefix' => '/admin/','middleware' => ['auth','AuthAdminCheck']],f
 {
     //User
     Route::get('dashboard','AdminController@Dashboard')->name('admin_dashboard');
-    Route::get('user/view/{id}','Admincontroller@UserView')->name('admin_user_view');
+    Route::get('user/view/{id}','AdminController@UserView')->name('admin_user_view');
     Route::post('user/profile/edit/{id}','AdminController@UserEdit')->name('admin_user_edit');
     Route::get('user/action/{id}/{aid}','AdminController@UserAction')->name('admin_user_action');
 
-
     //Admin
     Route::get('admin','AdminController@Admin')->name('admin_admin');
+    Route::get('admin/delete/{id}','AdminController@AdminDelete')->name('admin_delete');
+    Route::post('admin/post','AdminController@AdminPost')->name('admin_post');
+
+    //admin
+    Route::get('admin','AdminController@admin')->name('admin_admin');
     Route::get('admin/delete/{id}','AdminController@AdminDelete')->name('admin_delete');
     Route::post('admin/post','AdminController@AdminPost')->name('admin_post');
 
@@ -121,7 +139,13 @@ Route::group(['prefix' => '/admin/','middleware' => ['auth','AuthAdminCheck']],f
     //Request
     Route::get('request','AdminController@Request')->name('admin_req');
     Route::get('request/resolved/{id}','AdminController@ReqRes')->name('admin_req_post');
+    //SchoolFees
+    Route::get('/school-fees','AdminController@SchoolFees')->name('admin_sch_fee');
+    Route::get('school-fees/resolved/{id}','AdminController@SchoolFeesResolved')->name('admin_sch_fee_r');
 
+    //BTC
+    Route::get('/btc','AdminController@BTC')->name('admin_btc');
+    Route::post('/btc/post','AdminController@BTC_Post')->name('admin_btc_post');
 
 
 });

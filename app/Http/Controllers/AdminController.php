@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\AcctReq;
+use App\Btc;
 use App\Comment;
 use App\Helpers\AppMailer;
 use App\Helpers\Logger;
+use App\Helpers\Mailerr;
 use App\Helpers\TradeSync;
 use App\Investments;
 use App\MainAccount;
 use App\Referral;
+use App\SchoolFees;
 use App\Ticket;
 use App\Transaction;
 use App\User;
@@ -39,12 +42,13 @@ class AdminController extends Controller
     //User View.
     public function Dashboard()
     {
-        return view('Admin.dashboard',['title' => 'Dashboard', 'users' => User::where(['role_id' => 3])->orderByDesc('created_at')->get()]);
+        return view('admin.dashboard',['title' => 'Dashboard', 'users' => User::where(['role_id' => 3])->orderByDesc('created_at')->get()]);
     }
     public function UserView($id)
     {
         $u = User::find(decrypt($id));
-        return view('Admin.user_view',['title' => 'User View','user' =>  $u]);
+        $a = $u->acct();
+        return view('admin.user_view',['title' => 'User View','user' =>  $u,'acct' => $a]);
     }
     public function UserEdit(Request $request, $id)
     {
@@ -83,7 +87,7 @@ class AdminController extends Controller
         catch(\Exception $ex)
         {
             Session::flash('error','Unable to Update User Profile');
-            $this->getLogger()->LogError('Admin: User Profile Update','Unable to Update User Profile',$ex,['old_user' => $old,'new_user' => $u]);
+            $this->getLogger()->LogError('admin: User Profile Update','Unable to Update User Profile',$ex,['old_user' => $old,'new_user' => $u]);
         }
         return redirect()->back();
     }
@@ -98,11 +102,11 @@ class AdminController extends Controller
         if($op == 2)
         {
             //dd($user->trans()->orderByDesc('created_at'));
-            return view('Admin.trans',['title' => 'Transactions','trans' => $user->trans()->orderByDesc('created_at')->get()]);
+            return view('admin.trans',['title' => 'Transactions','trans' => $user->trans()->orderByDesc('created_at')->get()]);
         }
         if($op == 3)
         {
-            return view('Admin.withdrawal',['title'=>'Withdrawal Request','with' => $user->withd()->orderByDesc('created_at')->get()]);
+            return view('admin.withdrawal',['title'=>'Withdrawal Request','with' => $user->withd()->orderByDesc('created_at')->get()]);
         }
 
         if($op == 4)
@@ -114,20 +118,20 @@ class AdminController extends Controller
             catch (\Exception $exception){
                 $this->getLogger()->LogError('Error Occured when Syncing Trade', $exception,null);
             }
-            return view('Admin.tradings',['title' => 'Tradings','trades' => $user->Trade()->orderByDesc('created_at')->get()]);
-
+          return view('admin.tradings',['title' => 'Tradings','trades' => $user->Trade()->orderByDesc('created_at')->get()]);
         }
 
         if($op == 5)
         {
-            return view('Admin.account',['title' => 'Accounts','main' => $user->bal()->orderBy('created_at','DESC')->get()]);
+            return view('admin.account',['title' => 'Accounts','main' => $user->bal()->orderBy('created_at','DESC')->get()]);
         }
     }
 
-    //Admin
+    //admin
     public function Admin()
     {
-        return view('Admin.admin',['title'=>'Admin','admin' =>  User::where('role_id','=' ,2)->get()]);
+        return view('admin.admin',['title'=>'admin','admin' =>  User::where('role_id','=' ,2)->get()]);
+
     }
     public function AdminPost(Request $request)
     {
@@ -149,12 +153,12 @@ class AdminController extends Controller
         try{
             $user->save();
             Session::flash('success','Administrator Added Successfully');
-            Log::info('Add Admin: Admin has been added',['Admin' => $user, 'by' => Auth::user()]);
+            Log::info('Add admin: admin has been added',['admin' => $user, 'by' => Auth::user()]);
             return redirect()->back();
         }
         catch(\Exception $ex)
         {
-            $this->getLogger()->LogError(' Admin Registration Error: Unable to register Admin',$ex,['User' => $user]);
+            $this->getLogger()->LogError(' admin Registration Error: Unable to register admin',$ex,['User' => $user]);
             Session::flash('error','Oops, An Error Occurred and We Could Not Complete the request, Please Try Again');
             return redirect()->back();
         }
@@ -170,17 +174,17 @@ class AdminController extends Controller
                 $adm->is_active = false;
                 $adm->save();
                 Session::flash('success','Operation was successfully carried out');
-                Log::info('Delete Admin: Admin Successfully Deleted. ', ['admin' => $adm,'Super_admin' => Auth::id()]);
+                Log::info('Delete admin: admin Successfully Deleted. ', ['admin' => $adm,'Super_admin' => Auth::id()]);
             }
             catch(\Exception $ex)
             {
-                $this->Logger()->LogError('Delete Admin: Unable to delete admin',$ex,['admin' => $adm]);
+                $this->Logger()->LogError('Delete admin: Unable to delete admin',$ex,['admin' => $adm]);
                 Session::flash('error','Unable to carry out operation. Please check log files');
             }
         }
         else{
             Session::flash('error','You don\'t have the necessary permission to carry out this operation.');
-            Log::error('Tyring to Delete an admin with out proper access', ['Admin' => $id, 'by' => Auth::id()]);
+            Log::error('Tyring to Delete an admin with out proper access', ['admin' => $id, 'by' => Auth::id()]);
         }
         return redirect()->back();
     }
@@ -188,7 +192,7 @@ class AdminController extends Controller
     //Mail
     public function Mail()
     {
-        return view('Admin.mail',['title' => 'Mail','user' => null]);
+      return view('admin.mail',['title' => 'Mail','user' => null]);
     }
     public function MailAll()
     {
@@ -208,14 +212,14 @@ class AdminController extends Controller
         }
         //dd([$s][0]);
         $user = $s;
-        return view('Admin.mail',['title' => 'Mail','user' => $user]);
+        return view('admin.mail',['title' => 'Mail','user' => $user]);
     }
     public function MailSingle($email)
     {
         $user = User::where('email',decrypt($email))->first();
-        return view('Admin.mail',['title' => 'Mail','user' => $user->email]);
+        return view('admin.mail',['title' => 'Mail','user' => $user->email]);
     }
-    public function MailSend(Request $request)
+    public function MailSend(Request $request, Mailerr $mailer)
     {
         $this->validate($request,[
             'to' => 'required',
@@ -228,17 +232,11 @@ class AdminController extends Controller
             $email = $request->to[0];
             $msg = $request->msg;
             $sub = $request->subject;
-            var_dump(10);
-            $mail = new AppMailer();
-            if($mail->send($email,$msg,$sub))
-                Session::flash('success','Mail Sent. ');
-            else
-                Session::flash('error','Mail Not Sent.');
-
+            $mailer->sendMail($email,$msg,$sub);
         }
         catch(\Exception $ex){
             Session::flash('error','an Error Occured, Please Try Again');
-            $this->Logger()->LogError('Unable To send mail',$ex,['Emails' => $email,'message' => $msg,'subject' => $sub]);
+            $this->getLogger()->LogError('Unable To send mail',$ex,['Emails' => $email,'message' => $msg,'subject' => $sub]);
         }
         return redirect()->back()->withInput();
     }
@@ -253,7 +251,7 @@ class AdminController extends Controller
         catch (\Exception $exception){
             $this->getLogger()->LogError('Error Occured when Syncing Trade', $exception,null);
         }
-        return view('Admin.tradings',['title' => 'Tradings','trades' => Investments::orderBy('created_at','DESC')->get()]);
+        return view('admin.tradings',['title' => 'Tradings','trades' => Investments::orderBy('created_at','DESC')->get()]);
     }
     public function TradeAction($id, $a_id)
     {
@@ -312,18 +310,18 @@ class AdminController extends Controller
     //Transaction
     public function Transaction()
     {
-        return view('Admin.trans',['title' => 'Transactions','trans' => Transaction::orderBy('created_at', 'DESC')->get()]);
+        return view('admin.trans',['title' => 'Transactions','trans' => Transaction::orderBy('created_at', 'DESC')->get()]);
     }
 
 
     //Account
     public function Account()
     {
-        return view('Admin.account',['title' => 'Accounts','main' => MainAccount::orderBy('created_at','DESC')->get()]);
+        return view('admin.account',['title' => 'Accounts','main' => MainAccount::orderBy('created_at','DESC')->get()]);
     }
     public function AccountUpdate($id)
     {
-        return view('Admin.account_update',['title' => 'Update Account','Main' => MainAccount::find(decrypt($id))]);
+        return view('admin.account_update',['title' => 'Update Account','Main' => MainAccount::find(decrypt($id))]);
     }
     public function AccountUpdatePost(Request $request, $id)
     {
@@ -369,7 +367,7 @@ class AdminController extends Controller
 
     public function Withdrawal()
     {
-        return view('Admin.withdrawal',['title'=>'Withdrawal Request','with' => Withdrawal::orderBy('created_at','DESC')->get()]);
+        return view('admin.withdrawal',['title'=>'Withdrawal Request','with' => Withdrawal::orderBy('created_at','DESC')->get()]);
     }
     public function WithAction($id,$a_id)
     {
@@ -405,7 +403,7 @@ class AdminController extends Controller
             Session::flash('success','Operation Completed Successfully');
         }
         catch(\Exception $ex){
-            $this->getLogger()->LogError('Trade Action: An Error Occurred',$ex,['old' =>$old,'i' => $i,'action' => $a,'by' =>Auth::id()]);
+            $this->getLogger()->LogError('With Action: An Error Occurred',$ex,['old' =>$old,'i' => $i,'action' => $a,'by' =>Auth::id()]);
             Session::flash('error','Oops An Error Occured, Please Try Again');
         }
 
@@ -416,19 +414,19 @@ class AdminController extends Controller
     //Referrals
     public function Referrals()
     {
-        return view('Admin.referrals',['title' => 'Referrals','ref' => Referral::orderByDesc('created_at')->get()]);
+        return view('admin.referrals',['title' => 'Referrals','ref' => Referral::orderByDesc('created_at')->get()]);
     }
 
 
     //Tickets
     public function Ticket()
     {
-        return view('Admin.ticket',['title'=>'Tickets','tick' => Ticket::orderByDesc('created_at')->get()]);
+        return view('admin.ticket',['title'=>'Tickets','tick' => Ticket::orderByDesc('created_at')->get()]);
     }
     public function TicketComment($id)
     {
         $ticket = Ticket::find(decrypt($id));
-        return view('Admin.ticket_comment',['title'=>'Tickets','ticket' => $ticket,'comments' => $ticket->comments()->orderBy('created_at','ASC')->get()]);
+        return view('admin.ticket_comment',['title'=>'Tickets','ticket' => $ticket,'comments' => $ticket->comments()->orderBy('created_at','ASC')->get()]);
     }
     public function TicketCommentPost(Request $request)
     {
@@ -458,7 +456,7 @@ class AdminController extends Controller
     //Request
     public function Request()
     {
-        return view('Admin.acct_req',['title' => 'Requests','req' => AcctReq::orderByDesc('created_at')->get()]);
+        return view('admin.acct_req',['title' => 'Requests','req' => AcctReq::orderByDesc('created_at')->get()]);
     }
     public function ReqRes($id)
     {
@@ -483,7 +481,7 @@ class AdminController extends Controller
     //Utility
     public function Util()
     {
-        return view('Admin.utils',['title' => 'Utility','util' => Utility::all()]);
+        return view('admin.utils',['title' => 'Utility','util' => Utility::all()]);
     }
     public function UtilPost(Request $request)
     {
@@ -503,4 +501,55 @@ class AdminController extends Controller
 
     }
 
+    //School Fees
+    public function SchoolFees()
+    {
+        return view('admin.school_fee',['title' => 'School Fees','sf' => SchoolFees::orderByDesc('created_at')->get()]);
+    }
+    public function SchoolFeesResolved($id)
+    {
+        //dd($id);
+        try{
+            $s = SchoolFees::find(decrypt($id));
+            $s->resolved = true;
+            $s->save();
+            Session::flash('success','Request Resolved Successfully.');
+        }
+        catch(\Exception $ex)
+        {
+            Session::flash('error', 'An Error Occurred. Please Try Again Later');
+            $this->getLogger()->LogError('Unable TO Resolve Request',$ex, ['r' => $s]);
+        }
+        return redirect()->back();
+    }
+
+
+    //BTC
+    public function BTC()
+    {
+        return view('admin.btc',['title' => 'BTC','btc'=> Btc::orderByDesc('created_at')->get()]);
+    }
+
+    public function BTC_Post(Request $request)
+    {
+        //dd($request->all());
+        $this->validate($request,[
+           'btc' => 'required'
+        ]);
+        try{
+            $s = new Btc();
+            $s->address = $request->btc;
+            $s->status = 0;
+            $s->save();
+            Session::flash('success','Request Completed Successfully.');
+        }
+        catch(\Exception $ex)
+        {
+            dd($ex);
+            Session::flash('error', 'An Error Occurred. Please Try Again Later');
+            $this->getLogger()->LogError('Unable TO Resolve Request',$ex, ['r' => $s]);
+        }
+
+        return redirect()->back();
+    }
 }

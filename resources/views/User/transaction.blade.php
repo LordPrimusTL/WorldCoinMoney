@@ -16,18 +16,18 @@
                 </thead>
                 <tbody>
                 @php($i = 1)
-                <tr class="success">
                     @foreach($trans as $t)
-                        <td>{{$i++}}</td>
-                        <td>{{\Carbon\Carbon::parse($t->created_at)}}</td>
-                        <td>{{$t->t_id}}</td>
-                        <td>{{$t->amount}}</td>
-                        <td>{{$t->descn}}</td>
-                        <td>{{$t->tname->name}}</td>
-                        <td>{{$t->ttype->type}}</td>
-                        <td>{{$t->stat->name}}</td>
+                        <tr class="success">
+                            <td>{{$i++}}</td>
+                            <td>{{\Carbon\Carbon::parse($t->created_at)}}</td>
+                            <td>{{$t->t_id}}</td>
+                            <td>{{$t->amount}}</td>
+                            <td>{{$t->descn}}</td>
+                            <td>{{$t->tname->name}}</td>
+                            <td>{{$t->ttype->type}}</td>
+                            <td>{{$t->stat->name}}</td>
+                        </tr>
                     @endforeach
-                </tr>
                 </tbody>
             </table>
         </div>
