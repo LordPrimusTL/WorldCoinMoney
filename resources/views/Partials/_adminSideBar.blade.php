@@ -11,7 +11,7 @@
         <li class="{{Request::is('admin/dashboard') ? "active" : " "}}"> <a href="{{route('admin_dashboard')}}"><i class="fa fa-user"></i>&nbsp;Users</a></li>
         <li class="{{Request::is('admin/admin') ? "active" : " "}}"> <a href="{{route('admin_admin')}}"><i class="fa fa-user-secret"></i>&nbsp;Admin</a></li>
         <li class="{{Request::is('admin/mail') ? "active" : " "}}"> <a href="{{route('mail')}}"><i class="fa fa-envelope-square"></i>&nbsp;Send Mail</a></li>
-        <li class="{{Request::is('admin/request') ? "active" : " "}}"> <a href="{{route('admin_req')}}"><i class="fa fa-question-circle"></i>&nbsp;Account Request</a></li>
+        <li class="{{Request::is('admin/request') ? "active" : " "}} {{count(\App\AcctReq::where('resolved',0)->get()) > 0 ? 'alert-danger' : ''}}"> <a href="{{route('admin_req')}}"><i class="fa fa-question-circle"></i>&nbsp;Account Request</a></li>
         <li class="{{Request::is('admin/trade') ? "active" : " "}}"> <a href="{{route('admin_trade')}}"><i class="fa fa-money"></i>&nbsp;Tradings</a></li>
         <li class="{{Request::is('admin/transaction') ? "active" : " "}}"> <a href="{{route('admin_trans')}}"><i class="fa fa-credit-card"></i>&nbsp;Transactions</a></li>
         <li class="{{Request::is('admin/withdrawal') ? "active" : " "}}"> <a href="{{route('admin_with')}}"><i class="fa fa-send-o"></i>&nbsp;Withdrawals</a></li>

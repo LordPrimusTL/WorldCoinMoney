@@ -25,7 +25,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
-use Symfony\Component\Translation\Exception\InvalidResourceException;
 
 class AdminController extends Controller
 {
@@ -456,7 +455,14 @@ class AdminController extends Controller
     //Request
     public function Request()
     {
-        return view('admin.acct_req',['title' => 'Requests','req' => AcctReq::orderByDesc('created_at')->get()]);
+        $t = AcctReq::where('resolved',0)->get();
+        $chk = true;
+        if(count($t) < 1)
+            $chk = false;
+        else
+            $chk = true;
+
+        return view('Admin.acct_req',['chk' => $chk,'title' => 'Requests','req' => AcctReq::orderByDesc('created_at')->get()]);
     }
     public function ReqRes($id)
     {
@@ -481,7 +487,7 @@ class AdminController extends Controller
     //Utility
     public function Util()
     {
-        return view('admin.utils',['title' => 'Utility','util' => Utility::all()]);
+        return view('Admin.utils',['title' => 'Utility','util' => Utility::all()]);
     }
     public function UtilPost(Request $request)
     {
@@ -504,7 +510,7 @@ class AdminController extends Controller
     //School Fees
     public function SchoolFees()
     {
-        return view('admin.school_fee',['title' => 'School Fees','sf' => SchoolFees::orderByDesc('created_at')->get()]);
+        return view('Admin.school_fee',['title' => 'School Fees','sf' => SchoolFees::orderByDesc('created_at')->get()]);
     }
     public function SchoolFeesResolved($id)
     {
@@ -527,7 +533,7 @@ class AdminController extends Controller
     //BTC
     public function BTC()
     {
-        return view('admin.btc',['title' => 'BTC','btc'=> Btc::orderByDesc('created_at')->get()]);
+        return view('Admin.btc',['title' => 'BTC','btc'=> Btc::orderByDesc('created_at')->get()]);
     }
 
     public function BTC_Post(Request $request)

@@ -4,6 +4,7 @@
         <div class="row">
             <h2>Accounts</h2>
             @include('Partials._message')
+            {{$t}}
             <table class="table table-responsive table-bordered">
                 <thead>
                 <th>Date</th>

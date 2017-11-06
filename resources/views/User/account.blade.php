@@ -13,9 +13,9 @@
                 <tbody>
                 <tr class="success">
                     <td>1</td>
-                    <td>{{$a->trade_bal}}</td>
-                    <td>{{$a->ref_bal}}</td>
-                    <td>{{\Carbon\Carbon::parse($a->updated_at)}}</td>
+                    <td>{{$a == null ? "0.00" : $a->trade_bal}}</td>
+                    <td>{{$a == null ? "0.00" : $a->ref_bal}}</td>
+                    <td>{{$a == null ? Auth::user()->created_at : \Carbon\Carbon::parse($a->updated_at)}}</td>
                 </tr>
                 </tbody>
             </table>

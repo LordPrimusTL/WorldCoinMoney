@@ -144,6 +144,7 @@ class UserController extends Controller
     //Account
     public function Account()
     {
+        //dd( Auth::user()->bal,  Auth::user()->acct);
         return view('User.account',['title' => 'Accounts','a' => Auth::user()->bal, 'acct' => Auth::user()->acct]);
     }
 
@@ -262,7 +263,7 @@ class UserController extends Controller
             return redirect()->back();
         }
 
-        return view('User.with',['title' => 'Withdrawals','with'=>Withdrawal::orderBy('created_at','DESC')->get(),
+        return view('User.with',['title' => 'Withdrawals','with'=>Withdrawal::where('user_id',Auth::id())->orderBy('created_at','DESC')->get(),
         'inv' => Transaction::where(['user_id' =>  Auth::id(),'tn_id' => 4,'t_type' => 1])->orWhere(['user_id' =>  Auth::id(),'tn_id' => 5,'t_type' => 1])->where('tn_id','<>',2)->get()]);//Come back
     }
     public function WithPost($id)
