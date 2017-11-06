@@ -23,7 +23,6 @@ class UserAuthCheck
         }
         else{
             //dd('Not');
-
             Log::info('User with admin right and ID ' . Auth::id() . 'tried to acces a user profile');
             Auth::logout();
             return redirect()->action('UtilityController@Home');

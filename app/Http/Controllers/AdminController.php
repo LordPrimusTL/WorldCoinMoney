@@ -118,8 +118,7 @@ class AdminController extends Controller
             catch (\Exception $exception){
                 $this->getLogger()->LogError('Error Occured when Syncing Trade', $exception,null);
             }
-            return view('admin.tradings',['title' => 'Tradings','trades' => $user->Trade()->orderByDesc('created_at')->get()]);
-
+          return view('admin.tradings',['title' => 'Tradings','trades' => $user->Trade()->orderByDesc('created_at')->get()]);
         }
 
         if($op == 5)
@@ -132,6 +131,7 @@ class AdminController extends Controller
     public function Admin()
     {
         return view('admin.admin',['title'=>'admin','admin' =>  User::where('role_id','=' ,2)->get()]);
+
     }
     public function AdminPost(Request $request)
     {
@@ -192,7 +192,7 @@ class AdminController extends Controller
     //Mail
     public function Mail()
     {
-        return view('admin.mail',['title' => 'Mail','user' => null]);
+      return view('admin.mail',['title' => 'Mail','user' => null]);
     }
     public function MailAll()
     {
@@ -232,10 +232,7 @@ class AdminController extends Controller
             $email = $request->to[0];
             $msg = $request->msg;
             $sub = $request->subject;
-            //var_dump(10);
-            //$mail = new AppMailer();
             $mailer->sendMail($email,$msg,$sub);
-
         }
         catch(\Exception $ex){
             Session::flash('error','an Error Occured, Please Try Again');
@@ -504,7 +501,6 @@ class AdminController extends Controller
 
     }
 
-
     //School Fees
     public function SchoolFees()
     {
@@ -556,7 +552,4 @@ class AdminController extends Controller
 
         return redirect()->back();
     }
-
-
-
 }
