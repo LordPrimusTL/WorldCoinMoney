@@ -48,11 +48,20 @@ class User extends Authenticatable
 
     }
 
+    public function trans()
+    {
+        return $this->hasMany(Transaction::class, 'user_id');
+    }
     public function Reg()
     {
         return $this->belongsTo(RegistrationType::class,'reg_type');
     }
 
+
+    public function inv()
+    {
+        return $this->hasMany(Investments::class,'user_id');
+    }
     public function Tclass()
     {
         return $this->belongsTo(TClass::class,'class_id');
@@ -67,6 +76,21 @@ class User extends Authenticatable
     {
         return $this->hasMany(Investments::class,'user_id');
     }
+
+    public function bal()
+    {
+        return $this->hasOne(MainAccount::class,'user_id');
+    }
+
+    public function ref()
+    {
+        return $this->hasMany(Referral::class,'referrer');
+    }
+    public function acct()
+    {
+        return $this->hasOne(AcctDetails::class,'user_id');
+    }
+
 
     public static function MultiGenRef($id)
     {
@@ -119,7 +143,17 @@ class User extends Authenticatable
                     $transaction = new transaction();
                     $transaction->t_id = Transaction::GenerateTID();
                     $transaction->user_id = $referred->referrer_id;
-                    $transaction->amount = 1000;
+                    if($user->acc_id == 1)
+                    {
+                        $transaction->amount = $i;
+                    }
+                    elseif($user->acc_id == 2){
+                        $transaction->amount = 1000;
+                    }
+                    else{
+                        $transaction->amount = 0;
+                        self::getLogger()->LogOError('Account Type Could Not Be Determined',['user' => $user,'trans' => $transaction]);
+                    }
                     $transaction->descn = 'Referral Bonus - ' . $a;
                     $transaction->tn_id = 3;
                     $transaction->ts_id = 1;
@@ -161,6 +195,7 @@ class User extends Authenticatable
         }
         catch(\Exception $ex)
         {
+            self::getLogger()->LogError('Unable To Award Cash', $ex, ['referred' => $referred]);
             //dd($ex);
         }
     }
@@ -186,6 +221,16 @@ class User extends Authenticatable
         {
             dd($ex);
         }
+    }
+
+    public function req()
+    {
+        return $this->hasMany(AcctReq::class,'user_id');
+    }
+
+    public static function FindByEmail($email)
+    {
+        return User::where(['email' => $email])->first();
     }
 
 }

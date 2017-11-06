@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\AcctDetails;
 use App\AcctReq;
 use App\Helpers\Logger;
 use App\Investments;
+use App\Referral;
 use App\Transaction;
 use App\User;
 use App\Utility;
@@ -131,11 +133,49 @@ class UserController extends Controller
         //Session::flash()
     }
 
-    public function Account()
+
+    //Transaction
+    public function Transactions()
     {
-        return view('User.Account.dashboard',['title' => 'Accounts']);
+        return view('User.transaction',['title' =>'Transaction','trans' => Auth::user()->trans]);
     }
 
+
+    //Account
+    public function Account()
+    {
+        return view('User.account',['title' => 'Accounts','a' => Auth::user()->bal, 'acct' => Auth::user()->acct]);
+    }
+
+    public function AccountPost(Request $request)
+    {
+        try{
+            //dd($request->all());
+            $u = AcctDetails::where(['user_id' => Auth::id()])->first();
+            if($u == null)
+            {
+                $a = new AcctDetails();
+                $a->user_id = Auth::id();
+                $a->bank = $request->bank;
+                $a->name = $request->name;
+                $a->number = $request->number;
+                $a->save();
+            }
+            else{
+                $u->user_id = Auth::id();
+                $u->bank = $request->bank;
+                $u->name = $request->name;
+                $u->number = $request->number;
+                $u->save();
+            }
+
+            Session::flash('success','Account Details Updated Successfully');
+        }catch(\Exception $ex){
+            $this->getLogger()->LogError('Account Could Not Be Updated', $ex,['acc' => $request->all()]);
+            Session::flash('error','An Error Occurrd. Please try again later.');
+        }
+        return redirect()->back();
+    }
 
     //InvestmentsMode
     public function Invest()
@@ -146,7 +186,7 @@ class UserController extends Controller
             return redirect()->back();
         }
         else
-            return view('User.invest',['title' => 'Investment','inv' => Investments::orderBy('created_at','DESC')->get()]);
+            return view('User.invest',['title' => 'Investment','inv' => Auth::user()->inv()->orderBy('created_at','DESC')->get()]);
     }
     public function InvestPost(Request $request)
     {
@@ -204,7 +244,12 @@ class UserController extends Controller
     //Referrals
     public function Referrals()
     {
-        return view('User.referral',['title' => 'Referrals']);
+        return view('User.referral',['title' => 'Referrals','ref' => Auth::user()->ref()->orderBy('created_at','DESC')->get()]);
+    }
+    public function RefOthers($id)
+    {
+        //$user
+        return view('User.referral',['title' => User::find(decrypt($id))->fullname . ' Referrals','ref' => User::find(decrypt($id))->ref()->orderBy('created_at','DESC')->get()]);
     }
 
 
@@ -218,9 +263,8 @@ class UserController extends Controller
         }
 
         return view('User.with',['title' => 'Withdrawals','with'=>Withdrawal::orderBy('created_at','DESC')->get(),
-        'inv' => Transaction::where(['user_id' =>  Auth::id(),'tn_id' => 4,'t_type' => 1])->orWhere(['user_id' =>  Auth::id(),'tn_id' => 5,'t_type' => 1])->get()]);//Come back
+        'inv' => Transaction::where(['user_id' =>  Auth::id(),'tn_id' => 4,'t_type' => 1])->orWhere(['user_id' =>  Auth::id(),'tn_id' => 5,'t_type' => 1])->where('tn_id','<>',2)->get()]);//Come back
     }
-
     public function WithPost($id)
     {
         $tr = Transaction::find(decrypt($id));
@@ -245,6 +289,7 @@ class UserController extends Controller
         return redirect()->back();
     }
 
+
     //Utilities
     private function generateInv()
     {
@@ -256,5 +301,11 @@ class UserController extends Controller
         else{
             return $inv_id;
         }
+    }
+
+
+    public function Support()
+    {
+        return redirect()->action('TicketController@UserTickets');
     }
 }

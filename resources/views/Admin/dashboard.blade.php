@@ -10,7 +10,7 @@
 
             <div class="row">
                 <div class="col-lg-12" style="margin-left: 10px;">
-                    <p>Search Here...</p>
+                    <h2>Users</h2>
                     <!--<form class="form-" method="POST" action="">
                         {{csrf_field()}}
                         <div class="col-lg-3">
@@ -56,8 +56,9 @@
                                 <td>{{$i++}}</td>
                                 <td>{{$user->fullname}}</td>
                                 <td>{{$user->email}}</td><td>
-                                    <a href="{{route('admin_user_view',['id' => encrypt($user->id)])}}" class="btn btn-outline-info btn-sm"><i class="fa fa-eye"></i> View</a>
-                                    <a href="" onclick="return confirm('Are you sure you want to delete this User?');" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
+                                    <a href="{{route('admin_user_view',['id' => encrypt($user->id)])}}" class="btn btn-outline-info btn-sm"><i class="fa fa-eye"></i></a>
+                                    <a href="{{route('mail.single',['id' => encrypt($user->email)])}}" class="btn btn-outline-primary btn-sm"><i class="fa fa-envelope-square"></i></a>
+                                    <a href="" onclick="return confirm('Are you sure you want to delete this User?');" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                         @endforeach

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Log;
 
 class MainAccount extends Model
 {
+    
 
     //
     private static function getLogger()

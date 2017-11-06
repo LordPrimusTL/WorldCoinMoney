@@ -4,15 +4,6 @@
             <p><span><i class="fa fa-envelope-o" aria-hidden="true" style="color:yellow;"></i></span></p>
             <h5 style="color:yellow;">Contact <span>Us</span></h5>
         </div>
-        @if(!\App\Helpers\AuthCheck::AuthUserCheck())
-            <div class="w3layouts_skills_grids w3l_newsletter_form">
-                <form action="#" method="post">
-                    <input type="text" name="Name" placeholder="Name" required="">
-                    <input type="email" name="Email" placeholder="Email" required="">
-                    <input type="submit" value="Send">
-                </form>
-            </div>
-        @endif
         <div class="w3ls_footer_grid">
             <div class="col-md-4 w3ls_footer_grid_left">
                 <div class="w3ls_footer_grid_leftl">

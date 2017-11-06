@@ -2,7 +2,7 @@
 @section('body')
     <div class="container" style="margin-top:30px;  margin-left: 30px;" >
         <div class="row">
-            <h2> Transaction</h2>
+            <h2>Accounts</h2>
             @include('Partials._message')
             <table class="table table-responsive table-bordered">
                 <thead>

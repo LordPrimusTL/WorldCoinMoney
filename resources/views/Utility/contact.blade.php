@@ -7,6 +7,9 @@
 
     <!-- //banner -->
     <!-- contact -->
+    <div class="col-12">
+        @include('Partials._message')
+    </div>
     <div class="services">
         <div class="container">
             <div class="w3layouts_header">
@@ -14,26 +17,27 @@
                 <h5>get in <span>touch</span> with us</h5>
             </div>
             <div class="w3layouts_skills_grids agileinfo_mail_grids">
-                <form action="#" method="post">
+                <form action="{{route('Vmail')}}" method="post">
+                    {{csrf_field()}}
 					<span class="input input--chisato">
-						<input class="input__field input__field--chisato" name="Name" type="text" id="input-13" placeholder=" " required="" />
-						<label class="input__label input__label--chisato" for="input-13">
+						<input class="input__field input__field--chisato" name="name" type="text" id="name" placeholder=" " required="" />
+						<label class="input__label input__label--chisato" for="name">
 							<span class="input__label-content input__label-content--chisato" data-content="Name">Name</span>
 						</label>
 					</span>
                     <span class="input input--chisato">
-						<input class="input__field input__field--chisato" name="Email" type="email" id="input-14" placeholder=" " required="" />
-						<label class="input__label input__label--chisato" for="input-14">
+						<input class="input__field input__field--chisato" name="email" type="email" id="email" placeholder=" " required="" />
+						<label class="input__label input__label--chisato" for="email">
 							<span class="input__label-content input__label-content--chisato" data-content="Email">Email</span>
 						</label>
 					</span>
                     <span class="input input--chisato">
-						<input class="input__field input__field--chisato" name="Subject" type="text" id="input-15" placeholder=" " required="" />
-						<label class="input__label input__label--chisato" for="input-15">
+						<input class="input__field input__field--chisato" name="subject" type="text" id="subject" placeholder=" " required="" />
+						<label class="input__label input__label--chisato" for="subject">
 							<span class="input__label-content input__label-content--chisato" data-content="Subject">Subject</span>
 						</label>
 					</span>
-                    <textarea name="Message" placeholder="Your comment here..." required=""></textarea>
+                    <textarea name="message" id="message" placeholder="Your message/comment/suggestion here..."  required=""></textarea>
                     <input type="submit" value="Submit">
                 </form>
             </div>

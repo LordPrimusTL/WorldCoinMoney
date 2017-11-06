@@ -10,7 +10,7 @@
 
             <div class="row">
                 <div class="col-lg-12" style="margin-left: 10px;">
-                    <p>Search Here...</p>
+                    <h2> Trading History</h2>
                 <!--<form class="form-" method="POST" action="">
                         {{csrf_field()}}
                         <div class="col-lg-3">
@@ -68,7 +68,7 @@
                                 <td>{{$i++}}</td>
                                 <td>{{\Carbon\Carbon::parse($trade->created_at)->toDateString()}}</td>
                                 <td>{{$trade->inv_id}}</td>
-                                <td><a href="{{route('admin_user_view',['id' => $trade->user_id * 8009 * 8009])}}" class="btn btn-outline-primary btn-sm"><i class="fa fa-eye"></i> {{explode(" ", $trade->User->fullname)[0]}}</a> </td>
+                                <td><a href="{{route('admin_user_view',['id' => encrypt($trade->user_id)])}}" class="btn btn-outline-primary btn-sm"><i class="fa fa-eye"></i> {{explode(" ", $trade->User->fullname)[0]}}</a> </td>
                                 <td>{{$trade->amount}}</td>
                                 <td>{{$trade->duration}}</td>
                                 <td>{{$trade->irate}}</td>

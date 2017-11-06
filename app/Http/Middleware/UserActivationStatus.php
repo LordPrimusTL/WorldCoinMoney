@@ -19,6 +19,7 @@ class UserActivationStatus
     {
         if(Auth::user()->activated == false)
         {
+            //dd('Act');
             Session::flash('error','Please contact the administrator(info@worldcoin.com) as your account is not yet activated');
             return redirect()->back();
         }

@@ -13,6 +13,17 @@
 
                     <h2 class="header">User Profile</h2>
                     <br/>
+
+                    <label>Actions</label>
+                    <div class="col-lg-12">
+                        <a href="{{route('mail.single',['id' => encrypt($user->email),'aid' => encrypt(1)])}}" class="btn btn-info" style="margin-right: 3px;" data-toggle="tooltip" title="Send User A Mail"><i class="fa fa-envelope"></i> </a>
+                        <a href="{{route('admin_user_action',['id' => encrypt($user->id),'aid' => encrypt(2)])}}" class="btn btn-primary" style="margin-right: 3px;" data-toggle="tooltip" title="View Users Transaction History"><i class="fa fa-credit-card"></i> </a>
+                        <a href="{{route('admin_user_action',['id' => encrypt($user->id),'aid' => encrypt(3)])}}" class="btn btn-success" style="margin-right: 3px;" data-toggle="tooltip" title="View Users Withdrawal History"><i class="fa fa-send-o"></i> </a>
+                        <a href="{{route('admin_user_action',['id' => encrypt($user->id),'aid' => encrypt(4)])}}" class="btn btn-warning" style="margin-right: 3px;" data-toggle="tooltip" title="View Users Trading History"><i class="fa fa-money"></i></a>
+                        <a href="{{route('admin_user_action',['id' => encrypt($user->id),'aid' => encrypt(5)])}}" class="btn btn-primary" style="margin-right: 3px;" data-toggle="tooltip" title="View User Account Balance"><i class="fa fa-bank"></i></a>
+                    </div>
+                    <hr/>
+                    <br/>
                     <form action="{{route('admin_user_edit',['id' => $user->id * 8009 * 8009])}}" method="POST">
                         @include('Partials._message')
                         {{csrf_field()}}
@@ -37,9 +48,24 @@
                             @if($user->referrer_id == null)
                                 <p>No Referrer</p>
                             @else
-                                <a href="{{route('admin_user_view',['id' => $user->referrer_id * 8009 * 8009])}}" class="btn btn-outline-info"> <i class="fa fa-eye"></i> {{\App\User::find($user->referrer_id)->email}} </a>
+                                <a href="{{route('admin_user_view',['id' => encrypt($user->referrer_id)])}}" class="btn btn-outline-info"> <i class="fa fa-eye"></i> {{\App\User::find($user->referrer_id)->email}} </a>
                             @endif
                         </div>
+                        <hr/>
+                        <h5>Account Details</h5>
+                        <label for="bank">Bank: </label>
+                        <div class="form-group">
+                            <input class="form-control" disabled value="{{$user->acct->bank}}" />
+                        </div>
+                        <label for="bank">Account Name: </label>
+                        <div class="form-group">
+                            <input class="form-control" disabled value="{{$user->acct->name}}" />
+                        </div>
+                        <label for="bank">Account Number: </label>
+                        <div class="form-group">
+                            <input class="form-control" disabled value="{{$user->acct->number}}" />
+                        </div>
+                        <hr/>
                         <label for="pay_type"> Payment Type: </label>
                         <div class="form-group">
                             <?php $cl = \App\AcctType::all()?>

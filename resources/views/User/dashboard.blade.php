@@ -120,7 +120,7 @@
                 </a>
             </div>
             <div class="col-lg-4">
-                <a href={{route('user_support')}}Referrals.html" style="text-decoration:none;color:white;">
+                <a href="{{route('user_tickets')}}" style="text-decoration:none;color:white;">
                     <div class="panel" style="background-color:green;">
                         <div class="panel-heading">
                             <p class="panel-success panel-title text-center">SUPPORT TICKET</p>

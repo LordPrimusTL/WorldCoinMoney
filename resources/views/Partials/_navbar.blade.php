@@ -49,7 +49,7 @@
                             <li class="{{Request::is('contact') ? 'active' : ''}}"><a href="{{route('contact')}}"><span>Contact Us</span></a></li>
                         @else
                             <li class="{{Request::is('/') ? 'active' : ''}}"><a href="@if(Auth::check()) @if(Auth::user()->role_id == 3) {{route('user_dashboard')}} @elseif(Auth::user()->role_id < 3) {{route('home')}} @else {{route('home')}} @endif @else {{route('home')}} @endif"><span>Home</span></a></li>
-                            <li><a href="{{route('about')}}"><span>About Us</span></a></li>
+                            <li class="{{Request::is('about') ? 'active' : ''}}"><a href="{{route('about')}}"><span>About Us</span></a></li>
                             <li class="dropdown {{Request::is('register') || Request::is('login') ? 'active' : ''}}">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span data-hover="Short Codes">Accounts</span> <b class="caret"></b></a>
                                 <ul class="dropdown-menu agile_short_dropdown">
