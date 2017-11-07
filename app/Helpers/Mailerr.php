@@ -19,7 +19,7 @@ class Mailerr
 {
     protected $mailer;
     protected $fromAddress = 'info@worldcoinsmoney.com';
-    protected $fromName = 'World Coins Crypto-Currency';
+    protected $fromName = 'World Coins Crypto-Currency(Do - Not - Reply)';
     protected $to;
     protected $subject;
     protected $view;
