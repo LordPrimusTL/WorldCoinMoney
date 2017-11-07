@@ -46,11 +46,16 @@ class Mailerr
     public function sendMail($emails, $msg, $sub)
     {
         $em = explode(',',$emails);
-        $this->to = $em;
+        $email = [];
+        foreach ($em as $e){
+            array_push($email, trim($e));
+        }
+        $this->to = $email;
         $this->subject = $sub;
         $this->view = 'Email.all';
         $this->data = compact('msg');
 
+        Log::info('Success ',[$email]);
         return $this->deliver();
     }
 
@@ -92,12 +97,14 @@ class Mailerr
             });
 
             Log::info('Mail Sent - ');
+            return true;
         }
         catch (\Exception $ex)
         {
             dd($ex);
             $this->Logger()->LogError('An Error Occured When Trying to Send Mail',$ex,['to' => $this->to
                 , 'subj' => $this->subject,'data' => $this->data]);
+            return false;
         }
     }
 

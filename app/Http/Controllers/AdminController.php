@@ -41,13 +41,13 @@ class AdminController extends Controller
     //User View.
     public function Dashboard()
     {
-        return view('admin.dashboard',['title' => 'Dashboard', 'users' => User::where(['role_id' => 3])->orderByDesc('created_at')->get()]);
+        return view('Admin.dashboard',['title' => 'Dashboard', 'users' => User::where(['role_id' => 3])->orderByDesc('created_at')->get()]);
     }
     public function UserView($id)
     {
         $u = User::find(decrypt($id));
         $a = $u->acct();
-        return view('admin.user_view',['title' => 'User View','user' =>  $u,'acct' => $a]);
+        return view('Admin.user_view',['title' => 'User View','user' =>  $u,'acct' => $a]);
     }
     public function UserEdit(Request $request, $id)
     {
@@ -101,11 +101,11 @@ class AdminController extends Controller
         if($op == 2)
         {
             //dd($user->trans()->orderByDesc('created_at'));
-            return view('admin.trans',['title' => 'Transactions','trans' => $user->trans()->orderByDesc('created_at')->get()]);
+            return view('Admin.trans',['title' => 'Transactions','trans' => $user->trans()->orderByDesc('created_at')->get()]);
         }
         if($op == 3)
         {
-            return view('admin.withdrawal',['title'=>'Withdrawal Request','with' => $user->withd()->orderByDesc('created_at')->get()]);
+            return view('Admin.withdrawal',['title'=>'Withdrawal Request','with' => $user->withd()->orderByDesc('created_at')->get()]);
         }
 
         if($op == 4)
@@ -117,19 +117,19 @@ class AdminController extends Controller
             catch (\Exception $exception){
                 $this->getLogger()->LogError('Error Occured when Syncing Trade', $exception,null);
             }
-          return view('admin.tradings',['title' => 'Tradings','trades' => $user->Trade()->orderByDesc('created_at')->get()]);
+          return view('Admin.tradings',['title' => 'Tradings','trades' => $user->Trade()->orderByDesc('created_at')->get()]);
         }
 
         if($op == 5)
         {
-            return view('admin.account',['title' => 'Accounts','main' => $user->bal()->orderBy('created_at','DESC')->get()]);
+            return view('Admin.account',['title' => 'Accounts','main' => $user->bal()->orderBy('created_at','DESC')->get()]);
         }
     }
 
     //admin
     public function Admin()
     {
-        return view('admin.admin',['title'=>'admin','admin' =>  User::where('role_id','=' ,2)->get()]);
+        return view('Admin.admin',['title'=>'admin','admin' =>  User::where('role_id','=' ,2)->get()]);
 
     }
     public function AdminPost(Request $request)
@@ -191,7 +191,7 @@ class AdminController extends Controller
     //Mail
     public function Mail()
     {
-      return view('admin.mail',['title' => 'Mail','user' => null]);
+      return view('Admin.mail',['title' => 'Mail','user' => null]);
     }
     public function MailAll()
     {
@@ -203,20 +203,20 @@ class AdminController extends Controller
         {
             if($s == null)
             {
-                $s = $m;
+                $s = trim($m);
             }
             else{
-                $s = $s . ',' . $m;
+                $s = trim($s) . ',' . trim($m);
             }
         }
         //dd([$s][0]);
         $user = $s;
-        return view('admin.mail',['title' => 'Mail','user' => $user]);
+        return view('Admin.mail',['title' => 'Mail','user' => $user]);
     }
     public function MailSingle($email)
     {
         $user = User::where('email',decrypt($email))->first();
-        return view('admin.mail',['title' => 'Mail','user' => $user->email]);
+        return view('Admin.mail',['title' => 'Mail','user' => trim($user->email)]);
     }
     public function MailSend(Request $request, Mailerr $mailer)
     {
@@ -228,13 +228,14 @@ class AdminController extends Controller
         Log::info('startt');
 
         try{
-            $email = $request->to[0];
+            $email =$request->to[0];
             $msg = $request->msg;
             $sub = $request->subject;
             $mailer->sendMail($email,$msg,$sub);
+            Session::flash('success','Email Sent Successfully.');
         }
         catch(\Exception $ex){
-            Session::flash('error','an Error Occured, Please Try Again');
+            Session::flash('error','an Error Occurred, Please Try Again');
             $this->getLogger()->LogError('Unable To send mail',$ex,['Emails' => $email,'message' => $msg,'subject' => $sub]);
         }
         return redirect()->back()->withInput();
@@ -250,7 +251,7 @@ class AdminController extends Controller
         catch (\Exception $exception){
             $this->getLogger()->LogError('Error Occured when Syncing Trade', $exception,null);
         }
-        return view('admin.tradings',['title' => 'Tradings','trades' => Investments::orderBy('created_at','DESC')->get()]);
+        return view('Admin.tradings',['title' => 'Tradings','trades' => Investments::orderBy('created_at','DESC')->get()]);
     }
     public function TradeAction($id, $a_id)
     {
@@ -309,18 +310,18 @@ class AdminController extends Controller
     //Transaction
     public function Transaction()
     {
-        return view('admin.trans',['title' => 'Transactions','trans' => Transaction::orderBy('created_at', 'DESC')->get()]);
+        return view('Admin.trans',['title' => 'Transactions','trans' => Transaction::orderBy('created_at', 'DESC')->get()]);
     }
 
 
     //Account
     public function Account()
     {
-        return view('admin.account',['title' => 'Accounts','main' => MainAccount::orderBy('created_at','DESC')->get()]);
+        return view('Admin.account',['title' => 'Accounts','main' => MainAccount::orderBy('created_at','DESC')->get()]);
     }
     public function AccountUpdate($id)
     {
-        return view('admin.account_update',['title' => 'Update Account','Main' => MainAccount::find(decrypt($id))]);
+        return view('Admin.account_update',['title' => 'Update Account','Main' => MainAccount::find(decrypt($id))]);
     }
     public function AccountUpdatePost(Request $request, $id)
     {
@@ -366,7 +367,7 @@ class AdminController extends Controller
 
     public function Withdrawal()
     {
-        return view('admin.withdrawal',['title'=>'Withdrawal Request','with' => Withdrawal::orderBy('created_at','DESC')->get()]);
+        return view('Admin.withdrawal',['title'=>'Withdrawal Request','with' => Withdrawal::orderBy('created_at','DESC')->get()]);
     }
     public function WithAction($id,$a_id)
     {
@@ -413,19 +414,19 @@ class AdminController extends Controller
     //Referrals
     public function Referrals()
     {
-        return view('admin.referrals',['title' => 'Referrals','ref' => Referral::orderByDesc('created_at')->get()]);
+        return view('Admin.referrals',['title' => 'Referrals','ref' => Referral::orderByDesc('created_at')->get()]);
     }
 
 
     //Tickets
     public function Ticket()
     {
-        return view('admin.ticket',['title'=>'Tickets','tick' => Ticket::orderByDesc('created_at')->get()]);
+        return view('Admin.ticket',['title'=>'Tickets','tick' => Ticket::orderByDesc('created_at')->get()]);
     }
     public function TicketComment($id)
     {
         $ticket = Ticket::find(decrypt($id));
-        return view('admin.ticket_comment',['title'=>'Tickets','ticket' => $ticket,'comments' => $ticket->comments()->orderBy('created_at','ASC')->get()]);
+        return view('Admin.ticket_comment',['title'=>'Tickets','ticket' => $ticket,'comments' => $ticket->comments()->orderBy('created_at','ASC')->get()]);
     }
     public function TicketCommentPost(Request $request)
     {
