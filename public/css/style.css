@@ -48,7 +48,7 @@ input[type="number"]{
 input[type="number"]:focus{
     border:2px solid yellow;
     color:green;
-     border-radius: 0px;
+    border-radius: 0px;
 }
 
 .form_element{

@@ -15,11 +15,23 @@ class Investments extends Model
         return new Logger();
     }
     protected $dates = ['deleted_at'];
-    //
+
+
+    public static function generateInv()
+    {
+        $inv_id = str_random(20);
+        if(Investments::FindByInv($inv_id))
+        {
+            self::generateInv();
+        }
+        else{
+            return $inv_id;
+        }
+    }
     public static function FindbyInv($inv_id)
     {
         $i = Investments::where(['inv_id' => $inv_id])->first();
-        if($i==null || count($i) < 1)
+        if($i==null)
             return false;
         else
             return true;
@@ -28,7 +40,7 @@ class Investments extends Model
     public static function FindbyInvD($inv_id)
     {
         $i = Investments::where(['inv_id' => $inv_id])->first();
-        if($i==null || count($i) < 1)
+        if($i==null)
             return null;
         else
             return $i;
@@ -39,7 +51,7 @@ class Investments extends Model
         return $this->belongsTo(TStatus::class,'ts_id');
     }
 
-    public function User()
+    public function user()
     {
         return $this->belongsTo(User::class,'user_id');
     }

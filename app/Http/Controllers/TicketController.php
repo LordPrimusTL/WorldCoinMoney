@@ -26,7 +26,7 @@ class TicketController extends Controller
             'cat'=>Category::all()]);
     }
 
-    public function Store(Request $request)
+    public function Store(Request $request, Mailerr $mailerr)
     {
         //dd($request->all());
         $this->validate($request, [
@@ -44,10 +44,17 @@ class TicketController extends Controller
             'status'    => "Open",
         ]);
 
-        $ticket->save();
-        //$mailer->sendTicketInformation(Auth::user(), $ticket);
-        Session::flash('success',"A ticket with ID: #$ticket->ticket_id has been opened.");
-        return redirect()->back()->with("status", "A ticket with ID: #$ticket->ticket_id has been opened.");
+        if($ticket->save())
+        {
+            $mailerr->sendTicketInformation(Auth::user(), $ticket);
+            $mailerr->notify("New Ticket Request");
+            Session::flash('success',"A ticket with ID: #$ticket->ticket_id has been opened.");
+            return redirect()->back()->with("status", "A ticket with ID: #$ticket->ticket_id has been opened.");
+        }
+        else{
+            Session::flash('error','An error occurred when trying to create the ticket, Please try again later');
+        }
+
     }
 
     public function UserTickets()
@@ -86,7 +93,7 @@ class TicketController extends Controller
         return redirect()->back()->with("status", "The ticket has been closed.");
     }
 
-    public function PostComment(Request $request)
+    public function PostComment(Request $request, Mailerr $mailerr)
     {
         $this->validate($request, [
             'comment'   => 'required'
@@ -97,12 +104,16 @@ class TicketController extends Controller
             'user_id'   => Auth::id(),
             'comment'   => $request->input('comment'),
         ]);
+
+        $t = Ticket::find($comment->ticket->id);
+        $t->res = false;
+        $t->save();
         //dd($comment);
 
         // send mail if the user commenting is not the ticket owner
-        //if ($comment->ticket->user->id !== Auth::user()->id) {
-         //   $mailer->sendTicketComments($comment->ticket->user, Auth::user(), $comment->ticket, $comment);
-        //}
+        if ($comment->ticket->user->id !== Auth::user()->id) {
+            $mailerr->sendTicketComments($comment->ticket->user, Auth::user(), $comment->ticket, $comment);
+        }
 
         Session::flash('success','Your Comment Has Been Submitted');
         return redirect()->back()->with("status", "Your comment has be submitted.");

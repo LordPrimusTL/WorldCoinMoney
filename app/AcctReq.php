@@ -9,8 +9,8 @@ class AcctReq extends Model
     //
     public static function FindByID($id)
     {
-        $a = AcctReq::where(['user_id' => $id])->first();
-        if($a == null || count($a) < 1)
+        $a = AcctReq::where(['user_id' => $id, 'resolved' => 0])->first();
+        if($a == null || empty($a))
         {
             return false;
         }

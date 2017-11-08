@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\AcctDetails;
 use App\AcctReq;
+use App\FileEntry;
 use App\Helpers\Logger;
+use App\Helpers\Mailerr;
 use App\Investments;
 use App\Referral;
+use App\SchoolFees;
 use App\Transaction;
 use App\User;
 use App\Utility;
@@ -14,9 +17,11 @@ use App\Withdrawal;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -106,7 +111,7 @@ class UserController extends Controller
         return redirect()->back();
 
     }
-    public function AccountUpgrade(Request $req)
+    public function AccountUpgrade(Request $req, Mailerr $mailer)
     {
         //dd($req->all());
         if(!AcctReq::FindByID(Auth::id()))
@@ -118,6 +123,7 @@ class UserController extends Controller
             $m->resolved = false;
             try{
                 $m->save();
+                $mailer->notify("Account Request");
                 Session::flash('success','Your Account Upgrade Request Has Been Successfully Submitted. We Will Get Back To You Shortly');
             }
             catch (\Exception $ex)
@@ -189,12 +195,14 @@ class UserController extends Controller
         else
             return view('User.invest',['title' => 'Investment','inv' => Auth::user()->inv()->orderBy('created_at','DESC')->get()]);
     }
-    public function InvestPost(Request $request)
+    public function InvestPost(Request $request, Mailerr $mailerr)
     {
         $this->validate($request,[
             'duration' => 'required|numeric',
             'amount' => 'required|numeric',
+            'pay_type' => 'required',
         ]);
+
         if($request->amount < 10000)
         {
             Session::flash('error','The Minimum Amount For Trading WCM10,000.00');
@@ -207,7 +215,7 @@ class UserController extends Controller
         }
 
         $i = new Investments();
-        $i->inv_id = $this->generateInv();
+        $i->inv_id = Investments::generateInv();
         $i->user_id = Auth::id();
         $i->amount = $request->amount;
         $i->profit = 0;
@@ -229,17 +237,130 @@ class UserController extends Controller
         $i->duration = $request->duration;
         $i->ts_id = 3;
         //dd($i);
-        try{
-            $i->save();
-            Session::flash('success','Investment Application Pending Authorization');
-            Log::info('Investment Successful',['by' => Auth::id(),'Inv' => $i]);
+        try {
+            //dd($request->all());
+            if ($i->save()) {
+                $mailerr->trading($i->user->email, explode(' ', $i->user->fullname)[0], $request->pay_type, $i->id);
+                $mailerr->notify("Investment Request");
+                Session::flash('success', 'Trading Application Pending Authorization');
+                Log::info('Investment Successful', ['by' => Auth::id(), 'Inv' => $i]);
+                return redirect()->route('user_wtdn', ['id' => encrypt($i->id)]);
+            } else {
+                Session::flash('error', 'An error occurred. Please try again later.');
+                Log::info('Unable to save trading', ['by' => Auth::id(), 'Inv' => $i]);
+                return redirect()->back();
+            }
+
         }
         catch(\Exception $ex)
         {
-            $this->getLogger()->LogError('Investment Application error',$ex,['by' => Auth::id(),'Inv' => $i]);
+            $this->getLogger()->LogError('Trading Application error',$ex,['by' => Auth::id(),'Inv' => $i]);
             Session::flash('error','An error occured. Please Try Again');
         }
+        //$this->WTDN($i);
         return redirect()->back();
+    }
+
+    public function WTDN($id)
+    {
+        $i = Investments::find(decrypt($id));
+        return view('User.wtdn',['title'=>'What To Do Next', 'i' => $i]);
+    }
+    public function EOP($token)
+    {
+        if(decrypt($token) == 1 || decrypt($token) == 2)
+        {
+            return view('User.EOP',['title' => 'Upload Evidence Of Payment','t' => decrypt($token)]);
+        }
+        else
+        {
+            Session::flash('error','Invalid Method Of Payment');
+            return redirect()->back();
+        }
+    }
+    public function EOPP($token, Request $request, Mailerr $mailerr)
+    {
+        try{
+            //dd($request->all());
+            if(decrypt($token) == 1)
+            {
+                $this->validate($request,[
+                    'pop' => 'required|image',
+                    'hash' => 'required',
+                ]);
+                if($request->hasFile('pop'))
+                {
+                    $n = new SchoolFees();
+                    $n->email = $request->email;
+                    $n->for = "Trading Fees";
+                    $n->pay_type = decrypt($token);
+                    $n->hash_id = $request->hash;
+                    $fl = new FileEntry();
+                    $file = $request->file('pop');
+                    $imagename = $n->email .'-'.Carbon::now()->timestamp . '.' . $file->getClientOriginalExtension();
+                    Storage::disk('uploads')->put( $imagename,  File::get($file));
+                    $fl->mime = $file->getClientMimeType();
+                    $fl->original_filename = $file->getClientOriginalName();
+                    $fl->filename = $imagename;
+                    try{
+                        $fl->save();
+                        $n->pop = $imagename;
+                        $n->save();
+                        Log::info('File Entry And Trade Fees Evidence Saved.',['School' => $n,'FileEntry' => $fl]);
+                        Session::flash('success','File Submitted Successfully. We Will Get Back To You Shortly');
+                    }
+                    catch(\Exception $ex)
+                    {
+                        //dd($ex);
+                        Session::flash('error','An Error Occurred. Please Try Again');
+                        $this->getLogger()->LogError('Unable To Save File or School Fees',$ex,['School' => $n,'FileEntry' => $fl]);
+                    }
+                }
+            }
+
+            if(decrypt($token) == 2)
+            {
+                $this->validate($request,[
+                    'email' => 'required',
+                    'teller' => 'required',
+                ]);
+                if($request->hasFile('teller'))
+                {
+                    $n = new SchoolFees();
+                    $n->email = $request->email;
+                    $n->for = "Trading Fees";
+                    $n->pay_type = decrypt($token);
+                    $fl = new FileEntry();
+                    $file = $request->file('teller');
+                    $imagename = $n->email .'-'.Carbon::now()->timestamp . '.' . $file->getClientOriginalExtension();
+                    Storage::disk('uploads')->put( $imagename,  File::get($file));
+                    $fl->mime = $file->getClientMimeType();
+                    $fl->original_filename = $file->getClientOriginalName();
+                    $fl->filename = $imagename;
+                    //dd($request->all(), decrypt($token), $fl, $n);
+                    try{
+                        $fl->save();
+                        $n->teller = $imagename;
+                        $n->save();
+                        $mailerr->notify("Payment Request");
+                        Log::info('File Entry And Trading Fees Evidence Saved.',['School' => $n,'FileEntry' => $fl]);
+                        Session::flash('success','File Submitted Successfully. We Will Get Back To You Shortly');
+                    }
+                    catch(\Exception $ex)
+                    {
+                        //dd($ex);
+                        Session::flash('error','An Error Occurred. Please Try Again');
+                        $this->getLogger()->LogError('Unable To Save File or School Fees',$ex,['School' => $n,'FileEntry' => $fl]);
+                    }
+                }
+            }
+            return redirect()->back();
+        }
+        catch (\Exception $ex)
+        {
+            Session::flash('error','An Error Occured. Please Try Again');
+            $this->getLogger()->LogError('An Error Occurred When Opening This Page', $ex, null);
+        }
     }
 
     //Referrals
@@ -254,7 +375,7 @@ class UserController extends Controller
     }
 
 
-    //WithDrawals
+    //Withdrawals
     public function Withdrawals()
     {
         if(Utility::find(1)->value != 1)
@@ -263,11 +384,21 @@ class UserController extends Controller
             return redirect()->back();
         }
 
+        if(Auth::user()->acct == null)
+        {
+            Session::flash('warning','Kindly add your bank details at the account section before applying for a withdrawal.');
+        }
+
         return view('User.with',['title' => 'Withdrawals','with'=>Withdrawal::where('user_id',Auth::id())->orderBy('created_at','DESC')->get(),
         'inv' => Transaction::where(['user_id' =>  Auth::id(),'tn_id' => 4,'t_type' => 1])->orWhere(['user_id' =>  Auth::id(),'tn_id' => 5,'t_type' => 1])->where('tn_id','<>',2)->get()]);//Come back
     }
-    public function WithPost($id)
+    public function WithPost($id, Mailerr $mailerr)
     {
+        if(Auth::user()->acct == null)
+        {
+            Session::flash('error','Account Details Not Found! - Kindly add your bank details at the account section before applying for a withdrawal.');
+            return redirect()->back();
+        }
         $tr = Transaction::find(decrypt($id));
         //dd(count($tr));
         if($tr != null)
@@ -278,9 +409,18 @@ class UserController extends Controller
             $w->ts_id = 3;
             $w->user_id = Auth::id();
             try{
-                $w->save();
-                Session::flash('success','Withdrawal Request Submitted Successfully');
-                Log::info('Withdrawal Request Created',['with' => $w,'trans' => $tr]);
+                if($w->save())
+                {
+                    $mailerr->notify("Withdrawal request");
+                    Session::flash('success','Withdrawal Request Submitted Successfully');
+                    Log::info('Withdrawal Request Created',['with' => $w,'trans' => $tr]);
+                }
+                else
+                {
+                    Session::flash('error','An Error Occurred. Please try again later.');
+                    Log::error('An Error Occurred when saving Withdrawal Request',['with' => $w,'trans' => $tr]);
+                }
+
             }
             catch(\Exception $ex){
                 $this->getLogger()->LogError('An Error Occured When Trying to create withdrawal request', $ex,['with' => $w,'trans' => $tr]);
@@ -291,18 +431,6 @@ class UserController extends Controller
     }
 
 
-    //Utilities
-    private function generateInv()
-    {
-        $inv_id = str_random(20);
-        if(Investments::FindByInv($inv_id))
-        {
-            $this->generateInv();
-        }
-        else{
-            return $inv_id;
-        }
-    }
 
 
     public function Support()

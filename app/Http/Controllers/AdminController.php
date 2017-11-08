@@ -51,6 +51,7 @@ class AdminController extends Controller
     }
     public function UserEdit(Request $request, $id)
     {
+        //dd($request->all());
         $this->validate($request,[
             'password' => 'required'
         ]);
@@ -59,6 +60,7 @@ class AdminController extends Controller
             $old = $u;
             if(Hash::check($request->password, Auth::user()->password)) {
                 $u->acc_id = $request->acc_id != null ? $request->acc_id : $u->acc_id;
+                $u->reg_type = $request->reg_type;
                 if ($u->class_id == $request->class_id) {
                     $u->class_id = $request->class_id;
                 } else {
@@ -269,23 +271,27 @@ class AdminController extends Controller
                 $t->t_id = Transaction::GenerateTID();
                 $t->user_id = $i->user_id;
                 $t->amount = $i->amount;
-                $t->descn = 'Trade-' . $i->inv_id;
+                $t->descn = 'Trade - ' . $i->inv_id;
                 $t->tn_id = 1;
                 $t->t_type = 2;
                 $t->ts_id = 1;
-                $t->save();
-
-                try {
-                    if(!UserInv::findById($i->user_id))
-                    {
-                        Investments::ReferralBonusTeacher($i, $i->amount);
-                        $m = UserInv::dataS($i->user_id, true);
+                if($t->save())
+                {
+                    try {
+                        if(!UserInv::findById($i->user_id))
+                        {
+                            Investments::ReferralBonusTeacher($i, $i->amount);
+                            $m = UserInv::dataS($i->user_id, true);
+                        }
                     }
+                    catch(\Exception $ex) {
+                        $this->getLogger()->LogError('an Error Occurred When Giving Inv Bonus',$ex,['inv' => $i]);
+                    }
+                    Log::info('Transaction saved',['Trans' => $t]);
                 }
-                catch(\Exception $ex) {
-                    $this->getLogger()->LogError('an Error Occurred When Giving Inv Bonus',$ex,['inv' => $i]);
+                else{
+                    Session::flash('error','data could not be saved');
                 }
-                Log::info('Transaction saved',['Trans' => $t]);
                 //Put In Transaction
             }
 
@@ -293,14 +299,13 @@ class AdminController extends Controller
             {
                 $i->ts_id = 5;
                 $i->save();
-
             }
             $i->save();
             Log::info('Operation completed successfully',['old' =>$old,'i' => $i,'action' => $a,'by' =>Auth::id()]);
             Session::flash('success','Operation Completed Successfully');
         }
         catch(\Exception $ex){
-            $this->getLogger()->LogError('Trade Action: An Error Occurred',$ex,['old' =>$old,'i' => $i,'action' => $a,'by' =>Auth::id()]);
+            $this->getLogger()->LogError('Trade Action: An Error Occurred',$ex,['by' =>Auth::id()]);
             Session::flash('error','Oops An Error Occured, Please Try Again');
         }
         return redirect()->back();
@@ -395,6 +400,7 @@ class AdminController extends Controller
 
             if($a == 2)
             {
+                $i->t_id = "$i->t_id - Declined";
                 $i->ts_id = 5;
                 $i->save();
             }
@@ -421,14 +427,14 @@ class AdminController extends Controller
     //Tickets
     public function Ticket()
     {
-        return view('Admin.ticket',['title'=>'Tickets','tick' => Ticket::orderByDesc('created_at')->get()]);
+        return view('Admin.ticket',['title'=>'Tickets','tick' => Ticket::orderByDesc('updated_at')->get()]);
     }
     public function TicketComment($id)
     {
         $ticket = Ticket::find(decrypt($id));
         return view('Admin.ticket_comment',['title'=>'Tickets','ticket' => $ticket,'comments' => $ticket->comments()->orderBy('created_at','ASC')->get()]);
     }
-    public function TicketCommentPost(Request $request)
+    public function TicketCommentPost(Request $request, Mailerr $mailerr)
     {
         $this->validate($request,[
             'message' => 'required'
@@ -439,9 +445,23 @@ class AdminController extends Controller
             $c->user_id = Auth::id();
             $c->ticket_id = $request->ticket_id;
             $c->comment = $request->message;
-            $c->save();
-            Session::flash('success','Message Successfully saved.');
+            if($c->save())
+            {
+                Session::flash('success','Message Successfully saved.');
+                if ($c->ticket->user->id !== Auth::user()->id) {
+                    $t = Ticket::find($c->ticket->id);
+                    $t->res = true;
+                    //$t = Ticket::find($c->ticket->);
+                    $t->save();
+                    $mailerr->sendTicketComments($c->ticket->user, Auth::user(), $c->ticket, $c);
+
+                }
+            }
+            else{
+                Session::flash('error','An error occurred when sending comment');
+            }
             return redirect()->back();
+
         }
         catch(\Exception $ex)
         {
@@ -509,11 +529,11 @@ class AdminController extends Controller
     }
 
     //School Fees
-    public function SchoolFees()
+    public function Payment()
     {
-        return view('Admin.school_fee',['title' => 'School Fees','sf' => SchoolFees::orderByDesc('created_at')->get()]);
+        return view('Admin.payment',['title' => 'Payments','sf' => SchoolFees::orderByDesc('created_at')->get()]);
     }
-    public function SchoolFeesResolved($id)
+    public function PaymentResolved($id)
     {
         //dd($id);
         try{

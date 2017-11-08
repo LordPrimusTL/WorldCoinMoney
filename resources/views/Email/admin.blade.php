@@ -7,7 +7,13 @@
 @if($t == 1)
     <p>Hello Admin,</p>
     <p>Please Kindly Review the Count of BTC Addresses Remaining. </p>
-    <p>This Email has not gotten a BTC Address for Payment: {{$email}}</p>
+    <p>This Email has not gotten a BTC Address for School fees Payment: {{$email}}</p>
+    <p>Thank You</p>
+@endif
+@if($t == 2)
+    <p>Hello Admin,</p>
+    <p>Please Kindly Review the Count of BTC Addresses Remaining. </p>
+    <p>This Email has not gotten a BTC Address for Trading fees Payment: {{$email}}</p>
     <p>Thank You</p>
 @endif
 </body>

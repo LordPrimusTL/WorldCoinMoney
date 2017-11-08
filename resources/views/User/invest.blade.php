@@ -13,17 +13,31 @@
     <!--// brief information about us ends here-->
     <h4 class="container-fluid text-center" style="margin-top:5px;margin-bottom:10px;font-size:29px;color:greenyellow">TRADING PAGE</h4>
     <div class="container-fluid" style="margin-top:60px;">
-        <form action="{{route('user_invest_post')}}" method="post" id="Regfrom">
+        <form action="{{route('user_invest_post')}}" method="post" id="Regform">
             {{csrf_field()}}
             <div class="col-md-offset-2 col-md-8">
                 @include('Partials._message')
                 <div class="row">
                     <div class="col-md-12">
+                        <label for="pay_type">Mode of Payment: </label>
+                        <div class="input-group form-group col-md-12">
+                            <select class="form-control input input-lg" name="pay_type" id="pay_type">
+                                <option value="">Choose a mode of payment</option>
+                                @php($ss = \App\PaymentType::all())
+                                @foreach($ss as $s)
+                                    <option value="{{$s->id}}">{{$s->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="duration">Duration of Trading(Months): </label>
                         <div class="input-group form-group col-md-12">
                             <input type="number" min="1"  name="duration" id="duration" required class="form-control input input-lg"  placeholder="Duration Of Investment(Month)"/>
                         </div>
                     </div>
                     <div class="col-md-12">
+                        <label for="amount">Amount: </label>
                         <div class="input-group form-group col-md-12">
                             <input type="number" min="10000" name="amount" id="amount" required class="form-control input input-lg"  placeholder="Amount"/>
                         </div>

@@ -21,7 +21,7 @@ class MainAccount extends Model
     {
          $m = MainAccount::where(['user_id' => $user_id])->first();
         try{
-            if($m == null || count($m) < 1)
+            if($m == null)
             {
                 $mm = new MainAccount();
                 $mm->user_id = $user_id;
@@ -47,7 +47,7 @@ class MainAccount extends Model
     {
          $m = MainAccount::where(['user_id' => $user_id])->first();
         try{
-            if($m == null || count($m) < 1)
+            if($m == null)
             {
                 $mm = new MainAccount();
                 $mm->user_id = $user_id;

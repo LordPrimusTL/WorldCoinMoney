@@ -22,12 +22,13 @@ class Logger
         $ae->save();
         if(AuthCheck::AuthAdminCheck())
         {
-            Session::flash('error','minor error occured, Please check Log');
+            Session::flash('error','minor error occurred, Please check Log');
         }
+        //$this->mailerr->sendError($ae->error_id);
         Log::info('New Error saved in database to be treated');
     }
 
-    public function LogError($errormsg,$ex,$other){
+    public function LogError($errormsg,$ex,$other = null){
         $error_id = $this->ErrorID();
         if($other == null)
         {
@@ -56,7 +57,7 @@ class Logger
         }
         else
         {
-            var_dump(false);
+            //var_dump(false);
             $this->ErrorID();
         }
         return $t_id;

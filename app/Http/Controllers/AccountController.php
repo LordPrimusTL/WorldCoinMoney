@@ -96,9 +96,9 @@ class AccountController extends Controller
                 //$s = new AppMailer();
                 if($u->payment_id == 2)
                 {
-                    $mailer->activateMail($u->email, explode(' ',$u->fullname)[0]);
+                    $mailer->payment($u->email, explode(' ',$u->fullname)[0], 1, $request->pay_type);
+                    $mailer->notify("User Request");
                 }
-
                 Session::flash('success','An Activation Email Has Been Sent To The Email  Address You Provided.');
                 return redirect()->action('AccountController@WTDN');
             }
@@ -280,6 +280,7 @@ class AccountController extends Controller
                 {
                     $n = new SchoolFees();
                     $n->email = $request->email;
+                    $n->for = "School Fees";
                     $n->pay_type = decrypt($token);
                     $n->hash_id = $request->hash;
                     $fl = new FileEntry();

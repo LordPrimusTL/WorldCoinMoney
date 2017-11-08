@@ -6,6 +6,7 @@ use App\Helpers\Logger;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 
@@ -95,31 +96,38 @@ class User extends Authenticatable
     public static function MultiGenRef($id)
     {
        try{
+           //Start Transaction
            $user = User::find($id);
            $referrer = User::find($user->referrer_id);
            $user->activated = true;
            try{
-               $user->save();
-               if($user->referrer_id != null) {
-                   $rf = new Referral();
-                   $rf->referred = $user->id;
-                   $rf->referrer = $referrer->id;
-                   if ($referrer->referrer != null) {
-                       $rf->base_link = Referral::FindRefLink($referrer->referrer_id, $referrer->id);
-                   } else {
-                       $rf->base_link = null;
-                   }
-                   $rf->ref_link = $referrer->id . '_' . $user->id;
-                   try {
-                       $rf->save();
-                       Log::info('Referral saved', ['rf' => $rf]);
-                       self::AwardCash($user, $rf->ref_link);
-                       //Send Activated Mail
-                   } catch (\Exception $exception) {
-                       Session::flash('error', 'Operation Could Not be completed At this time');
-                       self::getLogger()->LogError('Referral Could Not Be saved',$exception,(array)$rf);
+               if($user->save())
+               {
+                   if($user->referrer_id != null) {
+                       $rf = new Referral();
+                       $rf->referred = $user->id;
+                       $rf->referrer = $referrer->id;
+                       if ($referrer->referrer != null) {
+                           $rf->base_link = Referral::FindRefLink($referrer->referrer_id, $referrer->id);
+                       } else {
+                           $rf->base_link = null;
+                       }
+                       $rf->ref_link = $referrer->id . '_' . $user->id;
+                       try {
+                           $rf->save();
+                           Log::info('Referral saved', ['rf' => $rf]);
+                           self::AwardCash($user, $rf->ref_link);
+                           //Send Activated Mail
+                       } catch (\Exception $exception) {
+                           Session::flash('error', 'Operation Could Not be completed At this time');
+                           self::getLogger()->LogError('Referral Could Not Be saved',$exception,(array)$rf);
+                       }
                    }
                }
+               else{
+                   Log::error('error, User not Saving',[$user]);
+               }
+
 
            }
            catch(\Exception $exception){
@@ -219,7 +227,7 @@ class User extends Authenticatable
         }
         catch (\Exception $ex)
         {
-            dd($ex);
+            self::getLogger()->LogError('Unabble to add referral mark',$ex);
         }
     }
 

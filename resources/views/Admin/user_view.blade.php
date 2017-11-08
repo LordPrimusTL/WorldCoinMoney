@@ -37,7 +37,12 @@
                         </div>
                         <label for="reg_type">Registration Type: </label>
                         <div class="form-group">
-                            <input type="text" disabled class="form-control" value="{{$user->Reg->name}}"/>
+                            <select class="form-control" id="reg_type" name="reg_type">
+                                @php($ss = \App\RegistrationType::all())
+                                @foreach($ss as $s)
+                                    <option value="{{$s->id}}" {{$s->id == $user->reg_type ? 'selected' : ''}}>{{$s->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <label for="email">Referral Link:  </label>
                         <div class="form-group">
@@ -55,18 +60,18 @@
                         <h5>Account Details</h5>
                         <label for="bank">Bank: </label>
                         <div class="form-group">
-                            <input class="form-control" disabled value="{{$user->acct->bank}}" />
+                            <input class="form-control" disabled value="{{$user->acct != null ? $user->acct->bank : ''}}" />
                         </div>
                         <label for="bank">Account Name: </label>
                         <div class="form-group">
-                            <input class="form-control" disabled value="{{$user->acct->name}}" />
+                            <input class="form-control" disabled value="{{$user->acct != null ? $user->acct->name : ''}}" />
                         </div>
                         <label for="bank">Account Number: </label>
                         <div class="form-group">
-                            <input class="form-control" disabled value="{{$user->acct->number}}" />
+                            <input class="form-control" disabled value="{{$user->acct != null ? $user->acct->number : ''}}" />
                         </div>
                         <hr/>
-                        <label for="pay_type"> Payment Type: </label>
+                        <label for="pay_type">Account Type: </label>
                         <div class="form-group">
                             <?php $cl = \App\AcctType::all()?>
                             <select {{$user->acc_id == 2 ? 'disabled' : ""}} class="form-control" id="acc_id" name="acc_id">

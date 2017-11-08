@@ -38,7 +38,11 @@
                         @foreach($tick as $t)
                             <tr class="
                                 @if($t->status === 'Open')
-                                    alert-warning
+                                    @if($t->res)
+                                        alert-warning
+                                    @else
+                                        alert-danger
+                                     @endif
                                 @else
                                     alert-success
                                 @endif">

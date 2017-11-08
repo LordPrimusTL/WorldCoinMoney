@@ -28,4 +28,6 @@ class UserInv extends Model
         $u->save();
     }
 
+    //UserInv -> user has given bonus
+
 }

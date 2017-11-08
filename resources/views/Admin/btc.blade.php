@@ -11,8 +11,22 @@
             </div>
             <br/>
             <br/>
+            <div class="col-lg-6">
+                <h2 style="text-align: center;"> Add BTC</h2>
+                <form action="{{route('admin_btc_post')}}" method="POST">
+                    {{csrf_field()}}
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="btc" id="btc" required placeholder="BTC Address" required/>
+                    </div>
+
+                    <button class="btn btn-primary btn-block" type="submit"><i class="fa fa-save"></i> Save</button>
+                </form>
+            </div>
+            <hr/>
+            <br/>
             <div class="row">
-                <div class="col-lg-7 col-md-12 col-sm-4" style="margin-left: 3px;">
+
+                <div class="col-lg-12 col-md-12 col-sm-4" style="margin-left: 3px;">
                     @include('Partials._message')
                     @if(count($btc) > 0)
                         <div class=" table table-responsive">
@@ -45,17 +59,7 @@
                     @endif
                 </div>
                 <div class="col-lg-1"></div>
-                <div class="col-lg-3">
-                    <h2 style="text-align: center;"> Add BTC</h2>
-                    <form action="{{route('admin_btc_post')}}" method="POST">
-                        {{csrf_field()}}
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="btc" id="btc" required placeholder="BTC Address" required/>
-                        </div>
 
-                        <button class="btn btn-primary btn-block" type="submit"><i class="fa fa-save"></i> Save</button>
-                    </form>
-                </div>
             </div>
 
         </header>

@@ -35,9 +35,8 @@
             <th>S/N</th>
             <th>Date</th>
             <th>ID</th>
-            <th>AMT</th>
+            <th>AMOUNT(WCM)</th>
             <th>Description</th>
-            <th>Start-Date</th>
             <th>Action</th>
             </thead>
             <tbody>
@@ -57,7 +56,6 @@
                         <td>{{$in->t_id}}</td>
                         <td>{{$in->amount}}</td>
                         <td>{{$in->descn}}</td>
-                        <td>{{ $in->start_date == null ? 'N/A' : \Carbon\Carbon::parse($in->start_date)}}</td>
                         <td><a href="{{route('user_with_trans',['id' => encrypt($in->id)])}}" class="btn btn-success btn-sm"><i class="fa fa-pull-right"></i> Withdraw Funds</a></td>
                     </tr>
                 @endif
@@ -75,14 +73,14 @@
                 <h4 class="container-fluid text-center" style="margin-top:15px;margin-bottom:10px;font-size:29px;color:greenyellow">WITHDRAWAL HISTORY</h4>
                 <hr/>
                 <br/>
-                <table class="table table-responsive table-bordered">
+                <table class="table table-responsive table-bordered text-center">
                     <thead>
                     <th>S/N</th>
                     <th>Date</th>
                     <th>Withdrawal ID</th>
                     <th>Transaction ID</th>
                     <th>Description</th>
-                    <th>AMT</th>
+                    <th>AMOUNT(WCM)</th>
                     <th>STATUS</th>
                     </thead>
                     <tbody>

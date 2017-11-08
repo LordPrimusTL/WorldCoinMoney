@@ -57,6 +57,7 @@ Route::group(['prefix' => '/user/','middleware' => ['auth','AuthUserCheck','User
     Route::get('profile','UserController@Profile')->name('user_profile');
     Route::get('accounts','UserController@Account')->name('user_account');
     Route::get('invest','UserController@Invest')->name('user_invest');
+    Route::get('invest/what-to-do-next/{id}','UserController@WTDN')->name('user_wtdn');
     Route::get('withdrawals','UserController@Withdrawals')->name('user_withdrawals');
     Route::get('transactions','UserController@Transactions')->name('user_transaction');
     Route::get('referrals','UserController@Referrals')->name('user_referrals');
@@ -76,6 +77,8 @@ Route::group(['prefix' => '/user/','middleware' => ['auth','AuthUserCheck','User
     Route::post('invest/add','UserController@InvestPost')->name('user_invest_post');
     Route::post('profile/account/upgrade','UserController@AccountUpgrade')->name('user_acct_upgrade');
     Route::post('account/post','UserController@AccountPost')->name('user_acct_post');
+    Route::get('/evidence-of-payment/{token}','UserController@EOP')->name('user_EOP');
+    Route::post('/evidence-of-payment/{token}','UserController@EOPP')->name('user_EOPP');
 });
 
 
@@ -139,9 +142,11 @@ Route::group(['prefix' => '/admin/','middleware' => ['auth','AuthAdminCheck']],f
     //Request
     Route::get('request','AdminController@Request')->name('admin_req');
     Route::get('request/resolved/{id}','AdminController@ReqRes')->name('admin_req_post');
-    //SchoolFees
-    Route::get('/school-fees','AdminController@SchoolFees')->name('admin_sch_fee');
-    Route::get('school-fees/resolved/{id}','AdminController@SchoolFeesResolved')->name('admin_sch_fee_r');
+
+
+    //Payment
+    Route::get('/payment','AdminController@Payment')->name('admin_payment');
+    Route::get('payment/resolved/{id}','AdminController@PaymentResolved')->name('admin_payment_r');
 
     //BTC
     Route::get('/btc','AdminController@BTC')->name('admin_btc');

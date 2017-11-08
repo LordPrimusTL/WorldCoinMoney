@@ -8,6 +8,7 @@
                 <thead>
                 <th>Date</th>
                 <th>Payment Type</th>
+                <th>Payment For</th>
                 <th>Email</th>
                 <th>Hash</th>
                 <th>POP/Teller</th>
@@ -19,11 +20,12 @@
                     <tr class="alert alert-@if($u->resolved == 0) success @else warning @endif">
                         <td>{{\Carbon\Carbon::parse($u->created_at)}}</td>
                         <td>{{$u->pay_type == 1 ? 'Bitcoin' : 'Bank Trans.'}}</td>
+                        <td>{{$u->for}}</td>
                         <td><a href="{{route('admin_user_view',['id' => encrypt($u->user->id)])}}" class="btn btn-primary btn-sm">{{$u->email}}</a> </td>
                         <td>{{$u->pay_type == 1 ? $u->hash_id : 'N/A'}}</td>
                         <td><a href="{{route('file',['filename' => $u->pay_type == 1 ? $u->pop : $u->teller])}}" ><img src="{{route('file',['filename' => $u->pay_type == 1 ? $u->pop : $u->teller])}}" height="60px" width="60px"/></a></td>
                         <td>@if($u->resolved) Resolved @else
-                                <a href="{{route('admin_sch_fee_r',['id' => encrypt($u->id)])}}" class="btn btn-outline-success btn-sm" data-toggle="tooltip" title="Resolve Request" ><i class="fa fa-check"></i></a>
+                                <a href="{{route('admin_payment_r',['id' => encrypt($u->id)])}}" class="btn btn-outline-success btn-sm" data-toggle="tooltip" title="Resolve Request" ><i class="fa fa-check"></i></a>
                             @endif
                         </td>
                     </tr>

@@ -21,7 +21,7 @@
 						<span class="fa fa-address-card">
 						</span>
 					</span>
-                    <select id="reg_type" disabled required name="reg_type" class="form-control input input-lg ">
+                    <select id="reg_type" disabled required name="reg_type" class="form-control input input-lg sell">
                         <?php $s = \App\RegistrationType::all()?>
                         @foreach( $s as $a)7
                             @if($user->reg_type == $a->id)
