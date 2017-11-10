@@ -17,6 +17,17 @@
         <strong style="margin-left: 10px;"><i class="fa fa-warning"></i>Warning:</strong> {{Session::get('warning')}}
     </div>
 @endif
+
+@if(Auth::check())
+    @php($msg = \App\Info::where(['user_id' => Auth::id()])->where('read_count', '<=' ,3)->get())
+    @foreach($msg as $m)
+        <div class="alert alert-dismissible @if($m->priority == 'HIGH') alert-danger @elseif($m->priority == "MEDIUM") alert-success  @elseif($m->priority == "LOW") alert-warning @endif" style="margin-left: 10px;">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong style="margin-left: 10px;"><i class="fa fa-warning"></i>Message From Admin:</strong> {{$m->message}}
+        </div>
+        @php(\App\Info::updateMessage($m->id))
+    @endforeach
+@endif
 @if (count($errors) > 0)
     <div class="alert alert-danger" style="margin-left: 10px;">
         <ul>

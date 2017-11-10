@@ -21,7 +21,7 @@
                         <td>{{\Carbon\Carbon::parse($u->created_at)}}</td>
                         <td>{{$u->pay_type == 1 ? 'Bitcoin' : 'Bank Trans.'}}</td>
                         <td>{{$u->for}}</td>
-                        <td><a href="{{route('admin_user_view',['id' => encrypt($u->user->id)])}}" class="btn btn-primary btn-sm">{{$u->email}}</a> </td>
+                        <td><a href="{{route('admin_user_view',['id' => encrypt($u->user->id)])}}" class="btn btn-primary btn-sm">{{$u->user->email}}</a> </td>
                         <td>{{$u->pay_type == 1 ? $u->hash_id : 'N/A'}}</td>
                         <td><a href="{{route('file',['filename' => $u->pay_type == 1 ? $u->pop : $u->teller])}}" ><img src="{{route('file',['filename' => $u->pay_type == 1 ? $u->pop : $u->teller])}}" height="60px" width="60px"/></a></td>
                         <td>@if($u->resolved) Resolved @else

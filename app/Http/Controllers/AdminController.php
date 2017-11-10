@@ -9,6 +9,7 @@ use App\Helpers\AppMailer;
 use App\Helpers\Logger;
 use App\Helpers\Mailerr;
 use App\Helpers\TradeSync;
+use App\Info;
 use App\Investments;
 use App\MainAccount;
 use App\Referral;
@@ -25,6 +26,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Validation\Rules\In;
 
 class AdminController extends Controller
 {
@@ -577,6 +579,41 @@ class AdminController extends Controller
             $this->getLogger()->LogError('Unable TO Resolve Request',$ex, ['r' => $s]);
         }
 
+        return redirect()->back();
+    }
+
+
+    //Info
+    public function Info(Request $request)
+    {
+        return view('Admin.info',['title' => ' Information', 'info' => Info::orderByDesc('created_at','DESC')->get(), 'id'=> $request->id != null ? decrypt($request->id) : null]);
+    }
+    public function InfoID(Request $request)
+    {
+        //dd($request->id);
+        return view('Admin.info',['title' => ' Information', 'info' => Info::orderByDesc('created_at','DESC')->get(), 'id'=> $request->id != null ? decrypt($request->id) : null]);
+    }
+
+    public function InfoPost(Request $request)
+    {
+        $this->validate($request,[
+            'user_id' => 'required',
+            'message' => 'required',
+            'priority' => 'required',
+        ]);
+        //dd($request->all());
+        $info = new Info();
+        $info->user_id = $request->user_id;
+        $info->message = $request->message;
+        $info->priority = $request->priority;
+        $info->read_count = 0;
+        if($info->save())
+        {
+            Session::flash('success','Message Sent');
+        }
+        else{
+            Session::flash('error','Unable To Send Message');
+        }
         return redirect()->back();
     }
 }

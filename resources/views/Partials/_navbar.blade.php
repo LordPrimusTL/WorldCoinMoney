@@ -1,7 +1,12 @@
-<div class="header" style="background-color:green;">
+<div id="google_translate_element"></div><script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL}, 'google_translate_element');
+    }
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<div class="header" style="background-color:yellow;">
     <div class="container">
         <div class="w3_agile_logo">
-            <h1><a href="@if(Auth::check()) @if(Auth::user()->role_id == 3) {{route('user_dashboard')}} @elseif(Auth::user()->role_id < 3) {{route('home')}} @else {{route('home')}} @endif @endif"><span>W</span>ORLD COIN CRYPTO-CURRENCY TRADING</a></h1>
+            <h1><a href="@if(Auth::check()) @if(Auth::user()->role_id == 3) {{route('user_dashboard')}} @elseif(Auth::user()->role_id < 3) {{route('home')}} @else {{route('home')}} @endif @endif"><img src="{{asset('images/logoball.jpg')}}" class="img img-circle" style="width:50px;height:50px;font-size:2em;"/> <span style="color: green;">W</span>ORLD COIN CRYPTO-CURRENCY TRADING</a></h1>
         </div>
         <div class="agile_header_social">
             <ul class="agileits_social_list">
@@ -16,7 +21,7 @@
 </div>
 <!-- header -->
 <!-- banner -->
-<div style="background-color:yellow;">
+<div style="background-color:green;">
     <div class="container">
         <nav class="navbar navbar-default">
             <div class="navbar-header navbar-left">
@@ -63,7 +68,7 @@
                     <div class="w3_agileits_search_form">
                         <form action="#" method="post">
                             <input type="search" name="Search" placeholder="Search" required="">
-                            <input type="submit" value=" ">
+                            <button class="btn btn-default btn-lg"><i class="fa fa-search"></i></button>
                         </form>
                     </div>
                 </nav>

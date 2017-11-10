@@ -38,45 +38,79 @@
     </div>
     <!-- //banner -->
     <!--News Slider-->
-    <div class="carousel slide" data-interval="9500" data-ride="carousel" style=" margin-bottom:20px;margin-top:70px;">
-        <div class="carousel-inner">
-            <div class="item active">
-                <header class="text-center"><h2 style="font-size:25px !important;color:green;">LATIVA INTERNATIONAL</h2></header>
-                <p class="well-sm text-muted container" style="font-size:20px;">
-                    Gnissimos voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi. atque corrupti quos dolores et quas molestias excepturi sint occaecat officia deserunt mollitia laborum et dolorum fuga
-                    quas molestias excepturi sint occaecat officia deserunt mollitia laborum et dolorum fuga. At vero eos et accusamus et iusto odio dignis
+    <div class="row" style="margin-top: 50px;">
+        @php($ss = \App\Info::orderByDesc('created_at','DESC')->get())
 
-                </p>
-            </div>
-            <div class="item ">
-                <header class="text-center"><h2 style="font-size:25px !important;color:green;">SWISS GOLDEN</h2></header>
-                <p class="well-sm text-muted container" style="font-size:20px;">
-                    Gnissimos voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi. atque corrupti quos dolores et quas molestias excepturi sint occaecat officia deserunt mollitia laborum et dolorum fuga
-                    quas molestias excepturi sint occaecat officia deserunt mollitia laborum et dolorum fuga. At vero eos et accusamus et iusto odio dignis
-
-                </p>
-            </div>
-            <div class="item ">
-                <header class="text-center"><h2 style="font-size:25px !important;color:green;">MOON SPACE</h2></header>
-                <p class="well-sm text-muted container" style="font-size:20px;">
-                    Gnissimos voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi. atque corrupti quos dolores et quas molestias excepturi sint occaecat officia deserunt mollitia laborum et dolorum fuga
-                    quas molestias excepturi sint occaecat officia deserunt mollitia laborum et dolorum fuga. At vero eos et accusamus et iusto odio dignis
-
-                </p>
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10 w3-card">
+            <div class="carousel slide" data-interval="5000" data-ride="carousel" style=" margin-bottom:20px;margin-top:70px;">
+                <div class="carousel-inner">
+                    @php($i = 1)
+                    @foreach($ss as $s)
+                        <div class="item {{$i == 1 ? 'active' : ''}}">
+                            <header class="text-center"><h2 style="font-size:25px !important;color:green;">{{$s->title}}</h2></header>
+                            <p class="well-sm text-muted container" style="font-size:20px;">
+                                {{$s->data}}
+                            </p>
+                        </div>
+                        @php($i++)
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>
     <!--//News Slider ends here-->
     <!--// brief information about us-->
-    <div class="container-fluid jumbotron" style="margin-bottom:0!important;">
-        <p class="well-sm lead">
-        <h3 class="text-center" style="color:green;">Before you get started,hear this;</h3>
-        </p>
-        <p class="well-sm container">
-            Gnissimos voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi. atque corrupti quos dolores et quas molestias excepturi sint occaecat officia deserunt mollitia laborum et dolorum fuga
-            quas molestias excepturi sint occaecat officia deserunt mollitia laborum et dolorum fuga. At vero eos et accusamus et iusto odio dignis
-        </p>
+    <div class="container" style="margin-top:70px;">
+        <header class=" text-center" style="font-size:25px;color:green;;font-family:cursive">What We Offer</header>
+        <div class="col-md-offset-3 col-sm-offset-3 col-xs-offset-3 " style="width:50%;margin-bottom:40px;" id="line">
+            <hr class="hr-dark hm-red-light">
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="w3-card-4 w3-hover-shadow text-center">
+                    <img src="images/live.jpg" alt="Norway" class="card-image img-responsive">
+                    <h4 class="card-title" style="font-size: large;">SIGNAL LIVE</h4>
+                    <div class="w3-container w3-center" style="margin-top: 10px">
+                        <p class="card-text card-body">Regardless of whether you are resting,celebrating,working,
+                            your email address will automatically get SIGNAL from the
+                            organization</p>
+                    </div>
+                </div>
+            </div><div class="col-lg-3">
+                <div class="w3-card-4 text-center w3-hover-shadow">
+                    <img src="images/meeting.jpg" alt="Norway" class="card-image img-responsive" height="170px" width="360px">
+                    <h4 class="card-title" style="font-size: large;">LIVE TRAINING</h4>
+                    <div class="w3-container w3-center" style="margin-top: 10px">
+                        <p class="card-text card-body">There are webinars and seminars room where many scenario ace dealers who are making millions in
+                            the business sectors...</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="w3-card-4 text-center w3-hover-shadow">
+                    <img src="images/signal.jpg" alt="Norway" class="card-image img-responsive" height="170px" width="360px">
+                    <h4 class="card-title" style="font-size: large;">AUTOMATIC TRADING</h4>
+                    <div class="w3-container w3-center" style="margin-top: 10px">
+                        <p class="card-text card-body">At W.C.M,we offer an Automated trading platforms that enable traders to invest money and wait for some
+                            percentage profit monthly.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="w3-card-4 text-center w3-hover-shadow">
+                    <img src="images/teach.jpg" alt="Norway" class="card-image img-responsive" height="170px" width="360px">
+                    <h4 class="card-title" style="font-size: large;">TRADING EDUCATION</h4>
+                    <div class="w3-container w3-center" style="margin-top: 10px">
+                        <p class="card-text card-body">At W.C.M,we offer the best trading education to our academy's students instruction on the market.
+                            When you turn into a specialist...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
     <!--// brief information about us ends here-->
     </section>
     <section id="middle" class="jumbotron" style="background-color:white;" >
@@ -193,7 +227,7 @@
                         <div class="media testimonial-inner">
                             <div class="pull-left">
                                 <div class="abb">
-                                    &nbsp;<img class="img-responsive" src="images/gu5.png" width="160">&nbsp;
+                                    &nbsp;<img class="img-responsive" src="images/mission.png" width="160">&nbsp;
                                 </div>
                             </div>
                             <div class="media-body">

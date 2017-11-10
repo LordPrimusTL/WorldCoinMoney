@@ -96,11 +96,6 @@ Route::group(['prefix' => '/admin/','middleware' => ['auth','AuthAdminCheck']],f
     Route::get('admin/delete/{id}','AdminController@AdminDelete')->name('admin_delete');
     Route::post('admin/post','AdminController@AdminPost')->name('admin_post');
 
-    //admin
-    Route::get('admin','AdminController@admin')->name('admin_admin');
-    Route::get('admin/delete/{id}','AdminController@AdminDelete')->name('admin_delete');
-    Route::post('admin/post','AdminController@AdminPost')->name('admin_post');
-
     //Trade
     Route::get('trade','AdminController@Trade')->name('admin_trade');
     Route::get('trade/action/{id}/{a_id}','AdminController@TradeAction')->name('admin_trade_action');
@@ -152,6 +147,11 @@ Route::group(['prefix' => '/admin/','middleware' => ['auth','AuthAdminCheck']],f
     Route::get('/btc','AdminController@BTC')->name('admin_btc');
     Route::post('/btc/post','AdminController@BTC_Post')->name('admin_btc_post');
 
+
+    //Info
+    Route::get('info','AdminController@Info')->name('admin_info');
+    //Route::get('info/{id}','AdminController@InfoID')->name('admin_info_id');
+    Route::post('info','AdminController@InfoPost')->name('admin_info_post');
 
 });
 

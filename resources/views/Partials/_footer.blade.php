@@ -21,7 +21,7 @@
                 </div>
                 <div class="w3ls_footer_grid_leftr">
                     <h4>Email</h4>
-                    <a href="mailto:info@example.com">Support@WCM.com</a>
+                    <a href="mailto:info@example.com">info@worldcoinsmoney.com</a>
                 </div>
                 <div class="clearfix"> </div>
             </div>
