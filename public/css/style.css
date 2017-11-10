@@ -120,7 +120,6 @@ input[type="submit"],input[type="reset"],a,.w3ls_services_grid,.w3ls_footer_grid
     letter-spacing: 5px;
     text-transform: uppercase;
     text-decoration: none;
-    background: url(../images/home.png) no-repeat 15px 0px;
     display: block;
 }
 .w3_agile_logo h1 a span{
@@ -236,7 +235,7 @@ a.w3_agile_vimeo:hover{
     margin-bottom: 0;
 }
 .navbar-default .navbar-nav > li > a {
-    color:green;
+    color:white;
 }
 .navbar-nav > li > a {
     padding:.7em 1.5em;
@@ -244,7 +243,7 @@ a.w3_agile_vimeo:hover{
     font-weight: 600;
 }
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-    color:green;
+    color:white;
     background: none;
 }
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
@@ -252,7 +251,7 @@ a.w3_agile_vimeo:hover{
     background: none;
 }
 .navbar-default .navbar-nav > li > a:hover{
-    color:green;
+    color:white;
 }
 .navbar-nav {
     margin: 0.5em 0 0;
@@ -312,7 +311,7 @@ a.w3_agile_vimeo:hover{
 .w3_agile_nav a span::before {
   width: 100%;
   height: 2px;
-  background:green;
+  background:whitesmoke;
   content: "";
   position: absolute;
   left: 0;
@@ -329,7 +328,7 @@ a.w3_agile_vimeo:hover{
 .w3_agile_nav a span::after {
   width: 100%;
   height: 2px;
-  background:green;
+  background:whitesmoke;
   content: "";
   position: absolute;
   right: 0;
@@ -347,7 +346,7 @@ a.w3_agile_vimeo:hover{
 .w3_agile_nav a::before {
   width: 2px;
   height: 100%;
-  background:green;
+  background:whitesmoke;
   content: "";
   position: absolute;
   left: 0;
@@ -365,7 +364,7 @@ a.w3_agile_vimeo:hover{
 .w3_agile_nav a::after {
   width: 2px;
   height: 100%;
-  background:green;
+  background:whitesmoke;
   content: "";
   position: absolute;
   right: 0px;
@@ -472,7 +471,7 @@ input.text_box {
 }
 .bath{
     float: left;
-    width: 48%;	
+    width: 48%;
 }
 .bath:nth-child(5),.w3_agileits_section_room:nth-child(2) {
     margin-left: 1em;
@@ -791,8 +790,8 @@ input#amount {
 	height: 100%;
 	border-radius: 50%;
 	content: '';
-	-webkit-box-sizing: content-box; 
-	-moz-box-sizing: content-box; 
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
 	box-sizing: content-box;
 }
 
@@ -846,8 +845,8 @@ input#amount {
 /*-- //featured-services --*/
 /*-- newsletter --*/
 .newsletter {
-    background: url(../images/z29.jpg) no-repeat 0px 0px;
-    background-size: cover;
+    background: url(../images/footer4.jpg) no-repeat 0px 0px;
+    background-size: auto;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -966,7 +965,7 @@ input#amount {
 	bottom: 20px;
 	right: 2%;
 	overflow: hidden;
-	z-index: 999; 
+	z-index: 999;
 	width: 32px;
 	height: 32px;
 	border: none;
@@ -1344,7 +1343,7 @@ ul.bs-glyphicons-list li:hover span {
     -ms-transition: 0.5s all;
     -moz-transition: 0.5s all;
     cursor: pointer;
-} 
+}
 .icon-box:hover {
     background: #000;
 	transition:0.5s all;
@@ -1363,11 +1362,11 @@ ul.bs-glyphicons-list li:hover span {
     float: left;
     width: 12.5%;
     height: 115px;
-    padding: 10px; 
+    padding: 10px;
     line-height: 1.4;
-    text-align: center;  
+    text-align: center;
     font-size: 12px;
-    list-style-type: none;	
+    list-style-type: none;
 }
 .codes .bs-glyphicons .glyphicon {
     margin-top: 5px;
@@ -1385,7 +1384,7 @@ ul.bs-glyphicons-list li:hover span {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 	color: #777;
-} 
+}
 .codes .bs-glyphicons .glyphicon-class {
     display: block;
     text-align: center;
@@ -1441,7 +1440,7 @@ h3.agileits-icons-title {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 	color: #777;
-} 
+}
 .bs-glyphicons .glyphicon-class {
     display: block;
     text-align: center;
@@ -1582,7 +1581,7 @@ li.list-group-item1 {
 .label {
 	font-weight: 300 !important;
 	border-radius:4px;
-}  
+}
 .grid_5{
 	background:none;
 	padding:2em 0;
@@ -1979,7 +1978,7 @@ h2.typoh2{
 	.wthree_stats_grid {
 		float: left;
 		width: 50%;
-	}	
+	}
 	.wthree_stats_grid:nth-child(2){
 		margin-bottom:2em;
 	}
@@ -2225,7 +2224,7 @@ h2.typoh2{
 	}
 	#map {
 		min-height: 300px;
-	}	
+	}
 }
 @media (max-width: 600px){
 	.w3_agileits_section_room, .bath {
@@ -2627,4 +2626,27 @@ h2.typoh2{
 	.navbar-nav {
 		padding: 1em 0 0;
 	}
+}
+
+.w3-card-4{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+ .card-text {
+    font-size: .9rem!important;
+    color: #747373!important;
+     text-justify: distribute;
+}
+.card-title {
+    margin-bottom: 20px!important;
+    margin-top: 30px!important;
+    font-family: 'Oswald', sans-serif;
+}
+
+.card-body{
+    margin-bottom:50px;
+}
+.card-image{
+    height:170px;
+    width:360px;
 }

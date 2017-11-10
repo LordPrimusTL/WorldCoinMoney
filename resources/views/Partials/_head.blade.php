@@ -17,6 +17,9 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/jquery-ui1.css')}}">
     <!-- font-awesome-icons -->
     <link href="{{asset('css/font-awesome.css')}}" rel="stylesheet">
+    <link href="{{asset('css/w3.css')}}" rel="stylesheet">
+
+    <!-- //font-awesome-icons -->
     <!-- //font-awesome-icons -->
 
 
