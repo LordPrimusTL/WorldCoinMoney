@@ -139,7 +139,7 @@ Route::group(['prefix' => '/admin/','middleware' => ['auth','AuthAdminCheck']],f
     Route::get('request/resolved/{id}','AdminController@ReqRes')->name('admin_req_post');
 
 
-    //Payment
+    //Paymentssß
     Route::get('/payment','AdminController@Payment')->name('admin_payment');
     Route::get('payment/resolved/{id}','AdminController@PaymentResolved')->name('admin_payment_r');
 

@@ -36,7 +36,7 @@ class UserController extends Controller
     public function Dashboard()
     {
         //dd(Auth::user());
-        return view('User.dashboard',['title' => "Dashboard"]);
+        return view('User.dashboard',['title' => "Dashboard", 'user' =>Auth::user()]);
     }
 
 

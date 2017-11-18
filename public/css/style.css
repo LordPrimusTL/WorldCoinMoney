@@ -244,21 +244,21 @@ a.w3_agile_vimeo:hover{
 }
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
     color:white;
-    background: none;
+    background: green;
 }
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
     color:#212121;
     background: none;
 }
 .navbar-default .navbar-nav > li > a:hover{
-    color:white;
+    color:green;
 }
 .navbar-nav {
     margin: 0.5em 0 0;
 }
 .agile_short_dropdown {
     border-radius: 0;
-    background: #ffffff;
+    background: green;
     text-align: center;
     padding: 0;
     border: none;
@@ -273,7 +273,7 @@ a.w3_agile_vimeo:hover{
     color:green;
 }
 .agile_short_dropdown > li > a:hover {
-    color: #fff;
+    color: green;
     text-decoration: none;
     background:yellow;
     border:2px solid green;
@@ -2058,14 +2058,15 @@ h2.typoh2{
 		border-color:green;
 	}
 	.navbar-default .navbar-toggle .icon-bar {
-		background-color:green;
+		background-color:white;
 	}
 	.navbar-toggle {
 		float: none;
 		margin: 1em 0 0;
 	}
 	.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-		background-color: transparent;
+		border: thick;
+        border-color: #fff;
 	}
 	.navbar-header.navbar-left {
 		text-align: center;
@@ -2073,7 +2074,7 @@ h2.typoh2{
 	.navbar-nav {
 		margin: 0;
 		padding: 1em 0;
-		background:white;
+		background:green;
 		text-align: center;
 	}
 	.w3_agile_nav a {
@@ -2105,7 +2106,7 @@ h2.typoh2{
 		width: 100%;
 		float: none;
 		margin: 0 auto;
-		background:#606f6f;
+		background:green;
 		padding-bottom: 1em;
 	}
 	.w3_agileits_search_form form{
@@ -2113,7 +2114,7 @@ h2.typoh2{
 		margin:0 auto;
 	}
 	.navbar-nav .open .dropdown-menu {
-		background-color: #fff;
+		background-color: green;
 	}
 	.banner-bottom {
 		padding:2em 0 0;
@@ -2631,6 +2632,7 @@ h2.typoh2{
 .w3-card-4{
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    margin-bottom: 30px;
 }
  .card-text {
     font-size: .9rem!important;
@@ -2649,4 +2651,25 @@ h2.typoh2{
 .card-image{
     height:170px;
     width:360px;
+}
+
+.green{
+    background-color: green;
+}
+.gold{
+    background-color: gold;
+}
+.ruby{
+    background-color: #9b111e;
+}
+
+.platinum{
+    background-color: #e5e4e2;
+}
+
+.silver{
+    background-color: silver;
+}
+.bronze{
+    background-color: #CD7F32;
 }

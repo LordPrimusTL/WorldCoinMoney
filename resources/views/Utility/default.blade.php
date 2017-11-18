@@ -1,28 +1,28 @@
 @extends('master')
 @section('body')
-    <div id="ImageCarousel" class="carousel slide" data-interval="2000" data-ride="carousel">
+    <div id="ImageCarousel" style="height: 442px;" class="carousel slide" data-interval="2000" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#ImageCarousel" data-slide-to="0" class="active"></li>
             <li data-target="#ImageCarousel" data-slide-to="1"></li>
             <li data-target="#ImageCarousel" data-slide-to="2"></li>
         </ol>
-        <div class="carousel-inner">
+        <div class="carousel-inner" style="height: 442px;">
             <div class="item active">
-                <img src="images/cryptocurrency.png" class="img-responsive" alt="First-Slider" style="width:1500px;">
+                <img src="images/SocialTrading.jpg" class="img-responsive" alt="First-Slider" style="width:1500px;">
             </div>
             <div class="carousel-caption">
                 <h3>MY SiteName</h3>
                 <p>Make Money Everywhere</p>
             </div>
             <div class="item ">
-                <img src="images/cyp.jpg" class="img-responsive" alt="First-Slider" style="width:1500px;">
+                <img src="images/banner.jpg" class="img-responsive" alt="First-Slider" style="width:1500px;">
                 <div class="carousel-caption">
                     <h3>MY SiteName</h3>
                     <p>Make Money Everywhere</p>
                 </div>
             </div>
             <div class="item ">
-                <img src="images/cryptocurrency.png" class="img-responsive" alt="First-Slider" style="width:1500px;">
+                <img src="images/trading.jpeg" class="img-responsive" alt="First-Slider" style="width:1500px;">
                 <div class="carousel-caption">
                     <h3>MY SiteName</h3>
                     <p>Make Money Everywhere</p>
@@ -37,7 +37,7 @@
         </div>
     </div>
     <!-- //banner -->
-    <!--News Slider-->
+    <!--News Slider
     <div class="row" style="margin-top: 50px;">
         @php($ss = \App\Info::orderByDesc('created_at','DESC')->get())
 
@@ -58,7 +58,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
     <!--//News Slider ends here-->
     <!--// brief information about us-->
     <div class="container" style="margin-top:70px;">

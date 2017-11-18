@@ -65,12 +65,12 @@
                             <li class="{{Request::is('contact') ? 'active' : ''}}"><a href="{{route('contact')}}"><span>Contact Us</span></a></li>
                         @endif
                     </ul>
-                    <div class="w3_agileits_search_form">
+                    <<!--div class="w3_agileits_search_form">
                         <form action="#" method="post">
                             <input type="search" name="Search" placeholder="Search" required="">
                             <button class="btn btn-default btn-lg"><i class="fa fa-search"></i></button>
                         </form>
-                    </div>
+                    </div>-->
                 </nav>
             </div>
         </nav>
