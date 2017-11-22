@@ -11,7 +11,7 @@
                 </div>
                 <div class="w3ls_footer_grid_leftr">
                     <h4>Email</h4>
-                    <a href="mailto:info@example.com">info@.......</a>
+                    <a href="mailto:info@cryptotradingmatrix.com">info@cryptotradingmatrix.com</a>
                 </div>
                 <div class="clearfix"> </div>
             </div>
@@ -21,7 +21,7 @@
                 </div>
                 <div class="w3ls_footer_grid_leftr">
                     <h4>Email</h4>
-                    <a href="mailto:info@example.com">support@.....</a>
+                    <a href="mailto:support@cryptotradingmatrix.com">support@cryptotradingmatrix.com</a>
                 </div>
                 <div class="clearfix"> </div>
             </div>
@@ -31,7 +31,7 @@
                 </div>
                 <div class="w3ls_footer_grid_leftr">
                     <h4>Email</h4>
-                    <a href="mailto:info@example.com">admin@.....</a>
+                    <a href="mailto:admin@cryptotradingmatrix.com">admin@cryptotradingmatrix.com</a>
                 </div>
                 <div class="clearfix"> </div>
             </div>

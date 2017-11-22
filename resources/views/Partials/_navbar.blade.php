@@ -6,7 +6,7 @@
 <div class="header" style="background-color:yellow;">
     <div class="container">
         <div class="w3_agile_logo">
-            <h1><a href="@if(Auth::check()) @if(Auth::user()->role_id == 3) {{route('user_dashboard')}} @elseif(Auth::user()->role_id < 3) {{route('home')}} @else {{route('home')}} @endif @endif"><img src="{{asset('images/logoball.jpg')}}" class="img img-circle" style="width:50px;height:50px;font-size:2em;"/> <span style="color: green;">C</span>RYPTO TRADING MATRIX</a></h1>
+            <h1><a class="logo_name" href="@if(Auth::check()) @if(Auth::user()->role_id == 3) {{route('user_dashboard')}} @elseif(Auth::user()->role_id < 3) {{route('home')}} @else {{route('home')}} @endif @endif"><img src="{{asset('images/logoball.jpg')}}" class="img img-circle" style="width:50px;height:50px;font-size:2em;"/> <span style="color: green;">C</span>RYPTO TRADING MATRIX</a></h1>
         </div>
         <div class="agile_header_social">
             <ul class="agileits_social_list">
@@ -43,7 +43,7 @@
                             <li class="{{Request::is('logout') ? 'active' : ''}}"><a href="{{route('logout')}}"><span>Log Out</span></a></li>
                         @else
                             <li class="{{Request::is('/') ? 'active' : ''}}"><a href="@if(Auth::check()) @if(Auth::user()->role_id == 3) {{route('user_dashboard')}} @elseif(Auth::user()->role_id < 3) {{route('home')}} @else {{route('home')}} @endif @else {{route('home')}} @endif"><span>Home</span></a></li>
-                            <li class="{{Request::is('about') ? 'active' : ''}}"><a href="{{route('about')}}"><span>About Us</span></a></li>
+                            <li class="{{Request::is('about-and-faq') ? 'active' : ''}}"><a href="{{route('about')}}"><span>About Us And FAQ</span></a></li>
                             <li class="dropdown {{Request::is('register') || Request::is('login') ? 'active' : ''}}">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span data-hover="Short Codes">Accounts</span> <b class="caret"></b></a>
                                 <ul class="dropdown-menu agile_short_dropdown">

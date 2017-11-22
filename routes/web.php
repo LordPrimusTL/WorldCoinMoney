@@ -20,7 +20,7 @@ Route::get('/clear', function()
     Artisan::call('make:model test');
 });
 Route::get('/','UtilityController@Home')->name('home');
-Route::get('/about','UtilityController@About')->name('about');
+Route::get('/about-and-faq','UtilityController@About')->name('about');
 Route::get('/contact','UtilityController@Contact')->name('contact');
 Route::get('/how-it-works','UtilityController@HTW')->name('htw');
 Route::get('/term-of-service','UtilityController@TOS')->name('tos');

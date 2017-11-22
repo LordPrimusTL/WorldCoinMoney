@@ -7,6 +7,34 @@
                 <p><span><i class="fa fa-info-circle" aria-hidden="true"></i></span></p>
                 <h5>How <span>It Works</span></h5>
             </div>
+
+
+            <div class="w3layouts_skills_grids">
+                <div class="col-lg-2"></div>
+                <div class="col-md-8 agileinfo_about_left text-justify">
+                    <div class="w3-card-4">
+                        <div class="w3-container w3-center" style="margin-top: 10px">
+                            <div class="col-lg-12">
+                                <h5 class="header pull-left">MONEY BACK GUARANTEE PROGRAM</h5>
+                            </div>
+                            <br/>
+                            <br/>
+                            <p class="card-text card-body text-left text-justify">
+                                Crypto trading matrix(CTM) is an online company platorm available worldwide. We offer our members competitive 4 Free Tools operates on a membership basis. Created by network marketers and crypto traders,first online program that conserve network marketing(matrix) and crypto trading(free training on crypto trading, free crypto signals and crypto lending) , CTM meets every criteria of our industry and has an innovative approach in its pricing and compensation plan which doubles as an income stream within a month. Through our matrix plan,or  trading training,or crypto signals,or crypto lending investment , our members can earn 100% profit in any of our 4 tools services such as: matrix bonus(1btc) from the compensation plan with universal link,  commissions on their referrals upgrades when any members use his referral link to invite members, free crypto trading training by learning how to trade and become a pro trader, free crypto signal and crypto trading investment by clicking to trade now in your dashboard then deposit any amount from CTM10,000 = $15 = 0.002btc and earn up to 1.66% daily(50% monthly). The entry fees are paid (voluntarily) by our members for all tools at low fee .  All payments are exclusively used to pay our members back in the matrix plan and we provide the remaining 3 tools service at free of fund and risk .
+                            </p>
+                            <p class="card-text card-body text-left text-justify">
+                                The matrix compensation plan works on a 3x3 company forced matrix structure. the crypto trading training work on a free crypto coach tutorial on whatsapp, telegram and facebook with live education, the crypto signals work by receiving 1-3 signal daily. Read our FAQ for more information about referral commission, referral bonus and leadership bonus both matrix and trading
+                            </p>
+                            <p class="card-text card-body text-left text-justify">
+                                it is rare to work with us without earn from any of our 4 tools services, we had never encounter or meet such kind of problem since we are working  on the crypto market since 3 years ago that is why we promise and guarantee a 100% money back with refund policy.
+                            </p>
+                            <br/>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="clearfix"> </div>
+            </div>
             <div class="w3layouts_skills_grids">
                 <div class="col-lg-2"></div>
                 <div class="col-md-8 agileinfo_about_left text-justify">
@@ -189,7 +217,7 @@
                             <li class="list-group-item">Every members of the platform can earn referral commission both in matrix and trading</li>
                             <li class="list-group-item">Matrix referral commission: when you referral members cycle out the level1 of the plan matrix you will earn 0.0005btc per each members, when any members of your referral cycle out the level 2 plan of the matrix you will earn 0.001btc per each of them and when any of them cycle out the level3 plan of the matrix you will earn 0.005btc per each of them</li>
                             <li class="list-group-item">trading referral commission is when your referral members invest in our trading investment then you will earn 5% of the trading investment of your direct referral from each members</li>
-
+                        </ul>
                     </div>
                     <div class="clearfix"> </div>
                 </div>

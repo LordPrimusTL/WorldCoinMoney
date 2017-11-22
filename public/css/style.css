@@ -371,6 +371,27 @@ a.w3_agile_vimeo:hover{
         height: 93%;
     }
 }
+@media screen and (min-width: 768px)  {
+    .carousel-inner{
+        height: 442px!important;
+    }
+
+    #ImageCarousel{
+        height: 442px!important;
+    }
+}
+@media screen and (max-width: 400px)  {
+    .carousel-inner{
+        height: 190px!important;
+    }
+    #ImageCarousel{
+        height: 190px!important;
+    }
+    .logo_name{
+        font-size: small;
+    }
+}
+
 .w3_agile_nav a::after {
   width: 2px;
   height: 100%;
@@ -2256,7 +2277,7 @@ h2.typoh2{
 }
 @media (max-width: 568px){
 	.w3_agile_logo h1 a {
-		font-size: .5em;
+		font-size: .3em;
 		background: url(../images/home.png) no-repeat 15px 0px;
 		background-size: 18%;
 	}
@@ -2380,6 +2401,14 @@ h2.typoh2{
 		width: 100%;
 		margin-right: 0;
 	}
+}
+
+.agileinfo_about_left p {
+    margin: 2em 0 0;
+    color: black;
+    line-height: 2em;
+
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 @media (max-width: 414px){
 	.agileits_w3layouts_header_address_grid ul li:nth-child(2), .agileits_w3layouts_header_address_grid ul li:nth-child(3) {
@@ -2682,4 +2711,7 @@ h2.typoh2{
 }
 .bronze{
     background-color: #CD7F32;
+}
+.w3-card{
+    padding:20px;
 }

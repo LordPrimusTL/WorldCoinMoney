@@ -1,32 +1,20 @@
 @extends('master')
 @section('body')
-    <div id="ImageCarousel" style="height: 442px;" class="carousel slide" data-interval="2000" data-ride="carousel">
+    <div id="ImageCarousel" class="carousel slide" data-interval="2000" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#ImageCarousel" data-slide-to="0" class="active"></li>
             <li data-target="#ImageCarousel" data-slide-to="1"></li>
             <li data-target="#ImageCarousel" data-slide-to="2"></li>
         </ol>
-        <div class="carousel-inner" style="height: 442px;">
+        <div class="carousel-inner">
             <div class="item active">
                 <img src="images/SocialTrading.jpg" class="img-responsive" alt="First-Slider" style="width:1500px;">
             </div>
-            <div class="carousel-caption">
-                <h3>MY SiteName</h3>
-                <p>Make Money Everywhere</p>
-            </div>
             <div class="item ">
                 <img src="images/banner.jpg" class="img-responsive" alt="First-Slider" style="width:1500px;">
-                <div class="carousel-caption">
-                    <h3>MY SiteName</h3>
-                    <p>Make Money Everywhere</p>
-                </div>
             </div>
             <div class="item ">
                 <img src="images/trading.jpeg" class="img-responsive" alt="First-Slider" style="width:1500px;">
-                <div class="carousel-caption">
-                    <h3>MY SiteName</h3>
-                    <p>Make Money Everywhere</p>
-                </div>
             </div>
             <a href="#ImageCarousel" class="carousel-control left" data-slide="prev">
                 <span class="glyphicon glyphicon-chevron-left"style="color:yellow;"></span>
@@ -97,9 +85,9 @@
             <div class="col-lg-3">
                 <div class="w3-card-4 text-center w3-hover-shadow">
                     <img src="images/teach.jpg" alt="Norway" class="card-image img-responsive" height="170px" width="360px">
-                    <h4 class="card-title" style="font-size: large;">TRAINING EDUCATION</h4>
+                    <h4 class="card-title" style="font-size: large;">MATRIX PLAN</h4>
                     <div class="w3-container w3-center" style="margin-top: 10px">
-                        <p class="card-text card-body">At C.T.M, we offer the best trading education to our academy's students instruction on the market.
+                        <p class="card-text card-body">At C.T.M, we offer the best matrix plan to our members with an awesome referral commission.
                             </p>
                         <br/>
                     </div>
@@ -108,32 +96,7 @@
         </div>
     </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="w3-card-4">
-                    <h4 class="card-title text-center" style="font-size: large; padding-top:20px;color:green;;font-family:cursive;">HOW IT WORKS</h4>
-                    <div class="w3-container w3-center" style="margin-top: 10px">
-                        <div class="col-lg-12">
-                            <h5 class="header pull-left">MONEY BACK GUARANTEE PROGRAM</h5>
-                        </div>
-                        <br/>
-                        <br/>
-                        <p class="card-text card-body text-left text-justify">
-                            Crypto trading matrix(CTM) is an online company platorm available worldwide. We offer our members competitive 4 Free Tools operates on a membership basis. Created by network marketers and crypto traders,first online program that conserve network marketing(matrix) and crypto trading(free training on crypto trading, free crypto signals and crypto lending) , CTM meets every criteria of our industry and has an innovative approach in its pricing and compensation plan which doubles as an income stream within a month. Through our matrix plan,or  trading training,or crypto signals,or crypto lending investment , our members can earn 100% profit in any of our 4 tools services such as: matrix bonus(1btc) from the compensation plan with universal link,  commissions on their referrals upgrades when any members use his referral link to invite members, free crypto trading training by learning how to trade and become a pro trader, free crypto signal and crypto trading investment by clicking to trade now in your dashboard then deposit any amount from CTM10,000 = $15 = 0.002btc and earn up to 1.66% daily(50% monthly). The entry fees are paid (voluntarily) by our members for all tools at low fee .  All payments are exclusively used to pay our members back in the matrix plan and we provide the remaining 3 tools service at free of fund and risk .
-                        </p>
-                        <p class="card-text card-body text-left text-justify">
-                            The matrix compensation plan works on a 3x3 company forced matrix structure. the crypto trading training work on a free crypto coach tutorial on whatsapp, telegram and facebook with live education, the crypto signals work by receiving 1-3 signal daily. Read our FAQ for more information about referral commission, referral bonus and leadership bonus both matrix and trading
-                        </p>
-                        <p class="card-text card-body text-left text-justify">
-                            it is rare to work with us without earn from any of our 4 tools services, we had never encounter or meet such kind of problem since we are working  on the crypto market since 3 years ago that is why we promise and guarantee a 100% money back with refund policy.
-                        </p>
-                        <br/>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <!--// brief information about us ends here-->
     <!--<section id="middle" class="jumbotron" style="background-color:white;" >
         <div class="container">
