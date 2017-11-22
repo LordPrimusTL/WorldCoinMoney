@@ -205,7 +205,7 @@ class UserController extends Controller
 
         if($request->amount < 10000)
         {
-            Session::flash('error','The Minimum Amount For Trading WCM10,000.00');
+            Session::flash('error','The Minimum Amount For Trading CTM10,000.00');
             return redirect()->back();
         }
         if($request->duration < 1)

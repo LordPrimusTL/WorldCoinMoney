@@ -242,6 +242,9 @@ a.w3_agile_vimeo:hover{
     text-transform: uppercase;
     font-weight: 600;
 }
+.navbar-default .navbar-nav > li > a:hover{
+    color: white;
+}
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
     color:white;
     background: green;
@@ -251,7 +254,7 @@ a.w3_agile_vimeo:hover{
     background: none;
 }
 .navbar-default .navbar-nav > li > a:hover{
-    color:green;
+    color:white;
 }
 .navbar-nav {
     margin: 0.5em 0 0;
@@ -265,7 +268,6 @@ a.w3_agile_vimeo:hover{
 }
 .agile_short_dropdown li a {
     text-transform: uppercase;
-    color: #212121;
     font-size: 13px;
     font-weight: 600;
     padding: .8em 0;
@@ -277,7 +279,6 @@ a.w3_agile_vimeo:hover{
     text-decoration: none;
     background:yellow;
     border:2px solid green;
-    color:green;
 }
 .w3_agileits_search_form{
 	float: right;
@@ -360,6 +361,15 @@ a.w3_agile_vimeo:hover{
   -webkit-transition: 0.1s;
   -webkit-transition-delay: 0.3s;
   transition: 0.1s 0.3s;
+}
+
+@media screen and (max-width: 991px) and (min-width: 768px)  {
+    #col-hack {
+        height: 270px;
+    }
+    #col-hack div.panel {
+        height: 93%;
+    }
 }
 .w3_agile_nav a::after {
   width: 2px;

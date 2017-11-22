@@ -2,16 +2,15 @@
 @section('body')
     <div class="container-fluid jumbotron" style="background-color: white;">
         <p class="well-sm lead">
-        <h3 class="text-center" style="color:green;">Before you proceed,hear this;</h3>
+        <h4 class="container-fluid text-center" style="margin-top:5px;margin-bottom:10px;font-size:29px;color:greenyellow">TRADING</h4>
         <p class="well-sm container">
             <b style="color:green;">NOTE:</b>
-            Trading Amount starts from WCM10,000.
+            Trading Amount starts from CTM10,000.
             Please note that you wont be able to withdraw your profit until the end of the Duration. Although you will be able to withdraw
             your referral bonuses.
         </p>
     </div>
     <!--// brief information about us ends here-->
-    <h4 class="container-fluid text-center" style="margin-top:5px;margin-bottom:10px;font-size:29px;color:greenyellow">TRADING PAGE</h4>
     <div class="container-fluid" style="margin-top:60px;">
         <form action="{{route('user_invest_post')}}" method="post" id="Regform">
             {{csrf_field()}}
@@ -33,7 +32,7 @@
                     <div class="col-md-12">
                         <label for="duration">Duration of Trading(Months): </label>
                         <div class="input-group form-group col-md-12">
-                            <input type="number" min="1"  name="duration" id="duration" required class="form-control input input-lg"  placeholder="Duration Of Investment(Month)"/>
+                            <input type="number" min="1"  name="duration" id="duration" required class="form-control input input-lg"  placeholder="Duration Of Trading(Month)"/>
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -90,7 +89,7 @@
                             <td>{{$in->amount}}</td>
                             <td>{{$in->duration}}</td>
                             <td>{{$in->irate}}</td>
-                            <td>{{ $in->start_date == null ? 'N/A' : \Carbon\Carbon::parse($in->start_date)}}</td>
+                            <td>{{$in->start_date == null ? 'N/A' : \Carbon\Carbon::parse($in->start_date)}}</td>
                             <td>{{$in->status->name}}</td>
                         </tr>
                     @endforeach

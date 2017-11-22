@@ -7,11 +7,11 @@
         <div class="w3ls_footer_grid">
             <div class="col-md-4 w3ls_footer_grid_left">
                 <div class="w3ls_footer_grid_leftl">
-                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
                 </div>
                 <div class="w3ls_footer_grid_leftr">
-                    <h4>Location</h4>
-                    <p>Oba Afunbiowo Estate,Alagbaka Ondo State Akure.</p>
+                    <h4>Email</h4>
+                    <a href="mailto:info@example.com">info@.......</a>
                 </div>
                 <div class="clearfix"> </div>
             </div>
@@ -21,17 +21,17 @@
                 </div>
                 <div class="w3ls_footer_grid_leftr">
                     <h4>Email</h4>
-                    <a href="mailto:info@example.com">info@worldcoinsmoney.com</a>
+                    <a href="mailto:info@example.com">support@.....</a>
                 </div>
                 <div class="clearfix"> </div>
             </div>
             <div class="col-md-4 w3ls_footer_grid_left">
                 <div class="w3ls_footer_grid_leftl">
-                    <i class="fa fa-phone" aria-hidden="true"></i>
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
                 </div>
                 <div class="w3ls_footer_grid_leftr">
-                    <h4>Call Us</h4>
-                    <p>(+234) 070 3009 3343</p>
+                    <h4>Email</h4>
+                    <a href="mailto:info@example.com">admin@.....</a>
                 </div>
                 <div class="clearfix"> </div>
             </div>
@@ -39,7 +39,7 @@
         </div>
     </div>
     <div class="w3l_footer_pos">
-        <p>© 2017 World Coin Money. All Rights Reserved</p>
+        <p>© 2017 Crypto Trading Matrix. All Rights Reserved</p>
         <div class="w3ls_newsletter_social">
             <ul class="agileits_social_list">
                 <li><a href="#" class="w3_agile_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>

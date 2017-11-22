@@ -72,4 +72,14 @@ class UtilityController extends Controller
         }
         return redirect()->back();
     }
+
+    public function HTW()
+    {
+        return view('Utility.htw',['title' => 'How It Works']);
+    }
+
+    public function TOS()
+    {
+        return view('Utility.tandc',['title' => 'Terms Of Service']);
+    }
 }

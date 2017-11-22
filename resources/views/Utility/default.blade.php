@@ -72,9 +72,7 @@
                     <img src="images/live.jpg" alt="Norway" class="card-image img-responsive">
                     <h4 class="card-title" style="font-size: large;">SIGNAL LIVE</h4>
                     <div class="w3-container w3-center" style="margin-top: 10px">
-                        <p class="card-text card-body">Regardless of whether you are resting,celebrating,working,
-                            your email address will automatically get SIGNAL from the
-                            organization</p>
+                        <p class="card-text card-body">Regardless of whether you are resting,celebrating,working, you will automatically get SIGNAL from the organization</p>
                     </div>
                 </div>
             </div><div class="col-lg-3">
@@ -82,8 +80,7 @@
                     <img src="images/meeting.jpg" alt="Norway" class="card-image img-responsive" height="170px" width="360px">
                     <h4 class="card-title" style="font-size: large;">LIVE TRAINING</h4>
                     <div class="w3-container w3-center" style="margin-top: 10px">
-                        <p class="card-text card-body">There are webinars and seminars room where many scenario ace dealers who are making millions in
-                            the business sectors...</a>
+                        <p class="card-text card-body">There are webinars and seminars room where many scenario ace dealers  in the business sectors will give live online training</a>
                         </p>
                     </div>
                 </div>
@@ -91,29 +88,54 @@
             <div class="col-lg-3">
                 <div class="w3-card-4 text-center w3-hover-shadow">
                     <img src="images/signal.jpg" alt="Norway" class="card-image img-responsive" height="170px" width="360px">
-                    <h4 class="card-title" style="font-size: large;">AUTOMATIC TRADING</h4>
+                    <h4 class="card-title" style="font-size: large;">TRADING INVESTMENT</h4>
                     <div class="w3-container w3-center" style="margin-top: 10px">
-                        <p class="card-text card-body">At W.C.M,we offer an Automated trading platforms that enable traders to invest money and wait for some
-                            percentage profit monthly.</p>
+                        <p class="card-text card-body">At CTM ,we offer an Automated trading platforms that enable traders to invest money and wait for some percentage profit monthly.</p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="w3-card-4 text-center w3-hover-shadow">
                     <img src="images/teach.jpg" alt="Norway" class="card-image img-responsive" height="170px" width="360px">
-                    <h4 class="card-title" style="font-size: large;">TRADING EDUCATION</h4>
+                    <h4 class="card-title" style="font-size: large;">TRAINING EDUCATION</h4>
                     <div class="w3-container w3-center" style="margin-top: 10px">
-                        <p class="card-text card-body">At W.C.M,we offer the best trading education to our academy's students instruction on the market.
-                            When you turn into a specialist...</p>
+                        <p class="card-text card-body">At C.T.M, we offer the best trading education to our academy's students instruction on the market.
+                            </p>
+                        <br/>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="w3-card-4">
+                    <h4 class="card-title text-center" style="font-size: large; padding-top:20px;color:green;;font-family:cursive;">HOW IT WORKS</h4>
+                    <div class="w3-container w3-center" style="margin-top: 10px">
+                        <div class="col-lg-12">
+                            <h5 class="header pull-left">MONEY BACK GUARANTEE PROGRAM</h5>
+                        </div>
+                        <br/>
+                        <br/>
+                        <p class="card-text card-body text-left text-justify">
+                            Crypto trading matrix(CTM) is an online company platorm available worldwide. We offer our members competitive 4 Free Tools operates on a membership basis. Created by network marketers and crypto traders,first online program that conserve network marketing(matrix) and crypto trading(free training on crypto trading, free crypto signals and crypto lending) , CTM meets every criteria of our industry and has an innovative approach in its pricing and compensation plan which doubles as an income stream within a month. Through our matrix plan,or  trading training,or crypto signals,or crypto lending investment , our members can earn 100% profit in any of our 4 tools services such as: matrix bonus(1btc) from the compensation plan with universal link,  commissions on their referrals upgrades when any members use his referral link to invite members, free crypto trading training by learning how to trade and become a pro trader, free crypto signal and crypto trading investment by clicking to trade now in your dashboard then deposit any amount from CTM10,000 = $15 = 0.002btc and earn up to 1.66% daily(50% monthly). The entry fees are paid (voluntarily) by our members for all tools at low fee .  All payments are exclusively used to pay our members back in the matrix plan and we provide the remaining 3 tools service at free of fund and risk .
+                        </p>
+                        <p class="card-text card-body text-left text-justify">
+                            The matrix compensation plan works on a 3x3 company forced matrix structure. the crypto trading training work on a free crypto coach tutorial on whatsapp, telegram and facebook with live education, the crypto signals work by receiving 1-3 signal daily. Read our FAQ for more information about referral commission, referral bonus and leadership bonus both matrix and trading
+                        </p>
+                        <p class="card-text card-body text-left text-justify">
+                            it is rare to work with us without earn from any of our 4 tools services, we had never encounter or meet such kind of problem since we are working  on the crypto market since 3 years ago that is why we promise and guarantee a 100% money back with refund policy.
+                        </p>
+                        <br/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!--// brief information about us ends here-->
-    </section>
-    <section id="middle" class="jumbotron" style="background-color:white;" >
+    <!--<section id="middle" class="jumbotron" style="background-color:white;" >
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
@@ -264,5 +286,5 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
 @endsection

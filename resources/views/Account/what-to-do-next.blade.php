@@ -15,9 +15,9 @@
                     <ul class="list-group">
                         <li class="list-group-item">Kindly Check Your Email For Your Chosen Payment Type Details either <i class="fa fa-bitcoin"></i> <strong>Bitcoin or</strong> <i class="fa fa-money"></i> <strong>Bank Transfer</strong>. Check Below For  School Fees Amount:</li>
                         <?php $pay = \App\Utility::all();?>
-                        <li class="list-group-item">{{$pay[1]->name . ' : WCM ' . $pay[1]->value}}</li>
-                        <li class="list-group-item">{{$pay[2]->name . ' : WCM ' . $pay[2]->value}}</li>
-                        <li class="list-group-item">{{$pay[3]->name . ' : WCM ' . $pay[3]->value}}</li>
+                        <li class="list-group-item">{{$pay[1]->name . ' : CTM ' . $pay[1]->value}}</li>
+                        <li class="list-group-item">{{$pay[2]->name . ' : CTM ' . $pay[2]->value}}</li>
+                        <li class="list-group-item">{{$pay[3]->name . ' : CTM ' . $pay[3]->value}}</li>
                         <li class="list-group-item"><h4>AFTER PAYMENT: </h4></li>
                         <li class="list-group-item">For Bitcoin <i class="fa fa-bitcoin"></i>: Please Click Here To Upload Your POP and HASH ID. <a href="{{route('EOP',['token' =>encrypt(1)])}}" class="btn btn-primary" data-toggle="tooltip" title="click me to upload"><i class="fa fa-upload"></i> Upload </a> </li>
                         <li class="list-group-item">For Bank Transfer <i class="fa fa-money"></i>: Please Click Here To Upload Your Evidence Of Payment(Deposit Slip, Bank Transaction Alert e.t.c).  <a href="{{route('EOP',['token' =>encrypt(2)])}}" class="btn btn-info" data-toggle="tooltip" title="click me to upload"><i class="fa fa-upload"></i> Upload </a> </li>

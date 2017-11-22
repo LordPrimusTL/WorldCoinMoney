@@ -6,8 +6,8 @@
             <table class="table table-responsive table-striped table-success">
                 <thead>
                 <th>S/N</th>
-                <th>Trade Account(WCM)</th>
-                <th>Referral Account(WCM)</th>
+                <th>Trade Account(CTM)</th>
+                <th>Referral Account(CTM)</th>
                 <th>Updated</th>
                 </thead>
                 <tbody>

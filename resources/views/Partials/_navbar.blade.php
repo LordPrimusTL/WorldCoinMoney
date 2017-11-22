@@ -6,7 +6,7 @@
 <div class="header" style="background-color:yellow;">
     <div class="container">
         <div class="w3_agile_logo">
-            <h1><a href="@if(Auth::check()) @if(Auth::user()->role_id == 3) {{route('user_dashboard')}} @elseif(Auth::user()->role_id < 3) {{route('home')}} @else {{route('home')}} @endif @endif"><img src="{{asset('images/logoball.jpg')}}" class="img img-circle" style="width:50px;height:50px;font-size:2em;"/> <span style="color: green;">W</span>ORLD COIN CRYPTO-CURRENCY TRADING</a></h1>
+            <h1><a href="@if(Auth::check()) @if(Auth::user()->role_id == 3) {{route('user_dashboard')}} @elseif(Auth::user()->role_id < 3) {{route('home')}} @else {{route('home')}} @endif @endif"><img src="{{asset('images/logoball.jpg')}}" class="img img-circle" style="width:50px;height:50px;font-size:2em;"/> <span style="color: green;">C</span>RYPTO TRADING MATRIX</a></h1>
         </div>
         <div class="agile_header_social">
             <ul class="agileits_social_list">
@@ -41,17 +41,6 @@
                             <li class="{{Request::is('user/transactions') ? 'active' : ''}}"><a href="{{route('user_transaction')}}"><span>Transactions</span></a></li>
                             <li class="{{Request::is('user/account/*') ? 'active' : ''}}"><a href="{{route('user_account')}}"><span>Account</span></a></li>
                             <li class="{{Request::is('logout') ? 'active' : ''}}"><a href="{{route('logout')}}"><span>Log Out</span></a></li>
-                        @elseif(\App\Helpers\AuthCheck::AuthAdminCheck())
-                            <li class="{{Request::is('/') ? 'active' : ''}}"><a href=""><span>Home</span></a></li>
-                            <li><a href="{{route('about')}}"><span>About Us</span></a></li>
-                            <li class="dropdown {{Request::is('register') || Request::is('login') ? 'active' : ''}}">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span data-hover="Short Codes">Accounts</span> <b class="caret"></b></a>
-                                <ul class="dropdown-menu agile_short_dropdown">
-                                    <li><a href="{{route('register')}}">Register</a></li>
-                                    <li><a href="{{route('login')}}">Login</a></li>
-                                </ul>
-                            </li>
-                            <li class="{{Request::is('contact') ? 'active' : ''}}"><a href="{{route('contact')}}"><span>Contact Us</span></a></li>
                         @else
                             <li class="{{Request::is('/') ? 'active' : ''}}"><a href="@if(Auth::check()) @if(Auth::user()->role_id == 3) {{route('user_dashboard')}} @elseif(Auth::user()->role_id < 3) {{route('home')}} @else {{route('home')}} @endif @else {{route('home')}} @endif"><span>Home</span></a></li>
                             <li class="{{Request::is('about') ? 'active' : ''}}"><a href="{{route('about')}}"><span>About Us</span></a></li>
@@ -63,9 +52,11 @@
                                 </ul>
                             </li>
                             <li class="{{Request::is('contact') ? 'active' : ''}}"><a href="{{route('contact')}}"><span>Contact Us</span></a></li>
+                            <li class="{{Request::is('how-it-works') ? 'active' : ''}}"><a href="{{route('htw')}}"><span>How It Works</span></a></li>
+                            <li class="{{Request::is('term-of-service') ? 'active' : ''}}"><a href="{{route('tos')}}"><span>Term Of Service </span></a></li>
                         @endif
                     </ul>
-                    <<!--div class="w3_agileits_search_form">
+                    <!--div class="w3_agileits_search_form">
                         <form action="#" method="post">
                             <input type="search" name="Search" placeholder="Search" required="">
                             <button class="btn btn-default btn-lg"><i class="fa fa-search"></i></button>

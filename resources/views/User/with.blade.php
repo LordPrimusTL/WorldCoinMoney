@@ -2,30 +2,16 @@
 @section('body')
     <div class="container-fluid jumbotron" style="background-color: white;">
         <p class="well-sm lead">
-        <h3 class="text-center" style="color:green;">Before you proceed,hear this;</h3>
-        <hr/>
         <div class="row">
             <div class="col-lg-3">
 
-            </div>
-            <div class="col-lg-6">
-                <br/>
-                <br/>
-                <b style="color:green;">NOTE:</b>
-                <ul class="list-group">
-                    <li class="list-group-item">* The Minimum Withdrawal os WCM10,000.00</li>
-                    <li class="list-group-item">* You Must Have Three Active Active Referrals(Bronze Class)</li>
-                    <li class="list-group-item">* To Withdraw Any Of Your Trade Capital, It Must Have Used Three(3) Months</li>
-                    <li class="list-group-item">* 10% of The Withdrawal Amount Will Be Deducted And The 90% Will Be Processed If The Requirements Aren't Met. </li>
-                </ul>
             </div>
         </div>
     </div>
     <!--// brief information about us ends here-->
 
     <div class="container" style="margin-top:30px;">
-        <hr/>
-        <h4 class="container-fluid text-center" style="margin-top:5px;margin-bottom:10px;font-size:29px;color:greenyellow">WITHDRAWAL PAGE</h4>
+        <h4 class="container-fluid text-center" style="margin-top:5px;margin-bottom:10px;font-size:29px;color:greenyellow">WITHDRAWALS</h4>
         <hr/>
         @include('Partials._message')
         <h4>Withdraw From Transactions: </h4>
@@ -35,7 +21,7 @@
             <th>S/N</th>
             <th>Date</th>
             <th>ID</th>
-            <th>AMOUNT(WCM)</th>
+            <th>AMOUNT(CTM)</th>
             <th>Description</th>
             <th>Action</th>
             </thead>
@@ -80,7 +66,7 @@
                     <th>Withdrawal ID</th>
                     <th>Transaction ID</th>
                     <th>Description</th>
-                    <th>AMOUNT(WCM)</th>
+                    <th>AMOUNT(CTM)</th>
                     <th>STATUS</th>
                     </thead>
                     <tbody>
