@@ -13,10 +13,36 @@
     <link rel="stylesheet" href="{{asset('css/admin/style.default.css')}}" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="{{asset('css/admin/custom.css')}}">
-    <script src="{{asset('js/admin/jquery-1.11.1.min.js')}}"></script>
+    <script src="{{asset('js/jquery-1.11.1.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('js/front.js')}}"></script>
     <script>$(document).ready(function () {
             $('[data-toggle = "tooltip"]').tooltip();
         })</script>
+
+    <script>
+        $('#toggle-btn').on('click', function (e) {
+            e.preventDefault();
+            $(this).toggleClass('active');
+
+            $('.side-navbar').toggleClass('shrinked');
+            $('.content-inner').toggleClass('active');
+
+            if ($(window).outerWidth() > 1183) {
+                if ($('#toggle-btn').hasClass('active')) {
+                    $('.navbar-header .brand-small').hide();
+                    $('.navbar-header .brand-big').show();
+                } else {
+                    $('.navbar-header .brand-small').show();
+                    $('.navbar-header .brand-big').hide();
+                }
+            }
+
+            if ($(window).outerWidth() < 1183) {
+                $('.navbar-header .brand-small').show();
+            }
+        });
+    </script>
 </head>
 <body style="background-color: white!important; font-family: 'Andale Mono'!important;">
     <div class="page charts-page" style="background-color: white!important;">
@@ -26,6 +52,8 @@
             @yield('body')
         </div>
     </div>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('js/front.js')}}"></script>
 </body>
 </html>
 

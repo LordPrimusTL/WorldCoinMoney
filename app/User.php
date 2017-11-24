@@ -148,7 +148,7 @@ class User extends Authenticatable
             {
                 if($referred->referrer_id != null) {
                     $user = User::find($referred->referrer_id);
-                    $transaction = new transaction();
+                    $transaction = new Transaction();
                     $transaction->t_id = Transaction::GenerateTID();
                     $transaction->user_id = $referred->referrer_id;
                     if($user->acc_id == 1)

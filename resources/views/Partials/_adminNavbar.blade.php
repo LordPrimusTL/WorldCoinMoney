@@ -9,7 +9,28 @@
                         <div class="brand-text brand-big hidden-lg-down"><span>Admin </span><strong>Dashboard</strong></div>
                         <div class="brand-text brand-small"><strong>BD</strong></div>
                     </a>
-                    <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
+                    <!-- Toggle Button--><a id="toggle-btn" onclick="function sidebarCall() {
+                                                                        //e.preventDefault();
+                                                                        $(this).toggleClass('active');
+
+                                                                        $('.side-navbar').toggleClass('shrinked');
+                                                                        $('.content-inner').toggleClass('active');
+
+                                                                        if ($(window).outerWidth() > 1183) {
+                                                                            if ($('#toggle-btn').hasClass('active')) {
+                                                                                $('.navbar-header .brand-small').hide();
+                                                                                $('.navbar-header .brand-big').show();
+                                                                            } else {
+                                                                                $('.navbar-header .brand-small').show();
+                                                                                $('.navbar-header .brand-big').hide();
+                                                                            }
+                                                                        }
+
+                                                                        if ($(window).outerWidth() < 1183) {
+                                                                            $('.navbar-header .brand-small').show();
+                                                                        }
+                                                                        }
+                            sidebarCall();" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
                 </div>
                 <!-- Navbar Menu -->
                 <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">

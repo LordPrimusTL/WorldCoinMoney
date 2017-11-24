@@ -18,8 +18,8 @@ use Illuminate\Support\Facades\Log;
 class Mailerr
 {
     protected $mailer;
-    protected $fromAddress = 'info@worldcoinsmoney.com';
-    protected $fromName = 'WORLD COIN CRYPTO-CURRENCY TRADING(Do - Not - Reply)';
+    protected $fromAddress = 'info@cryptotradingmatrix.com';
+    protected $fromName = 'CRYPTO-TRADING MATRIX(Do-Not-Reply)';
     protected $to;
     protected $subject;
     protected $view;
@@ -38,7 +38,7 @@ class Mailerr
     public function activateUser($user)
     {
         $this->to = $user->email;
-        $this->subject = "Activate Your WorldCoin Account Account";
+        $this->subject = "Activate Your Crypto Trading Matrix Account";
         $this->view = 'User.Email.activate';
         $this->data = compact('user');
         return $this->deliver();
@@ -64,7 +64,7 @@ class Mailerr
     public function payment($email, $name, $paytype)
     {
         $this->to = $email;
-        $this->subject = "Activate Your World Coin Account";
+        $this->subject = "Activate Your Your Crypto Trading Matrix Account";
         $this->view = 'Email.payment';
         if($paytype == 1)
         {
@@ -162,7 +162,7 @@ class Mailerr
     }
 
     public function visitor($name, $email, $sub, $msg){
-        $this->to = 'info@worldcoinsmoney.com';
+        $this->to = 'support@cryptotradingmatrix.com';
         $this->subject = $sub;
         $this->view = 'Email.visitor';
         $this->data = compact('name','email','msg');
