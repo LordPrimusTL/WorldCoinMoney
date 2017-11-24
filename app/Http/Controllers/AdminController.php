@@ -153,6 +153,7 @@ class AdminController extends Controller
        // $user->phone_number = 'empty';
         $user->role_id = 2;
         $user->is_active = true;
+        $user->activated = true;
         try{
             $user->save();
             Session::flash('success','Administrator Added Successfully');

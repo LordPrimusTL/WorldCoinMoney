@@ -4,6 +4,6 @@
     <title>World Coin Crypto-Currency</title>
 </head>
 <body>
-You have a new {{$msg}}.Please tend to it quickly.
+You have a new {{$msg}}. Please tend to it quickly.
 </body>
 </html>

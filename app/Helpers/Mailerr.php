@@ -19,12 +19,19 @@ class Mailerr
 {
     protected $mailer;
     protected $fromAddress = 'info@cryptotradingmatrix.com';
-    protected $fromName = 'CRYPTO-TRADING MATRIX(Do-Not-Reply)';
+    protected $fromName = 'CRYPTO-TRADING MATRIX';
     protected $to;
     protected $subject;
     protected $view;
     protected $data = [];
-    protected $admin = ["michealakinwonmi@gmail.com","hayroyalconsult@gmail.com","darolloladejo@gmail.com","michealakinwonmi@outlook.com"];
+    protected $admin = [
+        "michealakinwonmi@gmail.com",
+        "hayroyalconsult@gmail.com",
+        "darolloladejo@gmail.com",
+        "Okesulaiman1@gmail.com",
+        "info@cryptotradingmatrix.com",
+        "support@cryptotradingmatrix.com",
+        "admin@cryptotradingmatrix.com"];
 
     private function Logger()
     {
