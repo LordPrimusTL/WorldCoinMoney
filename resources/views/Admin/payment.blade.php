@@ -17,7 +17,7 @@
                 <tbody>
                 <?php $i = 1?>
                 @foreach($sf as $u)
-                    <tr class="alert alert-@if($u->resolved == 0) success @else warning @endif">
+                    <tr class="alert alert- @if($u->resolved) success @else warning @endif">
                         <td>{{\Carbon\Carbon::parse($u->created_at)}}</td>
                         <td>{{$u->pay_type == 1 ? 'Bitcoin' : 'Bank Trans.'}}</td>
                         <td>{{$u->for}}</td>

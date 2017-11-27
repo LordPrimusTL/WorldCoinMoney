@@ -71,7 +71,7 @@ class Mailerr
     public function payment($email, $name, $paytype)
     {
         $this->to = $email;
-        $this->subject = "Activate Your Your Crypto Trading Matrix Account";
+        $this->subject = "Activate Your Your Crypto-Trading Matrix Account";
         $this->view = 'Email.payment';
         if($paytype == 1)
         {

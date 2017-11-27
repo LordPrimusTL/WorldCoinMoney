@@ -306,6 +306,7 @@ class UserController extends Controller
                         $fl->save();
                         $n->pop = $imagename;
                         $n->save();
+                        $mailerr->notify("Payment Request");
                         Log::info('File Entry And Trade Fees Evidence Saved.',['School' => $n,'FileEntry' => $fl]);
                         Session::flash('success','File Submitted Successfully. We Will Get Back To You Shortly');
                     }

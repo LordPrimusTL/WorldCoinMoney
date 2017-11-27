@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\ValidationException;
 use PhpParser\Node\Stmt\Return_;
 
 class AccountController extends Controller
@@ -93,12 +94,8 @@ class AccountController extends Controller
             if($u->save())
             {
                 Log::info('Account Created',['user' => $u]);
-                //$s = new AppMailer();
-                if($u->payment_id == 2)
-                {
-                    $mailer->payment($u->email, explode(' ',$u->fullname)[0], 1, $request->pay_type);
-                    $mailer->notify("User Request");
-                }
+                $mailer->payment($u->email, explode(' ',$u->fullname)[0], $u->payment_id, $request->pay_type);
+                $mailer->notify("User Request ");
                 Session::flash('success','An Activation Email Has Been Sent To The Email  Address You Provided.');
                 return redirect()->action('AccountController@WTDN');
             }
@@ -267,12 +264,13 @@ class AccountController extends Controller
             return redirect()->back();
         }
     }
-    public function EOPP($token, Request $request)
+    public function EOPP($token, Request $request, Mailerr $mailerr)
     {
         try{
             if(decrypt($token) == 1)
             {
                 $this->validate($request,[
+                    'email' => 'required|exists:users,email',
                     'pop' => 'required|image',
                     'hash' => 'required',
                 ]);
@@ -286,7 +284,7 @@ class AccountController extends Controller
                     $fl = new FileEntry();
                     $file = $request->file('pop');
                     $imagename = $n->email .'-'.Carbon::now()->timestamp . '.' . $file->getClientOriginalExtension();
-                    Storage::disk('uploads')->put( $imagename,  File::get($file));
+                    Storage::disk('uploads')->put($imagename,  File::get($file));
                     $fl->mime = $file->getClientMimeType();
                     $fl->original_filename = $file->getClientOriginalName();
                     $fl->filename = $imagename;
@@ -295,6 +293,7 @@ class AccountController extends Controller
                         $fl->save();
                         $n->pop = $imagename;
                         $n->save();
+                        $mailerr->notify("payment request. ");
                         Log::info('File Entry And Schholfess Evidence Saved.',['School' => $n,'FileEntry' => $fl]);
                         Session::flash('success','File Submitted Successfully. We Will Get Back To You Shortly');
                     }
@@ -309,17 +308,18 @@ class AccountController extends Controller
                 }
             }
 
-            if(decrypt($token) == 2)
-            {
+            if(decrypt($token) == 2) {
                 $this->validate($request,[
-                    'email' => 'required',
+                    'email' => 'required|exists:users,email',
                     'teller' => 'required',
-                ]);
+                ],['email.exists' => 'This Email does not exist. Please Try Registering again']);
+
                 if($request->hasFile('teller'))
                 {
                     $n = new SchoolFees();
                     $n->email = $request->email;
                     $n->pay_type = decrypt($token);
+                    $n->for = "School Fees";
                     $fl = new FileEntry();
                     $file = $request->file('teller');
                     $imagename = $n->email .'-'.Carbon::now()->timestamp . '.' . $file->getClientOriginalExtension();
@@ -332,6 +332,7 @@ class AccountController extends Controller
                         $fl->save();
                         $n->teller = $imagename;
                         $n->save();
+                        $mailerr->notify("payment request. ");
                         Log::info('File Entry And Schholfess Evidence Saved.',['School' => $n,'FileEntry' => $fl]);
                         Session::flash('success','File Submitted Successfully. We Will Get Back To You Shortly');
                     }
@@ -349,17 +350,15 @@ class AccountController extends Controller
         }
         catch (\Exception $ex)
         {
-            Session::flash('error','An Error Occured. Please Try Again');
-            ////dd($ex);
-            $this->getLogger()->LogError('An Error Occurred When Opening This Page', $ex, null);
+            if($ex instanceof ValidationException){
+                Session::flash('error','Email Address Can Not Be Found');
+            }
+            else{
+                Session::flash('error','An Error Occured. Please Try Again');
+                $this->getLogger()->LogError('An Error Occurred When Opening This Page', $ex, null);
+            }
+            return redirect()->back();
         }
-    }
-
-
-    public function mailTest()
-    {
-        $s  = new AppMailer();
-        $s->btcmail('micheal@prime.com');
     }
 
 }
