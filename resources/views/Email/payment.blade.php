@@ -10,9 +10,9 @@
     <p>Please find below the bank account details you will be making a deposit/transfer to for your entry Fees payment.</p>
     <p> Kindly <a href="{{route('WTDN')}}">Click Here</a> to read instructions on what to do Next. </p>
     <p><h2>Bank Details</h2></p>
-    <p>Bank Name: EcoBank</p>
-    <p>Account Name: World Coin</p>
-    <p>Account Number: 0123456789</p>
+    <p>Bank Name: Diamond Bank</p>
+    <p>Account Name: Joseph Joshua Oluwaseun</p>
+    <p>Account Number: 0036366294</p>
     <p>Kindly use the bank details for payment and upload an image of any evidence of payment in the <a href="{{route('WTDN')}}">What To Do Next Page.</a></p>
     <p>Kindly Send A Mail To Us At info@cryptotradingmatrix.com for More Enquiry.</p>
     <p>Thank you</p>
