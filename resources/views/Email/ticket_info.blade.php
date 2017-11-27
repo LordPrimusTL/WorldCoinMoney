@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Support Ticket Information</title>
+    <title>Support Ticket Information : Crypto-Trading Matrix</title>
 </head>
 <body>
 <p>
