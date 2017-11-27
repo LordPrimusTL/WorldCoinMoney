@@ -21,7 +21,7 @@
                         <li class="list-group-item"><h4>AFTER PAYMENT: </h4></li>
                         <li class="list-group-item">For Bitcoin <i class="fa fa-bitcoin"></i>: Please Click Here To Upload Your POP and HASH ID. <a href="{{route('EOP',['token' =>encrypt(1)])}}" class="btn btn-primary" data-toggle="tooltip" title="click me to upload"><i class="fa fa-upload"></i> Upload </a> </li>
                         <li class="list-group-item">For Bank Transfer <i class="fa fa-money"></i>: Please Click Here To Upload Your Evidence Of Payment(Deposit Slip, Bank Transaction Alert e.t.c).  <a href="{{route('EOP',['token' =>encrypt(2)])}}" class="btn btn-info" data-toggle="tooltip" title="click me to upload"><i class="fa fa-upload"></i> Upload </a> </li>
-                        <li class="list-group-item">For More Information: <a href="#Twakto" class="btn btn-success" data-toggle="tooltip" title="click me to chat"> Click here to <i class="fa fa-comment"></i> </a> or send us a mail at info@worldcoinmoney.com. Thank You. </li>
+                        <li class="list-group-item">For More Information: <a href="#Twakto" class="btn btn-success" data-toggle="tooltip" title="click me to chat"> Click here to <i class="fa fa-comment"></i> </a> or send us a mail at <a href="mailto:info@cryptotradingmatrix.com" class="card-link">info@cryptotradingmatrix.com</a> . Thank You. </li>
                     </ul>
                 </div>
             </div>
