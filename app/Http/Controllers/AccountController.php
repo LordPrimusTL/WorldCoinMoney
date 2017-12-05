@@ -336,16 +336,12 @@ class AccountController extends Controller
                         Log::info('File Entry And Schholfess Evidence Saved.',['School' => $n,'FileEntry' => $fl]);
                         Session::flash('success','File Submitted Successfully. We Will Get Back To You Shortly');
                     }
-                    catch(\Exception $ex)
-                    {
-                        //dd($ex);
+                    catch(\Exception $ex) {
                         Session::flash('error','An Error Occurred. Please Try Again');
                         $this->getLogger()->LogError('Unable To Save File or School Fees',$ex,['School' => $n,'FileEntry' => $fl]);
                     }
                 }
             }
-
-
             return redirect()->back();
         }
         catch (\Exception $ex)
