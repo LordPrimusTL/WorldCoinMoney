@@ -19,7 +19,7 @@
 @endif
 
 @if($paytype==2)
-    <p>Please find below your BTC link for {{$for}} Payment. </p>
+    <p>Please find below your BTC link for entry fees Payment. </p>
     <p> Kindly <a href="{{route('WTDN')}}">Click Here</a> to read instructions on what to do Next. </p>
     <p>BTC Address: {{$btc->address}}</p>
     <p>Kindly use the BTC for payment and upload your pop and hash id in the Kindly <a href="{{route('WTDN')}}">What To Do Next Page.</a></p>

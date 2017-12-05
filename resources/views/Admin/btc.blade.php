@@ -36,8 +36,6 @@
                                     <th>S/N</th>
                                     <th>Date</th>
                                     <th>Address</th>
-                                    <th>Email</th>
-                                    <th>Status</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -47,9 +45,6 @@
                                         <td>{{$i++}}</td>
                                         <td>{{\Carbon\Carbon::parse($a->crated_at)->toDateString()}}</td>
                                         <td>{{$a->address}}</td>
-
-                                        <td><a href="{{$a->email == null ? '#' : route('admin_user_view',['id' => encrypt($a->user->id)])}}" class="btn btn-primary">{{$a->email == null ? 'Not Matched' : $a->email}}</a> </td>
-                                        <td>@if($a->status == 1) Used @else Not Used @endif</td>
                                     </tr>
                                 @endforeach
                                 </tbody>

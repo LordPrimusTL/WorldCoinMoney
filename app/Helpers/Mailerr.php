@@ -80,15 +80,12 @@ class Mailerr
         }
         elseif($paytype == 2)
         {
-            $btc = Btc::where(['status' => 0])->first();
-            if($btc != null)
-            {
+            $allbtc = count(Btc::all());
+            $btc = Btc::find(rand(1,$allbtc));
+            if($btc != null) {
                 //$data = ['email' => $email, 'name' => $name,'btc' =>  $btc];
                 $t = 1;
                 $this->data = compact('email','name','btc', 'paytype');
-                $btc->email = $email;
-                $btc->status = 1;
-                $btc->save();
                 $this->deliver();
             }
             else{
@@ -113,13 +110,11 @@ class Mailerr
         }
         elseif($paytype == 2)
         {
-            $btc = Btc::where(['status' => 0])->first();
+            $allbtc = count(Btc::all());
+            $btc = Btc::find(rand(1,$allbtc));
             if($btc != null)
             {
                 $this->data = compact('email','name','btc', 'paytype', 'id');
-                $btc->email = $email;
-                $btc->status = 1;
-                $btc->save();
                 $this->deliver();
             }
             else{
