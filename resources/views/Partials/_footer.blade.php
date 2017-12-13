@@ -1,4 +1,5 @@
 <div class="newsletter">
+
     <div class="container">
         <div class="w3layouts_header w3_agile_head">
             <p><span><i class="fa fa-envelope-o" aria-hidden="true" style="color:yellow;"></i></span></p>

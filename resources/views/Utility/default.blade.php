@@ -96,6 +96,42 @@
         </div>
     </div>
 
+    <!---Testimonial-->
+    <div id="testimonial4" class="carousel slide testimonial4_indicators testimonial4_control_button thumb_scroll_x swipe_x" data-ride="carousel" data-pause="hover" data-interval="5000" data-duration="2000">
+        <div class="testimonial4_header">
+            <h4>OUR TESTIMONIES SO FAR</h4>
+        </div>
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <div class="testimonial4_slide">
+                    <img src="images/meeting.jpg" class="img-circle img-responsive" />
+                    <p>Lorem ipsum dolor sit amet adipiscing elit am nibh unc varius facilisis eros ed erat in in velit quis arcu ornare laoreet urabitur.</p>
+                    <h4>Primus.M</h4>
+                </div>
+            </div>
+            <div class="item">
+                <div class="testimonial4_slide">
+                    <img src="images/member1.jpg" class="img-circle img-responsive" height="500" />
+                    <p>Lorem ipsum dolor sit amet adipiscing elit am nibh unc varius facilisis eros ed erat in in velit quis arcu ornare laoreet urabitur.</p>
+                    <h4>Oladapo,Oladejo</h4>
+                </div>
+            </div>
+            <div class="item">
+                <div class="testimonial4_slide">
+                    <img src="images/member2.jpg" class="img-circle img-responsive" width="340px" />
+                    <p>Lorem ipsum dolor sit amet adipiscing elit am nibh unc varius facilisis eros ed erat in in velit quis arcu ornare laoreet urabitur.</p>
+                    <h4>Ben Hanna</h4>
+                </div>
+            </div>
+        </div>
+        <a class="left carousel-control" href="#testimonial4" role="button" data-slide="prev">
+            <span class="fa fa-chevron-left" style="color: green;"></span>
+        </a>
+        <a class="right carousel-control" href="#testimonial4" role="button" data-slide="next">
+            <span class="fa fa-chevron-right" style="color: green;"></span>
+        </a>
+    </div>
+    <!--/Testimonial-->
 
     <!--// brief information about us ends here-->
     <!--<section id="middle" class="jumbotron" style="background-color:white;" >

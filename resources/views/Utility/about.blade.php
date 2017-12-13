@@ -116,6 +116,32 @@
                             </i>
                             No risk,it is free of risk with refund policy
                         </p>
+
+                        <p>
+                        <div class="container">
+                            <div class="w3layouts_header">
+                                <p><span><i class="fa fa-info-circle" aria-hidden="true"></i></span></p>
+                                <h5>Refund <span>Policy</span></h5>
+                            </div>
+                            <div class="w3layouts_skills_grids">
+                                <div class="col-lg-2"></div>
+                                <div class="col-md-8 agileinfo_about_left">
+                                    <p class="text-justify">The Company offers a one month, 100% Money Back, and Satisfaction Guarantee to all participants. The one month, 100% Money Back Guarantee, starts from the date of purchase the entry fee of $15 = CTM 10,000 = 5,000 naira, includes weekends, and only applies if the participant have no earning from any of  the general Package:</p>
+                                    <br/>
+                                    <ul class="list-group">
+                                        <li class="list-group-item"><i class="fa fa-hand-o-right"></i> Matrix Plan</li>
+                                        <li class="list-group-item"><i class="fa fa-hand-o-right"></i> One Month Free Crypto Trading Training</li>
+                                        <li class="list-group-item"><i class="fa fa-hand-o-right"></i> One Month Free Crypto Trading Signal</li>
+                                        <li class="list-group-item"><i class="fa fa-hand-o-right"></i> Crypto Trading Investment Package (Lending Package)</li>
+                                    </ul>
+                                    <p class="text-justify">
+                                        If a subscriber is dissatisfied with the all service for any reason, the subscriber may receive a refund within a month (30 days) of the subscriber's initial purchase, for a full refund of the purchased price. All other warranties and guarantees are disclaimed. After one month (30 days), your purchase will no longer be refundable. Please email us  or open ticket to cancel your account.
+                                    </p>
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <div class="col-lg-12 w3-card" style="margin: 20px;">
@@ -163,11 +189,6 @@
                             <li class="list-group-item">Trading Signal Subscription</li>
                             <li class="list-group-item">Trading Education and Training</li>
                             <li class="list-group-item">Trading Investment Subscription</li>
-                            <li class="list-group-item">Date of your pay day</li>
-                            <li class="list-group-item">Any additional relevant information</li>
-                            <li class="list-group-item">Attach a screen shot or a file with confirmation of the amount earned </li>
-                            <li class="list-group-item">Upload the link of your video</li>
-                            <li class="list-group-item">Login to your dashboard and open ticket of testimonials letter upload your documents and click on send</li>
                         </ul>
                         <p>
                             <i class="fa fa-arrow-right"></i>
@@ -185,77 +206,77 @@
             </div>
         </section>
 
-        <div class="skills" style="margin-bottom:35px;">
-            <div class="container">
-                <div class="w3layouts_header w3_agile_head">
-                    <p><span><i class="fa fa-users" aria-hidden="true"></i></span></p>
-                    <h5>Our <span style="color: green;">Team</span></h5>
-                </div>
-                <div class="w3layouts_skills_grids">
-                    <div class="col-md-3 agile_team_grid">
-                        <div class="agileits_w3layouts_team_grid">
-                            <img src="images/12.jpg" alt=" " class="img-responsive" />
-                            <div class="agileits_w3layouts_team_grid_pos">
-                                <ul class="agileits_social_list">
-                                    <li><a href="#" class="w3_agile_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                    <li><a href="#" class="agile_twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                    <li><a href="#" class="w3_agile_dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-                                    <li><a href="#" class="w3_agile_vimeo"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <h4>Mark Williamson</h4>
-                        <p>Marketer</p>
-                    </div>
-                    <div class="col-md-3 agile_team_grid">
-                        <div class="agileits_w3layouts_team_grid">
-                            <img src="images/13.jpg" alt=" " class="img-responsive" />
-                            <div class="agileits_w3layouts_team_grid_pos">
-                                <ul class="agileits_social_list">
-                                    <li><a href="#" class="w3_agile_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                    <li><a href="#" class="agile_twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                    <li><a href="#" class="w3_agile_dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-                                    <li><a href="#" class="w3_agile_vimeo"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <h4>Jennifer Carl</h4>
-                        <p>Agent</p>
-                    </div>
-                    <div class="col-md-3 agile_team_grid">
-                        <div class="agileits_w3layouts_team_grid">
-                            <img src="images/14.jpg" alt=" " class="img-responsive" />
-                            <div class="agileits_w3layouts_team_grid_pos">
-                                <ul class="agileits_social_list">
-                                    <li><a href="#" class="w3_agile_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                    <li><a href="#" class="agile_twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                    <li><a href="#" class="w3_agile_dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-                                    <li><a href="#" class="w3_agile_vimeo"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <h4>Andria Paul</h4>
-                        <p>Marketer</p>
-                    </div>
-                    <div class="col-md-3 agile_team_grid">
-                        <div class="agileits_w3layouts_team_grid">
-                            <img src="images/15.jpg" alt=" " class="img-responsive" />
-                            <div class="agileits_w3layouts_team_grid_pos">
-                                <ul class="agileits_social_list">
-                                    <li><a href="#" class="w3_agile_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                    <li><a href="#" class="agile_twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                    <li><a href="#" class="w3_agile_dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-                                    <li><a href="#" class="w3_agile_vimeo"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <h4>Julia Mark</h4>
-                        <p>Marketer</p>
-                    </div>
-                    <div class="clearfix"> </div>
-                </div>
-            </div>
-        </div>
+        {{--<div class="skills" style="margin-bottom:35px;">--}}
+            {{--<div class="container">--}}
+                {{--<div class="w3layouts_header w3_agile_head">--}}
+                    {{--<p><span><i class="fa fa-users" aria-hidden="true"></i></span></p>--}}
+                    {{--<h5>Our <span style="color: green;">Team</span></h5>--}}
+                {{--</div>--}}
+                {{--<div class="w3layouts_skills_grids">--}}
+                    {{--<div class="col-md-3 agile_team_grid">--}}
+                        {{--<div class="agileits_w3layouts_team_grid">--}}
+                            {{--<img src="images/12.jpg" alt=" " class="img-responsive" />--}}
+                            {{--<div class="agileits_w3layouts_team_grid_pos">--}}
+                                {{--<ul class="agileits_social_list">--}}
+                                    {{--<li><a href="#" class="w3_agile_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>--}}
+                                    {{--<li><a href="#" class="agile_twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>--}}
+                                    {{--<li><a href="#" class="w3_agile_dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>--}}
+                                    {{--<li><a href="#" class="w3_agile_vimeo"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>--}}
+                                {{--</ul>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<h4>Mark Williamson</h4>--}}
+                        {{--<p>Marketer</p>--}}
+                    {{--</div>--}}
+                    {{--<div class="col-md-3 agile_team_grid">--}}
+                        {{--<div class="agileits_w3layouts_team_grid">--}}
+                            {{--<img src="images/13.jpg" alt=" " class="img-responsive" />--}}
+                            {{--<div class="agileits_w3layouts_team_grid_pos">--}}
+                                {{--<ul class="agileits_social_list">--}}
+                                    {{--<li><a href="#" class="w3_agile_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>--}}
+                                    {{--<li><a href="#" class="agile_twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>--}}
+                                    {{--<li><a href="#" class="w3_agile_dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>--}}
+                                    {{--<li><a href="#" class="w3_agile_vimeo"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>--}}
+                                {{--</ul>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<h4>Jennifer Carl</h4>--}}
+                        {{--<p>Agent</p>--}}
+                    {{--</div>--}}
+                    {{--<div class="col-md-3 agile_team_grid">--}}
+                        {{--<div class="agileits_w3layouts_team_grid">--}}
+                            {{--<img src="images/14.jpg" alt=" " class="img-responsive" />--}}
+                            {{--<div class="agileits_w3layouts_team_grid_pos">--}}
+                                {{--<ul class="agileits_social_list">--}}
+                                    {{--<li><a href="#" class="w3_agile_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>--}}
+                                    {{--<li><a href="#" class="agile_twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>--}}
+                                    {{--<li><a href="#" class="w3_agile_dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>--}}
+                                    {{--<li><a href="#" class="w3_agile_vimeo"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>--}}
+                                {{--</ul>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<h4>Andria Paul</h4>--}}
+                        {{--<p>Marketer</p>--}}
+                    {{--</div>--}}
+                    {{--<div class="col-md-3 agile_team_grid">--}}
+                        {{--<div class="agileits_w3layouts_team_grid">--}}
+                            {{--<img src="images/15.jpg" alt=" " class="img-responsive" />--}}
+                            {{--<div class="agileits_w3layouts_team_grid_pos">--}}
+                                {{--<ul class="agileits_social_list">--}}
+                                    {{--<li><a href="#" class="w3_agile_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>--}}
+                                    {{--<li><a href="#" class="agile_twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>--}}
+                                    {{--<li><a href="#" class="w3_agile_dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>--}}
+                                    {{--<li><a href="#" class="w3_agile_vimeo"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>--}}
+                                {{--</ul>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<h4>Julia Mark</h4>--}}
+                        {{--<p>Marketer</p>--}}
+                    {{--</div>--}}
+                    {{--<div class="clearfix"> </div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
         <!-- //team -->
 
 

@@ -56,14 +56,13 @@ class AccountController extends Controller
     {
         $this->validate($request,
             [
-               'fullname' => 'required',
-               'reg_type' => 'required',
-               'pay_type' => 'required',
+                'fullname' => 'required',
+                'reg_type' => 'required',
+                'pay_type' => 'required',
                 'email' => 'required|unique:users,email',
                 'password' => 'required',
                 'confirm_password' => 'required|same:password'
-            ],
-            ['confirm_password.same' => '  Passwords Does Not Match']
+            ], ['confirm_password.same' => '  Passwords Does Not Match']
         );
         //dd($request->all());
         $u = new User();
@@ -104,8 +103,7 @@ class AccountController extends Controller
                 return redirect()->back();
             }
         }
-        catch(\Exception $ex)
-        {
+        catch(\Exception $ex) {
             $this->getLogger()->LogError('Registration Error', $ex,['User' => $u]);
             Session::flash('error','Oops, An Error Occurred. Please Try again Later');
         }
@@ -264,8 +262,7 @@ class AccountController extends Controller
             return redirect()->back();
         }
     }
-    public function EOPP($token, Request $request, Mailerr $mailerr)
-    {
+    public function EOPP($token, Request $request, Mailerr $mailerr){
         try{
             if(decrypt($token) == 1)
             {
@@ -327,7 +324,6 @@ class AccountController extends Controller
                     $fl->mime = $file->getClientMimeType();
                     $fl->original_filename = $file->getClientOriginalName();
                     $fl->filename = $imagename;
-                    //dd($request->all(), decrypt($token), $fl, $n);
                     try{
                         $fl->save();
                         $n->teller = $imagename;

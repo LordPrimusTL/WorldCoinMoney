@@ -6,7 +6,7 @@
             <div class="col-lg-4 col-md-4 col-sm-4">
                 <a href="{{route('user_profile')}}" style="text-decoration:none;color:white;">
                     @php($s = $user->class_id)
-                    <div class="panel @if($s== '0') green @elseif($s==1) bronze @elseif($s==2) silver @elseif($s==3) gold @elseif($s==4) ruby @elseif($s==5) platinum @endif">
+                    <div class="panel @if($s == 0) green @elseif($s==1) bronze @elseif($s==2) silver @elseif($s==3) gold @elseif($s==4) ruby @elseif($s==5) platinum @endif">
                         <div class="panel-heading">
                             <p class="panel-success panel-title text-center">PERSONAL DETAILS</p>
                         </div>
@@ -17,7 +17,7 @@
                                 View/Update Your Personal Details
                             </p>
                         </div>
-                        <div class="panel-footer @if($s== '0') green @elseif($s==1) bronze @elseif($s==2) silver @elseif($s==3) gold @elseif($s==4) ruby @elseif($s==5) platinum @endif">
+                        <div class="panel-footer @if($s == 0) green @elseif($s==1) bronze @elseif($s==2) silver @elseif($s==3) gold @elseif($s==4) ruby @elseif($s==5) platinum @endif">
                             <P class="well-sm text-center">VIEW DETAILS <i class="fa fa-arrow-circle-o-right"></i></P>
                         </div>
                     </div>

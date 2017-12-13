@@ -18,6 +18,7 @@
     <!-- font-awesome-icons -->
     <link href="{{asset('css/font-awesome.css')}}" rel="stylesheet">
     <link href="{{asset('css/w3.css')}}" rel="stylesheet">
+    <link href="{{asset('css/Testimonial.css')}}" rel="stylesheet">
 
     <!-- //font-awesome-icons -->
     <!-- //font-awesome-icons -->

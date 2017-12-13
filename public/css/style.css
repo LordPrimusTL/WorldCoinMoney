@@ -2715,3 +2715,11 @@ h2.typoh2{
 .w3-card{
     padding:20px;
 }
+
+.text-white{
+    color: white !important;
+}
+
+.remake{
+    background-color: #76b51b!important; color: white!important;
+}
