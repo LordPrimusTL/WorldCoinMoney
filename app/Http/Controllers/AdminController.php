@@ -625,7 +625,6 @@ class AdminController extends Controller
     }
 
     public function testimonialPost(Request $request){
-        //dd($request->all());
         $this->validate($request,[
             'name' => 'required',
             'word' => 'required',

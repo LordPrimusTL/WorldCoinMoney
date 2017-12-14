@@ -19,8 +19,7 @@
                             <td>{{\Carbon\Carbon::parse($u->created_at)}}</td>
                             <td>{{$u->name}}</td>
                             <td>{{$u->word}}</td>
-                            <td><img src="{{"http://localhost:8000/uploads/".$u->image}}" height="200" weight="200"/> </td>
-                            {{--<td>{{public_path()."$u->image"}}</td>--}}
+                            <td><img src="{{"http://cryptotradingmatrix.com/uploads/".$u->image}}" height="200" width="200"/> </td>
                         </tr>
                     @endforeach
                     </tbody>
