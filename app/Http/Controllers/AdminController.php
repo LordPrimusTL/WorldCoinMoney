@@ -14,6 +14,7 @@ use App\Investments;
 use App\MainAccount;
 use App\Referral;
 use App\SchoolFees;
+use App\Testimonial;
 use App\Ticket;
 use App\Transaction;
 use App\User;
@@ -616,5 +617,40 @@ class AdminController extends Controller
             Session::flash('error','Unable To Send Message');
         }
         return redirect()->back();
+    }
+
+
+    public function testimonial(){
+        return view('Admin.testimonial', ['title' => 'Testimonial','test' => Testimonial::all()]);
+    }
+
+    public function testimonialPost(Request $request){
+        //dd($request->all());
+        $this->validate($request,[
+            'name' => 'required',
+            'word' => 'required',
+            'image' => 'required|image'
+        ]);
+
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $test = new Testimonial();
+            $test->name = $request->name;
+            $test->word = $request->word;
+            $filename = time() . "-".$test->name.".".$file->getClientOriginalExtension();
+            $file->move(public_path("uploads"), $filename);
+            $test->image = $filename;
+            if($test->save()){
+                Session::flash('success', "Testimonial Saved.");
+            }else{
+                Session::flash('error','Testimonial Could Not Be Saved');
+            }
+            return redirect()->back();
+        }else{
+            Session::flash('error','Image Not Found');
+            return redirect()->back();
+        }
+
+
     }
 }

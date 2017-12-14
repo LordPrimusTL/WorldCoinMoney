@@ -156,5 +156,10 @@ Route::group(['prefix' => '/admin/','middleware' => ['auth','AuthAdminCheck']],f
     //Route::get('info/{id}','AdminController@InfoID')->name('admin_info_id');
     Route::post('info','AdminController@InfoPost')->name('admin_info_post');
 
+
+    //Testimonial
+    Route::get('testimonials','AdminController@testimonial')->name('admin_testimonial');
+    Route::post('testimonials','AdminController@testimonialPost')->name('admin_testimonial_post');
+
 });
 

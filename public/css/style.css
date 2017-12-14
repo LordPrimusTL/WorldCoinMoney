@@ -381,9 +381,7 @@ a.w3_agile_vimeo:hover{
     }
 }
 @media screen and (max-width: 400px)  {
-    .carousel-inner{
-        height: 190px!important;
-    }
+
     #ImageCarousel{
         height: 190px!important;
     }

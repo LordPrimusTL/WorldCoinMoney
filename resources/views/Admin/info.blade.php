@@ -34,7 +34,7 @@
                     <label for="user_id">To:</label>
                     <div class="form-group">
                         <select class="form-control" name="user_id" id="user_id">
-                            <?php $user = \App\User::all()?>
+                            <?php $user = \App\User::where('role_id','3')->get()?>
                             @foreach($user as $s)
                                 <option {{$id != null? $id === $s->id ? 'selected' :'':''}} value="{{$s->id}}"> {{"$s->fullname ($s->email)"}}</option>
                             @endforeach

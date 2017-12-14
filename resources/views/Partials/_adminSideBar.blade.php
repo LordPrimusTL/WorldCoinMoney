@@ -20,6 +20,7 @@
         <li class="{{Request::is('admin/payment') ? "active" : " "}}{{count(\App\SchoolFees::where('resolved',0)->get()) > 0 ? 'alert-danger' : ''}}"> <a href="{{route('admin_payment')}}"><i class="fa fa-money"></i>&nbsp;Payment Request</a></li>
         <li class="{{Request::is('admin/btc') ? "active" : " "}}"> <a href="{{route('admin_btc')}}"><i class="fa fa-bitcoin"></i>&nbsp;Bitcoin</a></li>
         <li class="{{Request::is('admin/ticket') ? "active" : " "}}{{count(\App\Ticket::where('res',false)->get()) > 0 ? 'alert-danger' : ''}}"> <a href="{{route('admin_ticket')}}"><i class="fa fa-ticket"></i>&nbsp;Support Ticket</a></li>
+        <li class="{{Request::is('admin/testimonials') ? "active" : " "}}"> <a href="{{route('admin_testimonial')}}"><i class="fa fa-tree"></i>&nbsp;Testimonial</a></li>
         <li class="{{Request::is('admin/info') ? "active" : " "}}"> <a href="{{route('admin_info',['id' => null])}}"><i class="fa fa-comment"></i>&nbsp;Message A User</a></li>
         <li class="{{Request::is('admin/utility') ? "active" : " "}}"> <a href="{{route('admin_utils')}}"><i class="fa fa-dashboard"></i>&nbsp;Utilities</a></li>
     </ul>

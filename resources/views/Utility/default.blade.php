@@ -84,7 +84,7 @@
             </div>
             <div class="col-lg-3">
                 <div class="w3-card-4 text-center w3-hover-shadow">
-                    <img src="images/teach.jpg" alt="Norway" class="card-image img-responsive" height="170px" width="360px">
+                    <img src="images/matrix.jpg" alt="Norway" class="card-image img-responsive" height="170px" width="360px">
                     <h4 class="card-title" style="font-size: large;">MATRIX PLAN</h4>
                     <div class="w3-container w3-center" style="margin-top: 10px">
                         <p class="card-text card-body">At C.T.M, we offer the best matrix plan to our members with an awesome referral commission.
@@ -96,33 +96,28 @@
         </div>
     </div>
 
+
+    @php($test = \App\Testimonial::orderByDesc('id')->get())
+
+
+    @if($test != null)
     <!---Testimonial-->
     <div id="testimonial4" class="carousel slide testimonial4_indicators testimonial4_control_button thumb_scroll_x swipe_x" data-ride="carousel" data-pause="hover" data-interval="5000" data-duration="2000">
         <div class="testimonial4_header">
             <h4>OUR TESTIMONIES SO FAR</h4>
         </div>
         <div class="carousel-inner" role="listbox">
-            <div class="item active">
-                <div class="testimonial4_slide">
-                    <img src="images/meeting.jpg" class="img-circle img-responsive" />
-                    <p>Lorem ipsum dolor sit amet adipiscing elit am nibh unc varius facilisis eros ed erat in in velit quis arcu ornare laoreet urabitur.</p>
-                    <h4>Primus.M</h4>
+            @php($i = 1)
+            @foreach($test as $t)
+                <div class="item {{$i == 1 ? 'active' : ""}}">
+                    <div class="testimonial4_slide">
+                        <img src="uploads/{{$t->image}}" class="img-circle img-responsive" />
+                        <p>{{$t->word}}</p>
+                        <h4>{{$t->name}}</h4>
+                    </div>
                 </div>
-            </div>
-            <div class="item">
-                <div class="testimonial4_slide">
-                    <img src="images/member1.jpg" class="img-circle img-responsive" height="500" />
-                    <p>Lorem ipsum dolor sit amet adipiscing elit am nibh unc varius facilisis eros ed erat in in velit quis arcu ornare laoreet urabitur.</p>
-                    <h4>Oladapo,Oladejo</h4>
-                </div>
-            </div>
-            <div class="item">
-                <div class="testimonial4_slide">
-                    <img src="images/member2.jpg" class="img-circle img-responsive" width="340px" />
-                    <p>Lorem ipsum dolor sit amet adipiscing elit am nibh unc varius facilisis eros ed erat in in velit quis arcu ornare laoreet urabitur.</p>
-                    <h4>Ben Hanna</h4>
-                </div>
-            </div>
+                @php($i++)
+            @endforeach
         </div>
         <a class="left carousel-control" href="#testimonial4" role="button" data-slide="prev">
             <span class="fa fa-chevron-left" style="color: green;"></span>
@@ -132,158 +127,5 @@
         </a>
     </div>
     <!--/Testimonial-->
-
-    <!--// brief information about us ends here-->
-    <!--<section id="middle" class="jumbotron" style="background-color:white;" >
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="accordion" style="margin-top:-20px;">
-                        <h2 style="margin-bottom:20px;">Do you want to learn more?</h2>
-                        <div class="panel-group" id="accordion1">
-                            <div class="panel panel-default">
-                                <div class="panel-heading active" style="background-color:black;color:white;">
-                                    <h3 class="panel-title">
-                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1">
-                                            Learn more about how our referral works
-                                            <i class="fa fa-angle-right pull-right"></i>
-                                        </a>
-                                    </h3>
-                                </div>
-                                <div id="collapseOne1" class="panel-collapse collapse in">
-                                    <div class="panel-body">
-                                        <div class="media accordion-inner">
-                                            <div class="pull-left">
-                                                <img class="img-responsive" src="images/pc1.png" width="160">
-                                            </div>
-                                            <div class="media-body">
-                                                <h4>Gnissimos voluptatum</h4>
-                                                <p style="font-size:15px;">Gnissimos voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi. atque corrupti quos dolores et quas molestias excepturi sint occaecat officia deserunt mollitia laborum et dolorum fuga
-                                                    quas molestias excepturi sint occaecat officia deserunt mollitia laborum et dolorum fuga. At vero eos et accusamus et iusto odio dignis
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">
-                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo1">
-                                            Learn more on how to upgrade to a teacher
-                                            <i class="fa fa-angle-right pull-right"></i>
-                                        </a>
-                                    </h3>
-                                </div>
-                                <div id="collapseTwo1" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <div class="media accordion-inner">
-                                            <div class="pull-left">
-                                                <img class="img-responsive" src="images/p4.jpg" width="160">
-                                            </div>
-                                            <div class="media-body">
-                                                <h4>Gnissimos voluptatum</h4>
-                                                <p style="font-size:15px;">simos voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi. atque corrupti quos dolores et quas molestias excepturi sint occaecat officia deserunt mollitia laborum et dolorum fuga
-                                                    quas molestias excepturi sint occaecat officia deserunt mollitia laborum et dolorum fuga.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">
-                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseThree1">
-                                            Know more on how we Invest
-                                            <i class="fa fa-angle-right pull-right"></i>
-                                        </a>
-                                    </h3>
-                                </div>
-                                <div id="collapseThree1" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <div class="media accordion-inner">
-                                            <div class="pull-left">
-                                                <img class="img-responsive" src="images/p2.jpg" width="160">
-                                            </div>
-                                            <div class="media-body">
-                                                <h4>simos voluptatum</h4>
-                                                <p style="font-size:15px;">simos voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi. atque corrupti quos dolores et quas molestias excepturi sint occaecat officia deserunt mollitia laborum et dolorum fuga
-                                                    quas molestias excepturi sint occaecat officia deserunt mollitia laborum et dolorum fuga.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">
-                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseFour1">
-                                            FAQs
-                                            <i class="fa fa-angle-right pull-right"></i>
-                                        </a>
-                                    </h3>
-                                </div>
-                                <div id="collapseFour1" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <div class="media accordion-inner">
-                                            <div class="pull-left">
-                                                <img class="img-responsive" src="images/gu5.png" width="160">
-                                            </div>
-                                            <div class="media-body">
-                                                <h4>What others say</h4>
-                                                <p style="font-size:15px;">simos voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi. atque corrupti quos dolores et quas molestias excepturi sint occaecat officia deserunt mollitia laborum et dolorum fuga
-                                                    quas molestias excepturi sint occaecat officia deserunt mollitia laborum et</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-5 col-sm-push-1 voffset-mobile2">
-                    <div class="testimonial">
-                        <h2>Testimonials</h2>
-                        <div class="media testimonial-inner">
-                            <div class="pull-left">
-                                <div class="abb">
-                                    &nbsp;<img class="img-responsive" src="images/mission.png" width="160">&nbsp;
-                                </div>
-                            </div>
-                            <div class="media-body">
-                                <p style="font-size:15px;">simos voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi. atque corrupti quos dolores et quas molestias excepturi sint occaecat officia deserunt mollitia laborum et dolorum fuga
-                                    quas molestias excepturi sint occaecat officia deserunt mollitia laborum et</p>
-                                <span><strong>M.Primus</strong> Ondo Akure</span>
-                            </div>
-                        </div>
-                        <div class="media testimonial-inner">
-                            <div class="pull-left">
-                                <div class="abb">
-                                    <img class="img-responsive" src="images/gu5.png" width="160">
-                                </div>
-                            </div>
-                            <div class="media-body">
-                                <p  style="font-size:15px;">simos voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi. atque corrupti quos dolores et quas molestias excepturi sint occaecat officia deserunt mollitia laborum et dolorum fuga
-                                    quas molestias excepturi sint occaecat officia deserunt mollitia laborum et</p>
-                                <span><strong>O.Oladejo</strong></span>
-                            </div>
-                        </div>
-                        <div class="media testimonial-inner">
-                            <div class="pull-left">
-                                <div class="abb">
-                                    <img class="img-responsive" src="images/gu5.png" width="160">
-                                </div>
-                            </div>
-                            <div class="media-body">
-                                <p  style="font-size:15px;">simos voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi. atque corrupti quos dolores et quas molestias excepturi sint occaecat officia deserunt mollitia laborum et dolorum fuga
-                                    quas molestias excepturi sint occaecat officia deserunt mollitia laborum et</p>
-                                <span><strong>T.Olatunbosun</strong></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>-->
+    @endif
 @endsection
