@@ -53,73 +53,202 @@
         <div class="container">
             <div class="w3layouts_header">
                 <p><span><i class="fa fa-info-circle" aria-hidden="true"></i></span></p>
-                <h5>Matrix <span>Plan</span></h5>
+                <h5>Trading <span>Plan</span></h5>
             </div>
             <div class="w3layouts_skills_grids">
                 <div class="col-lg-2"></div>
                 <div class="col-md-8 agileinfo_about_left remake">
-                    <h4 class="remake">Level 1</h4>
-                    <ul class="list-group remake">
-                        <li class="list-group-item remake"><i class="fa fa-hand-o-right"></i> 0.002฿ One Time Payment</li>
-                        <li class="list-group-item remake"><i class="fa fa-hand-o-right"></i> 3 Referral Needed</li>
-                        <li class="list-group-item remake"><i class="fa fa-hand-o-right"></i> 0.006฿ Received</li>
-                        <li class="list-group-item remake"><i class="fa fa-hand-o-right"></i> 0.005฿ For Next Level</li>
-                        <li class="list-group-item remake"><i class="fa fa-arrow-right"></i> <strong><span>Re-Entry 0</span></strong></li>
-                        <li class="list-group-item remake"><i class="fa fa-hand-o-right"></i> 0.0005฿ Referral Commission</li>
-                        <li class="list-group-item remake"><i class="fa fa-hand-o-right"></i> 0.001฿ level1 matrix profit  Payout</li>
-                        <li class="list-group-item remake"><i class="fa fa-hand-o-right"></i> Total profit in level1=0.0015฿</li>
-                    </ul>
-
-                    <h4 class="remake">Level 2</h4>
+                    <br>
                     <ul class="list-group">
-                        <li class="list-group-item remake"><i class="fa fa-hand-o-right"></i> 0.005฿ Payment Made Automatically</li>
-                        <li class="list-group-item remake"><i class="fa fa-hand-o-right"></i> 9 Referral Needed</li>
-                        <li class="list-group-item remake"><i class="fa fa-hand-o-right"></i> 0.045฿ Received</li>
-                        <li class="list-group-item remake"><i class="fa fa-hand-o-right"></i> 0.04฿ For Next Level</li>
-                        <li class="list-group-item remake"><i class="fa fa-arrow-right"></i> <strong><span>Re-Entry 01 with 0.002฿ Automatically </span></strong></li>
-                        <li class="list-group-item remake"><i class="fa fa-hand-o-right"></i> Referral Commission 0.001฿</li>
-                        <li class="list-group-item remake"><i class="fa fa-hand-o-right"></i>Level 2 Matrix profit 0.003฿ Payout</li>
-                        <li class="list-group-item remake"><i class="fa fa-hand-o-right"></i> Total profit in level2 = 0.004฿</li>
-                    </ul>
-
-                    <h4 class="remake">Level 3</h4>
-                    <ul class="list-group">
-                        <li class="list-group-item remake"><i class="fa fa-hand-o-right"></i> 0.04฿ Payment Made Automatically</li>
-                        <li class="list-group-item remake"><i class="fa fa-hand-o-right"></i> 27 Referral Needed</li>
-                        <li class="list-group-item remake"><i class="fa fa-hand-o-right"></i> Cycled 1฿ Payout</li>
-                        <li class="list-group-item remake"><i class="fa fa-arrow-right"></i> <strong><span>Re-Entry - 4</span></strong></li>
-                        <li class="list-group-item remake"><i class="fa fa-hand-o-right"></i> 0.005฿ Matching Bonus</li>
-                        <li class="list-group-item remake"><i class="fa fa-hand-o-right"></i> 1฿ Payout Of level 3 profit</li>
-                        <li class="list-group-item remake"><i class="fa fa-hand-o-right"></i> Total profit in level 3= 1.005฿</li>
-                        <li class="list-group-item remake"><i class="fa fa-hand-o-right"></i> Total matrix profit = 1.0105฿</li>
+                        <li class="list-group-item remake"><i class="fa fa-hand-o-right"></i> One Month Free Crypto Trading Training</li>
+                        <li class="list-group-item remake"><i class="fa fa-hand-o-right"></i> One Month Free Crypto Trading Signal</li>
+                        <li class="list-group-item remake"><i class="fa fa-hand-o-right"></i> 5% Direct Referral Bonus (Simple Participant)</li>
+                        <li class="list-group-item remake"><i class="fa fa-hand-o-right"></i> 5% , 4% , 3%, 2% and 1% Respectively From Direct Referral Up To 5th Generations Downlines( Admin Bonus)</li>
+                        <li class="list-group-item remake"><i class="fa fa-hand-o-right"></i> 5%, 4%, and 3% Respectively From Direct Referral Up To 3rd Generations Downlines (Manager bonus)</li>
                     </ul>
                 </div>
                 <div class="clearfix"> </div>
             </div>
         </div>
+        <br/>
         <br/>
         <br/>
         <br/>
         <div class="container">
             <div class="w3layouts_header">
                 <p><span><i class="fa fa-info-circle" aria-hidden="true"></i></span></p>
-                <h5>Trading <span>Plan</span></h5>
+                <h5>Matrix <span>Plan</span></h5>
             </div>
             <div class="w3layouts_skills_grids">
                 <div class="col-lg-2"></div>
-                <div class="col-md-8 agileinfo_about_left">
-                    <ul class="list-group">
-                        <li class="list-group-item"><i class="fa fa-hand-o-right"></i> One Month Free Crypto Trading Training</li>
-                        <li class="list-group-item"><i class="fa fa-hand-o-right"></i> One Month Free Crypto Trading Signal</li>
-                        <li class="list-group-item"><i class="fa fa-hand-o-right"></i> 5% Direct Referral Bonus (Simple Participant)</li>
-                        <li class="list-group-item"><i class="fa fa-hand-o-right"></i> 5% , 4% , 3%, 2% and 1% Respectively From Direct Referral Up To 5th Generations Downlines( Admin Bonus)</li>
-                        <li class="list-group-item"><i class="fa fa-hand-o-right"></i> 5%, 4%, and 3% Respectively From Direct Referral Up To 3rd Generations Downlines (Manager bonus)</li>
-                    </ul>
+                <div class="col-md-8 agileinfo_about_left" >
+                    {{--<h2 style="font-size:35px;font-family:cursive;color:green;margin-bottom:15px;">OUR MATRIX PLAN</h2>--}}
+                    <div class="panel-group" id="accordion">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Level One Matrix Plan
+                                        <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse1" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <p class="text-center">LEVEL ONE</p>
+                                        </div>
+                                        <div class="card-body">
+                                            <ul class="list-group">
+
+                                                <li class="list-group-item">
+                                                    Initial Payment:
+                                                    <div class="pull-right">$15</div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    Referral Needed:
+                                                    <div class="pull-right">3</div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    Received:
+                                                    <div class="pull-right">$45</div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    For Next Level:
+                                                    <div class="pull-right">$35</div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    Re-Entry:
+                                                    <div class="pull-right">0</div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    Referral Commission:
+                                                    <div class="pull-right">$5</div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    Level One Matrix Profit Payout:
+                                                    <div class="pull-right">$5</div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    Total Profit in Level One:
+                                                    <div class="pull-right">$10</div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Level Two Matrix Plan
+                                        <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse2" class="panel-collapse collapse ">
+                                <div class="panel-body">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <p class="text-center">LEVEL TWO</p>
+                                        </div>
+                                        <div class="card-body">
+                                            <ul class="list-group">
+                                                <li class="list-group-item">
+                                                    Payment Made Automatically:
+                                                    <div class="pull-right">$35</div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    Referral Needed:
+                                                    <div class="pull-right">9</div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    Received:
+                                                    <div class="pull-right">$315</div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    For Next Level:
+                                                    <div class="pull-right">$255</div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    Re-Entry:
+                                                    <div class="pull-right">2</div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    Referral Commission:
+                                                    <div class="pull-right">$15</div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    Level Two Matrix Profit Payout:
+                                                    <div class="pull-right">$15</div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    Total Profit in Level Two:
+                                                    <div class="pull-right">$30</div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Level Three Matrix Plan
+                                        <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse3" class="panel-collapse collapse ">
+                                <div class="panel-body">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <p class="text-center">LEVEL THREE</p>
+                                        </div>
+                                        <div class="card-body">
+                                            <ul class="list-group">
+                                                <li class="list-group-item">
+                                                    Payment Made Automatically:
+                                                    <div class="pull-right">$255</div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    Referral Needed Cycled:
+                                                    <div class="pull-right">27</div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    Level Three Payout:
+                                                    <div class="pull-right">$5,000</div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    Matching Bonus:
+                                                    <div class="pull-right">$1000</div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    Re-Entry:
+                                                    <div class="pull-right">50</div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    Total Level Three Profit:
+                                                    <div class="pull-right">$6,000</div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    Total Matrix Profit:
+                                                    <div class="pull-right">$6,040</div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="clearfix"> </div>
             </div>
         </div>
-        <br/>
         <br/>
         <br/>
         <div class="container">

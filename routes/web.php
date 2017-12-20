@@ -12,13 +12,6 @@
 */
 
 
-//Utility
-Route::get('/clear', function()
-{
-    Artisan::call('cache:clear');
-    Artisan::call('config:cache');
-    Artisan::call('make:model test');
-});
 Route::get('/','UtilityController@Home')->name('home');
 Route::get('/about-and-faq','UtilityController@About')->name('about');
 Route::get('/contact','UtilityController@Contact')->name('contact');

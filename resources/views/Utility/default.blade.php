@@ -111,7 +111,7 @@
             @foreach($test as $t)
                 <div class="item {{$i == 1 ? 'active' : ""}}">
                     <div class="testimonial4_slide">
-                        <img src="uploads/{{$t->image}}" class="img-circle img-responsive" />
+                        <img src="uploads/{{$t->image}}" class="img-responsive" />
                         <p>{{$t->word}}</p>
                         <h4>{{$t->name}}</h4>
                     </div>
