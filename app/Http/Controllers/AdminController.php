@@ -51,18 +51,26 @@ class AdminController extends Controller
         return view('Admin.dashboard',['title' => 'Dashboard', 'users' => User::where(['role_id' => 3])->orderByDesc('created_at')->paginate(100),'key' => null, "s" => "Not null"]);
     }
 
-    public function userDelete(Request $request, $id){
-        $id = decrypt($id);
-        $user = User::find($id);
-        if(isset($user)){
-            $user->delete();
-            Session::flash('success',"User Deleted Successfully");
-        }
-        else{
-            Session::flash('error',"User Could Not Be Found");
-        }
-        return redirect()->back();
-    }
+//    public function userDelete(Request $request, $id){
+//        $id = decrypt($id);
+//        $user = User::find($id);
+//        if(isset($user)){
+//            $user->trans()->delete();
+//            $user->inv()->delete();
+//            $user->acct()->delete();
+//            $user->withd()->delete();
+//            $user->Trade()->delete();
+//            $user->bal()->delete();
+//            $user->ref()->delete();
+//            $user->ref()->delete();
+//            $user->delete();
+//            Session::flash('success',"User Deleted Successfully");
+//        }
+//        else{
+//            Session::flash('error',"User Could Not Be Found");
+//        }
+//        return redirect()->back();
+//    }
 
     public function userSearch(Request $request){
        //  dd($request->all());

@@ -53,7 +53,7 @@
                                         <a href="{{route('admin_user_view',['id' => encrypt($user->id)])}}" class="btn btn-outline-info btn-sm" style="margin-right: 10px;"><i class="fa fa-eye"></i></a>
                                         <a href="{{route('admin_info',['id' => encrypt($user->id)])}}" class="btn btn-outline-success btn-sm" style="margin-right: 10px;"><i class="fa fa-comment"></i></a>
                                         <a href="{{route('mail.single',['id' => encrypt($user->email)])}}" class="btn btn-outline-primary btn-sm" style="margin-right: 10px;"><i class="fa fa-envelope-square"></i></a>
-                                        <a href="{{route('deleteUser',['id' => encrypt($user->id)])}}" onclick="return confirm('Are you sure you want to delete this User?');" class="btn btn-outline-danger btn-sm" style="margin-right: 10px;"><i class="fa fa-trash"></i></a>
+                                        {{--<a href="{{route('deleteUser',['id' => encrypt($user->id)])}}" onclick="return confirm('Are you sure you want to delete this User?');" class="btn btn-outline-danger btn-sm" style="margin-right: 10px;"><i class="fa fa-trash"></i></a>--}}
                                     </td>
                                 </tr>
                             @endif
