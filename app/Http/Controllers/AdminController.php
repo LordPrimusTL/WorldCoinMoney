@@ -256,11 +256,11 @@ class AdminController extends Controller
     //Mail
     public function Mail()
     {
-      return view('Admin.mail',['title' => 'Mail','user' => null]);
+      return view('Admin.mail',['title' => 'Mail','user' => null,'active' => null]);
     }
     public function MailAll()
     {
-        $user = User::pluck('email');
+        $user = User::where('role_id', 3)->pluck('email');
         //dd($user);
         $a = [];
         $s = null;
@@ -276,12 +276,52 @@ class AdminController extends Controller
         }
         //dd([$s][0]);
         $user = $s;
-        return view('Admin.mail',['title' => 'Mail','user' => $user]);
+        return view('Admin.mail',['title' => 'Mail','user' => $user,'active' => "all"]);
     }
     public function MailSingle($email)
     {
         $user = User::where('email',decrypt($email))->first();
-        return view('Admin.mail',['title' => 'Mail','user' => trim($user->email)]);
+        return view('Admin.mail',['title' => 'Mail','user' => trim($user->email), 'active' => null]);
+    }
+    public function MailActive(){
+        $user = User::where(['activated' => true, 'is_active' => true, 'role_id' => 3])->pluck('email');
+        //dd($user);
+        $a = [];
+        $s = null;
+        foreach ($user as $m)
+        {
+            if($s == null)
+            {
+                $s = trim($m);
+            }
+            else{
+                $s = trim($s) . ',' . trim($m);
+            }
+        }
+        //dd([$s][0]);
+        $user = $s;
+        return view('Admin.mail',['title' => 'Mail','user' => $user, 'active' => 'active']);
+    }
+    public function MailInactive(){
+        $user = User::where(['activated' => 0, 'role_id' => 3])->pluck('email');
+        $user2 = User::Where(['is_active' => 0, 'role_id' => 3])->pluck('email');
+        $user->toBase()->merge($user2);
+        //dd($user, count($user), $user2, count($user));
+        $a = [];
+        $s = null;
+        foreach ($user as $m)
+        {
+            if($s == null)
+            {
+                $s = trim($m);
+            }
+            else{
+                $s = trim($s) . ',' . trim($m);
+            }
+        }
+        //dd([$s][0]);
+        $user = $s;
+        return view('Admin.mail',['title' => 'Mail','user' => $user, 'active' => 'inactive']);
     }
     public function MailSend(Request $request, Mailerr $mailer)
     {

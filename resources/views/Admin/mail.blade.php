@@ -9,17 +9,24 @@
             <div class="col-lg-12 text-center">
                 &nbsp;&nbsp;&nbsp;<p style="font-size: xx-large"> Send Email</p>
             </div>
-            <div class="col-lg 12 col-lg-4 col-lg-4">
-                <a href="{{route('mail.all')}}" class="btn btn-primary btn-sm">
-                    <i class="fa fa-send"></i> Send To All Users
-                </a>
-            </div>
+
             <br/>
             <br/>
             <div class="container row">
                 <div class="col-lg-1"></div>
                 <div class="col-lg-10">
                     @include('Partials._message')
+                    <div class="col-lg-12 col-lg-4 col-lg-4">
+                        <a href="{{route('mail.all')}}" class="btn  @if($active == "all") btn-success @else btn-primary @endif btn-sm">
+                            <i class="fa fa-send"></i> Send To All Users
+                        </a>
+                        <a href="{{route('mail.active')}}" class="btn @if($active == "active") btn-success @else btn-primary @endif btn-sm">
+                            <i class="fa fa-send"></i> Send To All Active Users
+                        </a>
+                        <a href="{{route('mail.inactive')}}" class="btn  @if($active == "inactive") btn-success @else btn-primary @endif btn-sm">
+                            <i class="fa fa-send"></i> Send To All Inactive Users
+                        </a>
+                    </div>
                     <form class="form-horizontal" method="POST" action="{{route('mail_send')}}">
                         {{csrf_field()}}
                         <div class="form-group">

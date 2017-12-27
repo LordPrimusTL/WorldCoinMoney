@@ -129,7 +129,7 @@
                         <label for="is_active">Active: </label>
                         <div class="form-group">
                             <select class="form-control" id="is_active" name="is_active">
-                                @if($user->activated)
+                                @if($user->is_active)
                                     <option value="0">False</option>
                                     <option selected value="1">True</option>
                                 @else

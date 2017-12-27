@@ -103,6 +103,8 @@ Route::group(['prefix' => '/admin/','middleware' => ['auth','AuthAdminCheck']],f
     Route::get('mail/send/{email}','AdminController@MailSingle')->name('mail.single');
     Route::get('mail/all','AdminController@MailAll')->name('mail.all');
     Route::post('mail/send','AdminController@MailSend')->name('mail_send');
+    Route::get('mail/active','AdminController@MailActive')->name('mail.active');
+    Route::get('mail/inactive','AdminController@MailInactive')->name('mail.inactive');
 
 
     //Utilities
