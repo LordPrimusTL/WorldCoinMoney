@@ -20,9 +20,9 @@ Route::get('/term-of-service','UtilityController@TOS')->name('tos');
 
 Route::get('/clear', function ()
 {
-   Artisan::call('cache:clear');
-   Artisan::call('config:cache');
-   dd('cleared');
+    Artisan::call('cache:clear');
+    Artisan::call('config:cache');
+    dd('cleared');
 });
 
 //Account
@@ -86,6 +86,8 @@ Route::group(['prefix' => '/admin/','middleware' => ['auth','AuthAdminCheck']],f
     Route::get('user/view/{id}','AdminController@UserView')->name('admin_user_view');
     Route::post('user/profile/edit/{id}','AdminController@UserEdit')->name('admin_user_edit');
     Route::get('user/action/{id}/{aid}','AdminController@UserAction')->name('admin_user_action');
+    Route::post('user/search','AdminController@userSearch')->name("searchUser");
+    Route::get('user/delete/{id}','AdminController@userDelete')->name('deleteUser');
 
     //Admin
     Route::get('admin','AdminController@Admin')->name('admin_admin');

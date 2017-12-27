@@ -23,6 +23,7 @@
                 <span class="glyphicon glyphicon-chevron-right" style="color:yellow;"></span>
             </a>
         </div>
+
     </div>
     <!-- //banner -->
     <!--News Slider

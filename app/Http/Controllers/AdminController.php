@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\AcctReq;
+use App\AcctType;
 use App\Btc;
 use App\Comment;
 use App\Helpers\AppMailer;
@@ -12,8 +13,11 @@ use App\Helpers\TradeSync;
 use App\Info;
 use App\Investments;
 use App\MainAccount;
+use App\PaymentType;
 use App\Referral;
+use App\RegistrationType;
 use App\SchoolFees;
+use App\TClass;
 use App\Testimonial;
 use App\Ticket;
 use App\Transaction;
@@ -44,8 +48,55 @@ class AdminController extends Controller
     //User View.
     public function Dashboard()
     {
-        return view('Admin.dashboard',['title' => 'Dashboard', 'users' => User::where(['role_id' => 3])->orderByDesc('created_at')->get()]);
+        return view('Admin.dashboard',['title' => 'Dashboard', 'users' => User::where(['role_id' => 3])->orderByDesc('created_at')->paginate(100),'key' => null, "s" => "Not null"]);
     }
+
+    public function userDelete(Request $request, $id){
+        $id = decrypt($id);
+        $user = User::find($id);
+        if(isset($user)){
+            $user->delete();
+            Session::flash('success',"User Deleted Successfully");
+        }
+        else{
+            Session::flash('error',"User Could Not Be Found");
+        }
+        return redirect()->back();
+    }
+
+    public function userSearch(Request $request){
+       //  dd($request->all());
+        $reg = RegistrationType::where('name','LIKE','%'.$request->key.'%')->get();
+        $acct = AcctType::where('name','LIKE','%'.$request->key.'%')->first();
+        $pay = PaymentType::where('name','LIKE','%'.$request->key.'%')->first();
+        $class = TClass::where('name','LIKE','%'.$request->key.'%')->first();
+        if($request->key != null) {
+            $k = $request->key;
+            $query = User::query();
+            $query->where('id','LIKE','%'.$k.'%')
+                ->orwhere('email','LIKE','%'.$k.'%')
+                ->orwhere('fullname','LIKE','%'.$k.'%')
+                ->orwhere('r_link','LIKE','%'.$k.'%');
+            if(isset($acct)){
+                $query->orwhere('acc_id','LIKE','%'. $acct->id . '%');
+            }
+            if(!empty($reg)){
+                foreach ($reg as $r){
+                    $query->orwhere('reg_type','LIKE','%'. $r->id . '%');
+                }
+            }
+            if(isset($pay)){
+                $query->orwhere('payment_id','LIKE','%'. $pay->id . '%');
+            }
+            if(isset($class)){
+                $query->orwhere('class_id','LIKE','%'. $class->id . '%');
+            }
+            $query->where('role_id','=',3);
+            return view('Admin.dashboard',['title' => "Search $k",'users' =>  $query->paginate(100), 'key' => $k,'s' => "notnull"]);
+        }
+        return redirect()->back();
+    }
+
     public function UserView($id)
     {
         $u = User::find(decrypt($id));
