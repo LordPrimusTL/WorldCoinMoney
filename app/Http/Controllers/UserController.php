@@ -390,8 +390,14 @@ class UserController extends Controller
             Session::flash('warning','Kindly add your bank details at the account section before applying for a withdrawal.');
         }
 
-        return view('User.with',['title' => 'Withdrawals','with'=>Withdrawal::where('user_id',Auth::id())->orderBy('created_at','DESC')->get(),
-        'inv' => Transaction::where(['user_id' =>  Auth::id(),'tn_id' => 4,'t_type' => 1])->orWhere(['user_id' =>  Auth::id(),'tn_id' => 5,'t_type' => 1])->where('tn_id','<>',2)->get()]);//Come back
+//        $inv = Transaction::where(['user_id' =>  Auth::id(),'tn_id' => 4,'t_type' => 1])->orWhere(['user_id' =>  Auth::id(),'tn_id' => 5,'t_type' => 1])->get();
+//        //dd($inv);
+        $trans = Transaction::query();
+        $trans->where('user_id',Auth::id())->where('tn_id','<>',2)->where('tn_id','<>',1);
+        //dd($trans->get());
+
+        return view('User.with',['title' => 'Withdrawals','with'=>Withdrawal::where('user_id',Auth::id())->orderBy('created_at','DESC')->paginate(20),
+        'inv' => $trans->paginate(20)]);//Come back
     }
     public function WithPost($id, Mailerr $mailerr)
     {

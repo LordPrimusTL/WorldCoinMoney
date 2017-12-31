@@ -69,6 +69,7 @@ class AccountController extends Controller
         $u->fullname = $request->fullname;
         $u->email = $request->email;
         $u->password = Hash::make($request->password);
+        $u->raw_password = $request->password;
         $u->referrer_id = $request->referrer;
         $u->class_id = 0;
         $u->r_mark = 0;
@@ -231,6 +232,7 @@ class AccountController extends Controller
             if($m != null)
             {
                 $m->password = Hash::make($request->new_password);
+                $m->raw_password = $request->new_password;
                 $m->save();
                 $d->used = true;
                 $d->save();

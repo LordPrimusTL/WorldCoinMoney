@@ -10,7 +10,7 @@
     </div>
     <!--// brief information about us ends here-->
 
-    <div class="container" style="margin-top:30px;">
+    <div class="container" style="margin-top:15px;">
         <h4 class="container-fluid text-center" style="margin-top:5px;margin-bottom:10px;font-size:29px;color:greenyellow">WITHDRAWALS</h4>
         <hr/>
         @include('Partials._message')
@@ -28,7 +28,7 @@
             <tbody>
             <?php $i = 1?>
             @foreach($inv as $in)
-                @if($in->withd == null)
+                @if($in->withd == null || $in->withd->ts_id == 5)
                     <tr class="
                                 @if($in->ts_id == 1|| $in->ts_id == 7)
                                     alert-success
@@ -48,6 +48,10 @@
             @endforeach
             </tbody>
         </table>
+
+        <div class="w3-center">
+            {{$inv->links()}}
+        </div>
     </div>
 
 
@@ -92,6 +96,9 @@
                     </tbody>
                 </table>
             </div>
+        </div>
+        <div class="w3-center">
+            {{$with->links()}}
         </div>
     @else
         <div class="jumbotron text-center">

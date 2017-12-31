@@ -24,6 +24,7 @@ class Mailerr
     protected $subject;
     protected $view;
     protected $data = [];
+    protected $text;
     protected $admin = [
         "michealakinwonmi@gmail.com",
         "hayroyalconsult@gmail.com",
@@ -61,10 +62,10 @@ class Mailerr
         $this->to = $email;
         $this->subject = $sub;
         $this->view = 'Email.all';
-        $this->data = compact('msg');
+        $this->text = $msg;
 
         Log::info('Success ',[$email]);
-        return $this->deliver();
+        return $this->deliverRaw();
     }
 
 
@@ -191,6 +192,29 @@ class Mailerr
             });
 
             Log::info('Mail Sent');
+            return true;
+        }
+        catch (\Exception $ex)
+        {
+            dd($ex);
+            $this->Logger()->LogError('An Error Occured When Trying to Send Mail',$ex,['to' => $this->to
+                , 'subj' => $this->subject,'data' => $this->data]);
+            $this->sendError();
+            return false;
+
+        }
+    }
+
+
+     public function deliverRaw()
+    {
+        try{
+            $this->mailer->raw($this->text, function($message) {
+                $message->from($this->fromAddress, $this->fromName)
+                    ->to($this->to)->subject($this->subject);
+            });
+
+            Log::info('Raw Mail Sent');
             return true;
         }
         catch (\Exception $ex)
