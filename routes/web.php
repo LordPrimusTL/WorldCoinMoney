@@ -22,6 +22,7 @@ Route::get('/clear', function ()
 {
    Artisan::call('cache:clear');
    Artisan::call('config:cache');
+   phpinfo();
    dd('cleared');
 });
 

@@ -2721,3 +2721,6 @@ h2.typoh2{
 .remake{
     background-color: #76b51b!important; color: white!important;
 }
+.table-responsive{
+    display: block;
+}
